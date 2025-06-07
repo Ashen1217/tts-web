@@ -1,0 +1,17 @@
+[Unit]
+Description=AI TTS Pro Flask Application
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/root/ttsnew
+EnvironmentFile=/root/ttsnew/.env
+ExecStart=/root/ttsnew/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5001 app:app
+Restart=always
+RestartSec=10
+StandardOutput=append:/root/ttsnew/tts_app_service.log
+StandardError=append:/root/ttsnew/tts_app_service.err
+
+[Install]
+WantedBy=multi-user.target

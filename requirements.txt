@@ -1,0 +1,38 @@
+# Professional AI TTS Web Application Dependencies
+
+# Core Web Framework
+Flask[async]==2.3.3
+flask-cors==4.0.0
+werkzeug==2.3.7
+
+# AI/TTS Libraries
+google-genai==0.3.0
+edge-tts==6.1.9
+pyttsx3==2.90
+
+# Audio Processing
+librosa==0.10.1
+soundfile==0.12.1
+numpy==1.24.3
+pydub==0.25.1
+
+# Utilities
+asyncio-mqtt==0.11.1
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Optional: Enhanced Audio Processing
+scipy==1.11.4
+matplotlib==3.7.2
+
+# Development & Debugging
+gunicorn==21.2.0
+python-multipart==0.0.6
+
+# System Requirements (for Ubuntu/Debian):
+# sudo apt-get update
+# sudo apt-get install -y python3-dev portaudio19-dev ffmpeg
+
+# For Windows users, you may need:
+# pip install pyaudio
+# Download and install FFmpeg from https://ffmpeg.org/download.html
