@@ -13,7 +13,7 @@
 
 **AI TTS Pro** is a cutting-edge, professional Text-to-Speech web application designed to bring your text to life. It offers seamless support for multiple languages, including **Sinhala** and **English**, powered by advanced AI engines like Google Gemini and Microsoft Edge TTS. With a sleek user interface and a rich set of features, AI TTS Pro is your go-to solution for high-quality voice generation.
 
-![AI TTS Pro Screenshot]([[https://via.placeholder.com/800x400.png?text=App+Screenshot+Here](https://i.ibb.co/d44pHrpV/Screenshot-2025-06-07-203730.png)](https://i.ibb.co/d44pHrpV/Screenshot-2025-06-07-203730.png))
+[![AI TTS Pro Screenshot](https://i.ibb.co/d44pHrpV/Screenshot-2025-06-07-203730.png)](https://i.ibb.co/d44pHrpV/Screenshot-2025-06-07-203730.png)
 
 
 ---
@@ -172,9 +172,9 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ## 📞 Contact
 
-Your Name / Organization - your.email@example.com
+Your Name / Organization - rasanjanachamika@gmail.com
 
-Project Link: [https://github.com/your-username/ai-tts-pro](https://github.com/your-username/ai-tts-pro) *(Replace with your actual project link)*
+Project Link: [https://github.com/chamika1/ai-tts-pro](https://github.com/chamika1/ai-tts-pro) 
 
 ---
 
