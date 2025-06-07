@@ -13,7 +13,10 @@
 
 **AI TTS Pro** is a cutting-edge, professional Text-to-Speech web application designed to bring your text to life. It offers seamless support for multiple languages, including **Sinhala** and **English**, powered by advanced AI engines like Google Gemini and Microsoft Edge TTS. With a sleek user interface and a rich set of features, AI TTS Pro is your go-to solution for high-quality voice generation.
 
-[![AI TTS Pro Screenshot](https://i.ibb.co/d44pHrpV/Screenshot-2025-06-07-203730.png)](https://i.ibb.co/d44pHrpV/Screenshot-2025-06-07-203730.png)
+<a href="https://i.ibb.co/d44pHrpV/Screenshot-2025-06-07-203730.png" target="_blank">
+  <img src="https://i.ibb.co/d44pHrpV/Screenshot-2025-06-07-203730.png" alt="AI TTS Pro Screenshot" style="max-width: 100%; height: auto;" />
+</a>
+
 
 
 ---
