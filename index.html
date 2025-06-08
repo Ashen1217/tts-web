@@ -8,13 +8,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .gradient-bg {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 25%, #bbf7d0 50%, #86efac 75%, #4ade80 100%);
         }
         .glass-effect {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(226, 232, 240, 0.5);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.08);
         }
         .voice-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -22,7 +22,7 @@
         }
         .voice-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
         }
         .loading-spinner {
             animation: spin 1s linear infinite;
@@ -39,39 +39,68 @@
             50% { transform: scaleY(0.5); }
         }
         .text-gradient {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background: linear-gradient(135deg, #16a34a, #059669, #0d9488);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            background: linear-gradient(135deg, #16a34a 0%, #059669 50%, #0d9488 100%);
             transition: all 0.3s ease;
         }
         .btn-primary:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            background: linear-gradient(135deg, #15803d 0%, #047857 50%, #0f766e 100%);
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 12px 24px rgba(22, 163, 74, 0.3);
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #0f766e 0%, #0f766e 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(13, 148, 136, 0.3);
         }
         .card-shadow {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.08);
         }
         .input-focus:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: #16a34a;
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
         }
         .section-divider {
-            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+            background: linear-gradient(90deg, transparent, #bbf7d0, transparent);
+        }
+        .green-accent {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+        }
+        .teal-accent {
+            background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+        }
+        .emerald-accent {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+        }
+        .footer-gradient {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+        }
+        .heart-beat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body class="min-h-screen gradient-bg">
     <!-- Enhanced Navigation -->
-    <nav class="glass-effect sticky top-0 z-40 border-b border-slate-200">
+    <nav class="glass-effect sticky top-0 z-40 border-b border-green-200">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center">
                         <i class="fas fa-microphone-alt text-white text-lg"></i>
                     </div>
                     <h1 class="text-xl sm:text-2xl font-bold text-gradient">
@@ -79,10 +108,10 @@
                     </h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-all duration-200">
+                    <button id="themeToggle" class="p-2 rounded-lg bg-green-50 hover:bg-green-100 text-green-600 transition-all duration-200">
                         <i class="fas fa-sun text-lg"></i>
                     </button>
-                    <button id="helpBtn" class="p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-200">
+                    <button id="helpBtn" class="p-2 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-600 transition-all duration-200">
                         <i class="fas fa-question-circle text-lg"></i>
                     </button>
                 </div>
@@ -99,8 +128,8 @@
                 <!-- Text Input Section -->
                 <div class="glass-effect rounded-2xl p-6 lg:p-8 card-shadow">
                     <div class="flex items-center mb-6">
-                        <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-edit text-blue-600"></i>
+                        <div class="w-8 h-8 green-accent rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-edit text-green-600"></i>
                         </div>
                         <h2 class="text-xl font-semibold text-slate-800">Text Input</h2>
                     </div>
@@ -109,7 +138,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div>
                             <label class="block text-slate-700 text-sm font-medium mb-2">Language</label>
-                            <select id="languageSelect" class="w-full p-3 rounded-xl bg-white border border-slate-200 text-slate-700 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition-all duration-200">
+                            <select id="languageSelect" class="w-full p-3 rounded-xl bg-white border border-green-200 text-slate-700 focus:border-green-500 focus:ring-4 focus:ring-green-50 transition-all duration-200">
                                 <option value="si-LK">🇱🇰 Sinhala (Sri Lanka)</option>
                                 <option value="en-US" selected>🇺🇸 English (US)</option>
                                 <option value="en-GB">🇬🇧 English (UK)</option>
@@ -120,7 +149,7 @@
                         </div>
                         <div>
                             <label class="block text-slate-700 text-sm font-medium mb-2">TTS Engine</label>
-                            <select id="engineSelect" class="w-full p-3 rounded-xl bg-white border border-slate-200 text-slate-700 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition-all duration-200">
+                            <select id="engineSelect" class="w-full p-3 rounded-xl bg-white border border-green-200 text-slate-700 focus:border-green-500 focus:ring-4 focus:ring-green-50 transition-all duration-200">
                                 <option value="gemini">🤖 Gemini AI (Premium)</option>
                                 <option value="edge">🌐 Edge TTS (Multilingual)</option>
                             </select>
@@ -134,7 +163,7 @@
                             <textarea 
                                 id="textInput" 
                                 placeholder="ඔබේ පෙළ මෙහි ලියන්න... / Enter your text here..."
-                                class="w-full h-40 p-4 rounded-xl bg-white border border-slate-200 text-slate-700 placeholder-slate-400 resize-none focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition-all duration-200"
+                                class="w-full h-40 p-4 rounded-xl bg-white border border-green-200 text-slate-700 placeholder-slate-400 resize-none focus:border-green-500 focus:ring-4 focus:ring-green-50 transition-all duration-200"
                             ></textarea>
                             <div class="absolute bottom-3 right-3 text-xs text-slate-400">
                                 <span id="charCount">0 characters</span> • <span id="wordCount">0 words</span>
@@ -146,16 +175,16 @@
                     <div class="mb-6">
                         <label class="block text-slate-700 text-sm font-medium mb-3">Quick Templates</label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                            <button class="template-btn p-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium transition-all duration-200 border border-blue-200" data-text="ආයුබෝවන්! ඔබට සුභ දිනයක් වේවා!">
+                            <button class="template-btn p-3 rounded-xl bg-green-50 hover:bg-green-100 text-green-700 text-sm font-medium transition-all duration-200 border border-green-200" data-text="ආයුබෝවන්! ඔබට සුභ දිනයක් වේවා!">
                                 <i class="fas fa-globe mr-2"></i>Sinhala Greeting
                             </button>
-                            <button class="template-btn p-3 rounded-xl bg-green-50 hover:bg-green-100 text-green-700 text-sm font-medium transition-all duration-200 border border-green-200" data-text="Hello! Welcome to our TTS application.">
+                            <button class="template-btn p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-sm font-medium transition-all duration-200 border border-emerald-200" data-text="Hello! Welcome to our TTS application.">
                                 <i class="fas fa-hand-wave mr-2"></i>English Greeting
                             </button>
-                            <button class="template-btn p-3 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 text-sm font-medium transition-all duration-200 border border-purple-200" data-text="This is a test of our advanced text-to-speech system.">
+                            <button class="template-btn p-3 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-700 text-sm font-medium transition-all duration-200 border border-teal-200" data-text="This is a test of our advanced text-to-speech system.">
                                 <i class="fas fa-vial mr-2"></i>Test Message
                             </button>
-                            <button class="template-btn p-3 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-700 text-sm font-medium transition-all duration-200 border border-orange-200" data-text="Speaker 1: Hello there!\nSpeaker 2: Hi! How are you today?">
+                            <button class="template-btn p-3 rounded-xl bg-lime-50 hover:bg-lime-100 text-lime-700 text-sm font-medium transition-all duration-200 border border-lime-200" data-text="Speaker 1: Hello there!\nSpeaker 2: Hi! How are you today?">
                                 <i class="fas fa-users mr-2"></i>Multi-Speaker
                             </button>
                         </div>
@@ -165,8 +194,8 @@
                 <!-- Advanced Options -->
                 <div class="glass-effect rounded-2xl p-6 lg:p-8 card-shadow">
                     <div class="flex items-center mb-6">
-                        <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-cog text-purple-600"></i>
+                        <div class="w-8 h-8 teal-accent rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-cog text-teal-600"></i>
                         </div>
                         <h3 class="text-xl font-semibold text-slate-800">Advanced Options</h3>
                     </div>
@@ -174,25 +203,25 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div>
                             <label class="block text-slate-700 text-sm font-medium mb-3">Speech Rate</label>
-                            <input type="range" id="speechRate" min="-50" max="50" value="0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                            <input type="range" id="speechRate" min="-50" max="50" value="0" class="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer">
                             <span id="rateValue" class="text-slate-500 text-sm mt-1 block">Normal (0%)</span>
                         </div>
                         
                         <div>
                             <label class="block text-slate-700 text-sm font-medium mb-3">Pitch</label>
-                            <input type="range" id="speechPitch" min="-20" max="20" value="0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                            <input type="range" id="speechPitch" min="-20" max="20" value="0" class="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer">
                             <span id="pitchValue" class="text-slate-500 text-sm mt-1 block">Normal (0Hz)</span>
                         </div>
                         
                         <div>
                             <label class="block text-slate-700 text-sm font-medium mb-3">Temperature</label>
-                            <input type="range" id="temperature" min="0.1" max="2.0" step="0.1" value="1.0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                            <input type="range" id="temperature" min="0.1" max="2.0" step="0.1" value="1.0" class="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer">
                             <span id="tempValue" class="text-slate-500 text-sm mt-1 block">1.0</span>
                         </div>
                         
                         <div>
                             <label class="block text-slate-700 text-sm font-medium mb-3">Output Format</label>
-                            <select id="formatSelect" class="w-full p-3 rounded-xl bg-white border border-slate-200 text-slate-700 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition-all duration-200">
+                            <select id="formatSelect" class="w-full p-3 rounded-xl bg-white border border-green-200 text-slate-700 focus:border-green-500 focus:ring-4 focus:ring-green-50 transition-all duration-200">
                                 <option value="wav">WAV (High Quality)</option>
                                 <option value="mp3">MP3 (Compressed)</option>
                                 <option value="ogg">OGG (Open Source)</option>
@@ -201,9 +230,9 @@
                         </div>
                     </div>
 
-                    <div class="mt-6 pt-6 border-t border-slate-200">
+                    <div class="mt-6 pt-6 border-t border-green-200">
                         <label class="flex items-center text-slate-700 cursor-pointer">
-                            <input type="checkbox" id="enhanceAudio" class="w-4 h-4 text-blue-600 bg-white border-slate-300 rounded focus:ring-blue-500 focus:ring-2">
+                            <input type="checkbox" id="enhanceAudio" class="w-4 h-4 text-green-600 bg-white border-green-300 rounded focus:ring-green-500 focus:ring-2">
                             <span class="ml-3 text-sm font-medium">Enable Audio Enhancement</span>
                         </label>
                     </div>
@@ -215,8 +244,8 @@
                 <!-- Voice Selection -->
                 <div class="glass-effect rounded-2xl p-6 card-shadow">
                     <div class="flex items-center mb-6">
-                        <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-user-friends text-green-600"></i>
+                        <div class="w-8 h-8 emerald-accent rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-user-friends text-emerald-600"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-slate-800">Voice Selection</h3>
                     </div>
@@ -229,8 +258,8 @@
                 <!-- Generation Controls -->
                 <div class="glass-effect rounded-2xl p-6 card-shadow">
                     <div class="flex items-center mb-6">
-                        <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-play text-blue-600"></i>
+                        <div class="w-8 h-8 green-accent rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-play text-green-600"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-slate-800">Generation</h3>
                     </div>
@@ -241,15 +270,15 @@
                             Generate Speech
                         </button>
                         
-                        <button id="batchBtn" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105">
+                        <button id="batchBtn" class="w-full btn-secondary text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105">
                             <i class="fas fa-layer-group mr-2"></i>
                             Batch Process
                         </button>
                     </div>
                     
                     <div id="progressContainer" class="hidden mt-4">
-                        <div class="bg-slate-200 rounded-full h-2 mb-2">
-                            <div id="progressBar" class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        <div class="bg-green-200 rounded-full h-2 mb-2">
+                            <div id="progressBar" class="bg-gradient-to-r from-green-500 to-teal-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
                         </div>
                         <p id="progressText" class="text-slate-600 text-sm">Processing...</p>
                     </div>
@@ -258,8 +287,8 @@
                 <!-- Audio Player -->
                 <div id="audioPlayerContainer" class="glass-effect rounded-2xl p-6 card-shadow hidden">
                     <div class="flex items-center mb-6">
-                        <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-volume-up text-indigo-600"></i>
+                        <div class="w-8 h-8 teal-accent rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-volume-up text-teal-600"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-slate-800">Audio Player</h3>
                     </div>
@@ -273,13 +302,13 @@
                             <i class="fas fa-download mr-2"></i>
                             Download
                         </button>
-                        <button id="shareBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200">
+                        <button id="shareBtn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200">
                             <i class="fas fa-share mr-2"></i>
                             Share
                         </button>
                     </div>
                     
-                    <div id="audioInfo" class="mt-4 p-3 bg-slate-50 rounded-lg text-slate-600 text-sm">
+                    <div id="audioInfo" class="mt-4 p-3 bg-green-50 rounded-lg text-slate-600 text-sm">
                         <!-- Audio information will be displayed here -->
                     </div>
                 </div>
@@ -287,8 +316,8 @@
                 <!-- Recent Generations -->
                 <div class="glass-effect rounded-2xl p-6 card-shadow">
                     <div class="flex items-center mb-6">
-                        <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-history text-orange-600"></i>
+                        <div class="w-8 h-8 emerald-accent rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-history text-emerald-600"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-slate-800">Recent</h3>
                     </div>
@@ -305,38 +334,106 @@
             <div class="section-divider h-px mb-8"></div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="glass-effect rounded-xl p-6 text-center card-shadow">
-                    <div class="text-3xl font-bold text-blue-600 mb-1" id="totalGenerations">0</div>
+                    <div class="text-3xl font-bold text-green-600 mb-1" id="totalGenerations">0</div>
                     <div class="text-slate-600 text-sm font-medium">Total Generations</div>
                 </div>
                 <div class="glass-effect rounded-xl p-6 text-center card-shadow">
-                    <div class="text-3xl font-bold text-green-600 mb-1" id="totalDuration">0s</div>
+                    <div class="text-3xl font-bold text-emerald-600 mb-1" id="totalDuration">0s</div>
                     <div class="text-slate-600 text-sm font-medium">Total Duration</div>
                 </div>
                 <div class="glass-effect rounded-xl p-6 text-center card-shadow">
-                    <div class="text-3xl font-bold text-purple-600 mb-1" id="favoriteVoice">-</div>
+                    <div class="text-3xl font-bold text-teal-600 mb-1" id="favoriteVoice">-</div>
                     <div class="text-slate-600 text-sm font-medium">Favorite Voice</div>
                 </div>
                 <div class="glass-effect rounded-xl p-6 text-center card-shadow">
-                    <div class="text-3xl font-bold text-orange-600 mb-1" id="successRate">100%</div>
+                    <div class="text-3xl font-bold text-lime-600 mb-1" id="successRate">100%</div>
                     <div class="text-slate-600 text-sm font-medium">Success Rate</div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Footer with Credits -->
+    <footer class="mt-16 footer-gradient">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-microphone-alt text-white text-sm"></i>
+                    </div>
+                    <span class="text-white font-semibold">AI TTS Pro</span>
+                </div>
+                
+                <div class="text-center mb-4 md:mb-0">
+                    <p class="text-green-100 text-sm">
+                        Made with <span class="text-red-400 heart-beat inline-block">♥</span> by 
+                        <span class="font-semibold text-white">Ashen</span>
+                    </p>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="#" class="text-green-200 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="#" class="text-green-200 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-twitter text-lg"></i>
+                    </a>
+                    <a href="#" class="text-green-200 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-linkedin text-lg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-green-700">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                    <div>
+                        <h4 class="text-white font-semibold mb-2">Features</h4>
+                        <ul class="text-green-200 space-y-1">
+                            <li>Multi-language Support</li>
+                            <li>Premium Voice Quality</li>
+                            <li>Advanced Audio Controls</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-2">Technology</h4>
+                        <ul class="text-green-200 space-y-1">
+                            <li>Gemini AI Integration</li>
+                            <li>Edge TTS Engine</li>
+                            <li>Real-time Processing</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-2">Support</h4>
+                        <ul class="text-green-200 space-y-1">
+                            <li>Documentation</li>
+                            <li>API Reference</li>
+                            <li>Community Forum</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-4 border-t border-green-700 text-center">
+                <p class="text-green-200 text-xs">
+                    © 2025 AI TTS Pro. All rights reserved. | Privacy Policy | Terms of Service
+                </p>
+            </div>
+        </div>
+    </footer>
+
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 hidden flex items-center justify-center">
         <div class="glass-effect rounded-2xl p-8 max-w-sm mx-4 card-shadow">
             <div class="text-center">
-                <div class="loading-spinner w-12 h-12 border-4 border-slate-200 border-t-blue-500 rounded-full mx-auto mb-4"></div>
+                <div class="loading-spinner w-12 h-12 border-4 border-green-200 border-t-green-500 rounded-full mx-auto mb-4"></div>
                 <h3 class="text-slate-800 text-lg font-semibold mb-2">Generating Speech</h3>
                 <p id="loadingText" class="text-slate-600">Please wait...</p>
                 <div class="mt-4 flex justify-center space-x-1">
-                    <div class="w-2 h-8 bg-blue-300 rounded wave-animation" style="animation-delay: 0s"></div>
-                    <div class="w-2 h-8 bg-blue-400 rounded wave-animation" style="animation-delay: 0.1s"></div>
-                    <div class="w-2 h-8 bg-blue-500 rounded wave-animation" style="animation-delay: 0.2s"></div>
-                    <div class="w-2 h-8 bg-blue-400 rounded wave-animation" style="animation-delay: 0.3s"></div>
-                    <div class="w-2 h-8 bg-blue-300 rounded wave-animation" style="animation-delay: 0.4s"></div>
+                    <div class="w-2 h-8 bg-green-300 rounded wave-animation" style="animation-delay: 0s"></div>
+                    <div class="w-2 h-8 bg-green-400 rounded wave-animation" style="animation-delay: 0.1s"></div>
+                    <div class="w-2 h-8 bg-green-500 rounded wave-animation" style="animation-delay: 0.2s"></div>
+                    <div class="w-2 h-8 bg-green-400 rounded wave-animation" style="animation-delay: 0.3s"></div>
+                    <div class="w-2 h-8 bg-green-300 rounded wave-animation" style="animation-delay: 0.4s"></div>
                 </div>
             </div>
         </div>
@@ -366,8 +463,8 @@
             </div>
             
             <div class="space-y-6 text-slate-700">
-                <section class="bg-blue-50 p-4 rounded-xl">
-                    <h3 class="text-lg font-semibold mb-3 text-blue-800">🎯 Getting Started</h3>
+                <section class="bg-green-50 p-4 rounded-xl border border-green-200">
+                    <h3 class="text-lg font-semibold mb-3 text-green-800">🎯 Getting Started</h3>
                     <div class="space-y-2 text-sm">
                         <p>1. Select your preferred language and voice</p>
                         <p>2. Enter text in the input area</p>
@@ -376,21 +473,21 @@
                     </div>
                 </section>
                 
-                <section class="bg-green-50 p-4 rounded-xl">
-                    <h3 class="text-lg font-semibold mb-3 text-green-800">🗣️ Voice Engines</h3>
+                <section class="bg-emerald-50 p-4 rounded-xl border border-emerald-200">
+                    <h3 class="text-lg font-semibold mb-3 text-emerald-800">🗣️ Voice Engines</h3>
                     <div class="space-y-2 text-sm">
                         <p><strong>Gemini AI:</strong> Premium quality with natural expressiveness</p>
                         <p><strong>Edge TTS:</strong> Multilingual support with good quality</p>
                     </div>
                 </section>
                 
-                <section class="bg-purple-50 p-4 rounded-xl">
-                    <h3 class="text-lg font-semibold mb-3 text-purple-800">🇱🇰 Sinhala Support</h3>
+                <section class="bg-teal-50 p-4 rounded-xl border border-teal-200">
+                    <h3 class="text-lg font-semibold mb-3 text-teal-800">🇱🇰 Sinhala Support</h3>
                     <p class="text-sm">Our application fully supports Sinhala text input and pronunciation. Simply select "Sinhala (Sri Lanka)" from the language dropdown.</p>
                 </section>
                 
-                <section class="bg-orange-50 p-4 rounded-xl">
-                    <h3 class="text-lg font-semibold mb-3 text-orange-800">⚙️ Advanced Features</h3>
+                <section class="bg-lime-50 p-4 rounded-xl border border-lime-200">
+                    <h3 class="text-lg font-semibold mb-3 text-lime-800">⚙️ Advanced Features</h3>
                     <div class="space-y-2 text-sm">
                         <p><strong>Speech Rate:</strong> Control how fast or slow the speech is</p>
                         <p><strong>Pitch:</strong> Adjust voice pitch higher or lower</p>
@@ -524,7 +621,7 @@
             
             Object.entries(voices).forEach(([voiceName, config]) => {
                 const voiceCard = document.createElement('div');
-                voiceCard.className = 'voice-card p-4 rounded-xl bg-white hover:bg-blue-50 cursor-pointer transition-all duration-200 border border-slate-200 hover:border-blue-300';
+                voiceCard.className = 'voice-card p-4 rounded-xl bg-white hover:bg-green-50 cursor-pointer transition-all duration-200 border border-green-200 hover:border-green-300';
                 voiceCard.innerHTML = `
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -534,7 +631,7 @@
                                 <div class="text-slate-500 text-xs">${config.gender} • ${config.style || config.language}</div>
                             </div>
                         </div>
-                        <input type="radio" name="voice" value="${voiceName}" class="w-4 h-4 text-blue-600 bg-white border-slate-300 focus:ring-blue-500 focus:ring-2">
+                        <input type="radio" name="voice" value="${voiceName}" class="w-4 h-4 text-green-600 bg-white border-green-300 focus:ring-green-500 focus:ring-2">
                     </div>
                 `;
                 
@@ -543,10 +640,10 @@
                     voiceCard.querySelector('input[type="radio"]').checked = true;
                     
                     document.querySelectorAll('.voice-card').forEach(card => {
-                        card.classList.remove('ring-2', 'ring-blue-400', 'bg-blue-50');
+                        card.classList.remove('ring-2', 'ring-green-400', 'bg-green-50');
                         card.classList.add('bg-white');
                     });
-                    voiceCard.classList.add('ring-2', 'ring-blue-400', 'bg-blue-50');
+                    voiceCard.classList.add('ring-2', 'ring-green-400', 'bg-green-50');
                     voiceCard.classList.remove('bg-white');
                 });
                 
@@ -664,7 +761,7 @@
             }
             
             elements.recentList.innerHTML = appState.recentGenerations.map(gen => `
-                <div class="bg-white rounded-lg p-3 hover:bg-slate-50 transition-all duration-200 cursor-pointer border border-slate-100">
+                <div class="bg-white rounded-lg p-3 hover:bg-green-50 transition-all duration-200 cursor-pointer border border-green-100">
                     <div class="text-slate-800 text-sm font-medium mb-1">${gen.text}</div>
                     <div class="text-slate-500 text-xs flex justify-between">
                         <span>${gen.voice.split('-').pop() || gen.voice}</span>
