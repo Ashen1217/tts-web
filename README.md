@@ -71,7 +71,7 @@
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://your-repository-url/ai-tts-pro.git
+    git clone https://your-repository-url/tts-web.git
     cd ai-tts-pro
     ```
 
