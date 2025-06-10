@@ -113,11 +113,18 @@
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(8px);
             z-index: 9999;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             padding: 1rem;
             overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+        
+        .modal-overlay.show {
+            display: flex !important;
+            opacity: 1 !important;
         }
         
         .modal-content {
@@ -132,6 +139,12 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            transform: scale(0.95);
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
         }
         
         .modal-header {
@@ -618,7 +631,7 @@
     </div>
 
     <!-- FULLY RESPONSIVE HELP MODAL -->
-    <div id="helpModal" class="modal-overlay hidden">
+    <div id="helpModal" class="modal-overlay hidden" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="flex justify-between items-center">
@@ -877,6 +890,13 @@
             updateRangeValues();
             loadRecentGenerations();
             
+            // Ensure modal is hidden on load
+            if (elements.helpModal) {
+                elements.helpModal.style.display = 'none';
+                elements.helpModal.classList.add('hidden');
+                elements.helpModal.style.opacity = '0';
+            }
+            
             // Auto-refresh statistics
             setInterval(updateStatistics, 30000); // Every 30 seconds
         }
@@ -909,12 +929,37 @@
             document.getElementById('statsBtn').addEventListener('click', fetchStatistics);
 
             // Modal events
-            document.getElementById('helpBtn').addEventListener('click', showHelpModal);
-            document.getElementById('closeHelp').addEventListener('click', hideHelpModal);
+            document.getElementById('helpBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Help button clicked');
+                showHelpModal();
+            });
+            
+            document.getElementById('closeHelp').addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Close button clicked');
+                hideHelpModal();
+            });
             
             // Click outside modal to close
-            elements.helpModal.addEventListener('click', (e) => {
+            elements.helpModal.addEventListener('click', function(e) {
                 if (e.target === elements.helpModal) {
+                    console.log('Clicked outside modal');
+                    hideHelpModal();
+                }
+            });
+
+            // Prevent modal content clicks from closing modal
+            elements.helpModal.querySelector('.modal-content').addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Escape key to close modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !elements.helpModal.classList.contains('hidden')) {
+                    console.log('Escape key pressed');
                     hideHelpModal();
                 }
             });
@@ -1198,13 +1243,29 @@
         }
 
         function showHelpModal() {
+            console.log('Opening help modal');
+            elements.helpModal.style.display = 'flex';
             elements.helpModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
+            
+            // Add show class with slight delay for smooth animation
+            setTimeout(() => {
+                elements.helpModal.classList.add('show');
+                elements.helpModal.style.opacity = '1';
+            }, 10);
         }
 
         function hideHelpModal() {
-            elements.helpModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
+            console.log('Closing help modal');
+            elements.helpModal.classList.remove('show');
+            elements.helpModal.style.opacity = '0';
+            
+            // Wait for fade-out animation
+            setTimeout(() => {
+                elements.helpModal.style.display = 'none';
+                elements.helpModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 200);
         }
 
         function showNotification(type, title, message) {
@@ -1356,6 +1417,15 @@
 
         // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
+            // Don't trigger shortcuts when modal is open
+            if (!elements.helpModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    hideHelpModal();
+                }
+                return; // Don't process other shortcuts when modal is open
+            }
+            
             if (e.ctrlKey || e.metaKey) {
                 switch(e.key) {
                     case 'Enter':
