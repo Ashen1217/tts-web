@@ -1,6 +1,7 @@
 """
-Professional AI TTS Web Application
+Professional AI TTS Web Application - IMPROVED VERSION
 Supports Sinhala & English with Multiple Voices and Advanced Features
+Added: More Gemini Voices, Better Error Handling, Enhanced Features
 """
 
 import os
@@ -41,7 +42,7 @@ from functools import wraps
 
 # Configuration
 class TTSConfig:
-    """TTS Application Configuration"""
+    """TTS Application Configuration - IMPROVED"""
     
     # API Keys
     GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -53,25 +54,79 @@ class TTSConfig:
         'en-GB': 'English (UK)',
         'en-AU': 'English (Australia)',
         'ta-IN': 'Tamil (India)',
-        'hi-IN': 'Hindi (India)'
+        'hi-IN': 'Hindi (India)',
+        'th-TH': 'Thai (Thailand)',
+        'vi-VN': 'Vietnamese (Vietnam)',
+        'ko-KR': 'Korean (South Korea)',
+        'ja-JP': 'Japanese (Japan)',
+        'fr-FR': 'French (France)',
+        'de-DE': 'German (Germany)',
+        'es-ES': 'Spanish (Spain)',
+        'it-IT': 'Italian (Italy)',
+        'pt-BR': 'Portuguese (Brazil)',
+        'ar-XA': 'Arabic',
+        'ru-RU': 'Russian (Russia)',
+        'nl-NL': 'Dutch (Netherlands)',
+        'pl-PL': 'Polish (Poland)'
     }
     
-    # Voice Profiles
+    # EXPANDED Voice Profiles with ALL AVAILABLE Gemini Voices
     VOICE_PROFILES = {
         'gemini': {
-            'Zephyr': {'gender': 'neutral', 'style': 'warm'},
-            'Puck': {'gender': 'neutral', 'style': 'friendly'},
-            'Aoede': {'gender': 'female', 'style': 'professional'},
-            'Charon': {'gender': 'male', 'style': 'authoritative'},
-            'Fenrir': {'gender': 'male', 'style': 'deep'},
-            'Kore': {'gender': 'female', 'style': 'gentle'}
+            # Core Premium Voices
+            'Zephyr': {'gender': 'neutral', 'style': 'warm', 'emoji': '🌬️', 'quality': 'premium'},
+            'Puck': {'gender': 'neutral', 'style': 'friendly', 'emoji': '😊', 'quality': 'premium'},
+            'Aoede': {'gender': 'female', 'style': 'professional', 'emoji': '👩‍💼', 'quality': 'premium'},
+            'Charon': {'gender': 'male', 'style': 'authoritative', 'emoji': '👨‍💼', 'quality': 'premium'},
+            'Fenrir': {'gender': 'male', 'style': 'deep', 'emoji': '🐺', 'quality': 'premium'},
+            'Kore': {'gender': 'female', 'style': 'gentle', 'emoji': '🌸', 'quality': 'premium'},
+            
+            # Extended Voice Collection
+            'Leda': {'gender': 'female', 'style': 'elegant', 'emoji': '🦢', 'quality': 'premium'},
+            'Orus': {'gender': 'male', 'style': 'strong', 'emoji': '⛰️', 'quality': 'premium'},
+            'Callirrhoe': {'gender': 'female', 'style': 'melodic', 'emoji': '🎵', 'quality': 'premium'},
+            'Autonoe': {'gender': 'female', 'style': 'natural', 'emoji': '🍃', 'quality': 'premium'},
+            'Enceladus': {'gender': 'neutral', 'style': 'cosmic', 'emoji': '🌌', 'quality': 'premium'},
+            'Iapetus': {'gender': 'male', 'style': 'mysterious', 'emoji': '🌙', 'quality': 'premium'},
+            'Umbriel': {'gender': 'neutral', 'style': 'shadowy', 'emoji': '🌘', 'quality': 'premium'},
+            
+            # Stellar Voice Series
+            'Algieba': {'gender': 'female', 'style': 'bright', 'emoji': '⭐', 'quality': 'premium'},
+            'Despina': {'gender': 'female', 'style': 'oceanic', 'emoji': '🌊', 'quality': 'premium'},
+            'Erinome': {'gender': 'female', 'style': 'classical', 'emoji': '🏛️', 'quality': 'premium'},
+            'Algenib': {'gender': 'neutral', 'style': 'stellar', 'emoji': '✨', 'quality': 'premium'},
+            'Rasalgethi': {'gender': 'male', 'style': 'royal', 'emoji': '👑', 'quality': 'premium'},
+            'Laomedeia': {'gender': 'female', 'style': 'mythical', 'emoji': '🏺', 'quality': 'premium'},
+            
+            # Constellation Voices
+            'Achernar': {'gender': 'neutral', 'style': 'swift', 'emoji': '💫', 'quality': 'premium'},
+            'Alnilam': {'gender': 'male', 'style': 'brilliant', 'emoji': '💎', 'quality': 'premium'},
+            'Schedar': {'gender': 'female', 'style': 'regal', 'emoji': '💃', 'quality': 'premium'},
+            'Gacrux': {'gender': 'neutral', 'style': 'southern', 'emoji': '🌟', 'quality': 'premium'},
+            'Pulcherrima': {'gender': 'female', 'style': 'beautiful', 'emoji': '🌺', 'quality': 'premium'},
+            'Achird': {'gender': 'neutral', 'style': 'binary', 'emoji': '👥', 'quality': 'premium'},
+            
+            # Zodiacal Voices
+            'Zubenelgenubi': {'gender': 'male', 'style': 'balanced', 'emoji': '⚖️', 'quality': 'premium'},
+            'Vindemiatrix': {'gender': 'female', 'style': 'harvest', 'emoji': '🍇', 'quality': 'premium'},
+            'Sadachbia': {'gender': 'neutral', 'style': 'aqueous', 'emoji': '🌊', 'quality': 'premium'},
+            'Sadaltager': {'gender': 'male', 'style': 'fortunate', 'emoji': '🍀', 'quality': 'premium'},
+            'Sulafat': {'gender': 'female', 'style': 'celestial', 'emoji': '🌙', 'quality': 'premium'}
         },
         'edge': {
-            'si-LK-ThiliniNeural': {'gender': 'female', 'language': 'si-LK'},
-            'en-US-AriaNeural': {'gender': 'female', 'language': 'en-US'},
-            'en-US-GuyNeural': {'gender': 'male', 'language': 'en-US'},
-            'en-GB-SoniaNeural': {'gender': 'female', 'language': 'en-GB'},
-            'en-AU-NatashaNeural': {'gender': 'female', 'language': 'en-AU'}
+            'si-LK-ThiliniNeural': {'gender': 'female', 'language': 'si-LK', 'emoji': '🇱🇰', 'quality': 'standard'},
+            'en-US-AriaNeural': {'gender': 'female', 'language': 'en-US', 'emoji': '🇺🇸', 'quality': 'standard'},
+            'en-US-GuyNeural': {'gender': 'male', 'language': 'en-US', 'emoji': '🇺🇸', 'quality': 'standard'},
+            'en-US-JennyNeural': {'gender': 'female', 'language': 'en-US', 'emoji': '🇺🇸', 'quality': 'standard'},
+            'en-US-DavisNeural': {'gender': 'male', 'language': 'en-US', 'emoji': '🇺🇸', 'quality': 'standard'},
+            'en-GB-SoniaNeural': {'gender': 'female', 'language': 'en-GB', 'emoji': '🇬🇧', 'quality': 'standard'},
+            'en-GB-RyanNeural': {'gender': 'male', 'language': 'en-GB', 'emoji': '🇬🇧', 'quality': 'standard'},
+            'en-AU-NatashaNeural': {'gender': 'female', 'language': 'en-AU', 'emoji': '🇦🇺', 'quality': 'standard'},
+            'en-AU-WilliamNeural': {'gender': 'male', 'language': 'en-AU', 'emoji': '🇦🇺', 'quality': 'standard'},
+            'hi-IN-SwaraNeural': {'gender': 'female', 'language': 'hi-IN', 'emoji': '🇮🇳', 'quality': 'standard'},
+            'hi-IN-MadhurNeural': {'gender': 'male', 'language': 'hi-IN', 'emoji': '🇮🇳', 'quality': 'standard'},
+            'ta-IN-PallaviNeural': {'gender': 'female', 'language': 'ta-IN', 'emoji': '🇮🇳', 'quality': 'standard'},
+            'ta-IN-ValluvarNeural': {'gender': 'male', 'language': 'ta-IN', 'emoji': '🇮🇳', 'quality': 'standard'}
         }
     }
     
@@ -83,6 +138,10 @@ class TTSConfig:
     UPLOAD_FOLDER = 'uploads'
     OUTPUT_FOLDER = 'outputs'
     MAX_FILE_SIZE = 16 * 1024 * 1024  # 16MB
+    
+    # Rate Limiting
+    MAX_TEXT_LENGTH = 5000
+    MAX_BATCH_SIZE = 10
 
 # Initialize Flask App
 app = Flask(__name__, template_folder='.')
@@ -93,7 +152,7 @@ CORS(app)
 for folder in [TTSConfig.UPLOAD_FOLDER, TTSConfig.OUTPUT_FOLDER]:
     Path(folder).mkdir(exist_ok=True)
 
-# Logging Configuration
+# Enhanced Logging Configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -105,11 +164,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class AudioProcessor:
-    """Advanced Audio Processing Class"""
+    """Advanced Audio Processing Class - ENHANCED"""
     
     @staticmethod
     def enhance_audio(audio_data: bytes, enhancement_type: str = 'basic') -> bytes:
-        """Apply audio enhancements"""
+        """Apply audio enhancements with more options"""
         try:
             # Convert bytes to AudioSegment
             audio = AudioSegment.from_wav(io.BytesIO(audio_data))
@@ -120,6 +179,11 @@ class AudioProcessor:
                 audio = compress_dynamic_range(audio)
             elif enhancement_type == 'boost':
                 audio = audio + 3  # Increase volume by 3dB
+            elif enhancement_type == 'premium':
+                # Apply multiple enhancements
+                audio = normalize(audio)
+                audio = compress_dynamic_range(audio)
+                audio = audio + 2  # Slight boost
             
             # Convert back to bytes
             output_buffer = io.BytesIO()
@@ -131,19 +195,28 @@ class AudioProcessor:
             return audio_data
     
     @staticmethod
-    def convert_format(audio_data: bytes, target_format: str) -> bytes:
-        """Convert audio to different format"""
+    def convert_format(audio_data: bytes, target_format: str, quality: str = 'high') -> bytes:
+        """Convert audio to different format with quality options"""
         try:
             audio = AudioSegment.from_wav(io.BytesIO(audio_data))
             output_buffer = io.BytesIO()
-            audio.export(output_buffer, format=target_format)
+            
+            # Quality settings
+            if target_format == 'mp3':
+                bitrate = "320k" if quality == 'high' else "192k"
+                audio.export(output_buffer, format=target_format, bitrate=bitrate)
+            elif target_format == 'ogg':
+                audio.export(output_buffer, format=target_format, codec="libvorbis")
+            else:
+                audio.export(output_buffer, format=target_format)
+                
             return output_buffer.getvalue()
         except Exception as e:
             logger.error(f"Format conversion failed: {e}")
             return audio_data
 
 class GeminiTTSEngine:
-    """Advanced Gemini TTS Engine"""
+    """Enhanced Gemini TTS Engine with Extended Voice Support"""
     
     def __init__(self):
         if not TTSConfig.GEMINI_API_KEY:
@@ -151,6 +224,14 @@ class GeminiTTSEngine:
         
         self.client = genai.Client(api_key=TTSConfig.GEMINI_API_KEY)
         self.model = "gemini-2.5-flash-preview-tts"
+        self.supported_voices = list(TTSConfig.VOICE_PROFILES['gemini'].keys())
+    
+    def validate_voice(self, voice: str) -> str:
+        """Validate and return supported voice"""
+        if voice not in self.supported_voices:
+            logger.warning(f"Voice {voice} not supported. Using default: Zephyr")
+            return "Zephyr"
+        return voice
     
     def generate_speech(self, 
                        text: str, 
@@ -158,9 +239,15 @@ class GeminiTTSEngine:
                        temperature: float = 1.0,
                        multi_speaker: bool = False,
                        speaker_configs: Optional[List[Dict]] = None) -> bytes:
-        """Generate speech with advanced options"""
+        """Generate speech with enhanced error handling"""
         
         try:
+            # Validate inputs
+            if len(text) > TTSConfig.MAX_TEXT_LENGTH:
+                raise ValueError(f"Text too long. Maximum {TTSConfig.MAX_TEXT_LENGTH} characters allowed.")
+            
+            voice = self.validate_voice(voice)
+            
             contents = [
                 types.Content(
                     role="user",
@@ -177,7 +264,7 @@ class GeminiTTSEngine:
                                 speaker=config['speaker'],
                                 voice_config=types.VoiceConfig(
                                     prebuilt_voice_config=types.PrebuiltVoiceConfig(
-                                        voice_name=config['voice']
+                                        voice_name=self.validate_voice(config['voice'])
                                     )
                                 )
                             ) for config in speaker_configs
@@ -194,7 +281,7 @@ class GeminiTTSEngine:
                 )
             
             generate_config = types.GenerateContentConfig(
-                temperature=temperature,
+                temperature=max(0.1, min(2.0, temperature)),  # Clamp temperature
                 response_modalities=["audio"],
                 speech_config=speech_config
             )
@@ -269,37 +356,52 @@ class GeminiTTSEngine:
         return {"bits_per_sample": bits_per_sample, "rate": rate}
 
 class EdgeTTSEngine:
-    """Edge TTS Engine for multiple language support"""
+    """Enhanced Edge TTS Engine"""
     
     @staticmethod
     async def generate_speech(text: str, voice: str, rate: str = "+0%", pitch: str = "+0Hz") -> bytes:
-        """Generate speech using Edge TTS"""
+        """Generate speech using Edge TTS with enhanced error handling"""
         try:
+            if len(text) > TTSConfig.MAX_TEXT_LENGTH:
+                raise ValueError(f"Text too long. Maximum {TTSConfig.MAX_TEXT_LENGTH} characters allowed.")
+                
             communicate = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch)
             audio_data = b""
             async for chunk in communicate.stream():
                 if chunk["type"] == "audio":
                     audio_data += chunk["data"]
+            
+            if not audio_data:
+                raise Exception("No audio data generated")
+                
             return audio_data
         except Exception as e:
             logger.error(f"Edge TTS generation failed: {e}")
             raise
 
 class TTSManager:
-    """Main TTS Management Class"""
+    """Enhanced TTS Management Class"""
     
     def __init__(self):
         self.gemini_engine = None
         self.initialize_engines()
+        self.generation_stats = {
+            'total_generations': 0,
+            'total_duration': 0,
+            'voice_usage': {},
+            'error_count': 0
+        }
     
     def initialize_engines(self):
-        """Initialize TTS engines"""
+        """Initialize TTS engines with error handling"""
         try:
             if TTSConfig.GEMINI_API_KEY:
                 self.gemini_engine = GeminiTTSEngine()
-                logger.info("Gemini TTS engine initialized")
+                logger.info("Gemini TTS engine initialized successfully")
+            else:
+                logger.warning("GEMINI_API_KEY not found. Gemini TTS disabled.")
         except Exception as e:
-            logger.warning(f"Failed to initialize Gemini TTS: {e}")
+            logger.error(f"Failed to initialize Gemini TTS: {e}")
     
     async def generate_tts(self, 
                           text: str, 
@@ -307,9 +409,16 @@ class TTSManager:
                           voice: str = "Zephyr",
                           language: str = "en-US",
                           **kwargs) -> Dict:
-        """Generate TTS audio with specified parameters"""
+        """Generate TTS audio with comprehensive error handling"""
         
         try:
+            # Input validation
+            if not text or not text.strip():
+                raise ValueError("Text cannot be empty")
+            
+            text = text.strip()
+            
+            # Generate audio based on engine
             if engine == "gemini" and self.gemini_engine:
                 audio_data = self.gemini_engine.generate_speech(
                     text=text,
@@ -332,69 +441,116 @@ class TTSManager:
             
             # Apply audio enhancements if requested
             if kwargs.get('enhance'):
-                audio_data = AudioProcessor.enhance_audio(
-                    audio_data, 
-                    kwargs.get('enhancement_type', 'basic')
-                )
+                enhancement_type = kwargs.get('enhancement_type', 'basic')
+                audio_data = AudioProcessor.enhance_audio(audio_data, enhancement_type)
             
             # Convert format if needed
             output_format = kwargs.get('format', 'wav')
             if output_format != 'wav':
-                audio_data = AudioProcessor.convert_format(audio_data, output_format)
+                quality = kwargs.get('quality', 'high')
+                audio_data = AudioProcessor.convert_format(audio_data, output_format, quality)
             
-            # Save file
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"tts_output_{timestamp}.{output_format}"
+            # Save file with enhanced naming
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")[:-3]  # Include milliseconds
+            safe_voice = "".join(c for c in voice if c.isalnum() or c in ('-', '_'))
+            filename = f"tts_{engine}_{safe_voice}_{timestamp}.{output_format}"
             filepath = os.path.join(TTSConfig.OUTPUT_FOLDER, filename)
             
             with open(filepath, 'wb') as f:
                 f.write(audio_data)
+            
+            # Update statistics
+            duration = self._estimate_duration(len(audio_data))
+            self.generation_stats['total_generations'] += 1
+            self.generation_stats['total_duration'] += duration
+            self.generation_stats['voice_usage'][voice] = self.generation_stats['voice_usage'].get(voice, 0) + 1
             
             return {
                 'success': True,
                 'filename': filename,
                 'filepath': filepath,
                 'size': len(audio_data),
-                'duration': self._estimate_duration(len(audio_data)),
-                'format': output_format
+                'duration': duration,
+                'format': output_format,
+                'voice': voice,
+                'engine': engine,
+                'text_length': len(text),
+                'timestamp': datetime.now().isoformat()
             }
             
         except Exception as e:
             logger.error(f"TTS generation failed: {e}")
+            self.generation_stats['error_count'] += 1
             return {
                 'success': False,
-                'error': str(e)
+                'error': str(e),
+                'error_type': type(e).__name__
             }
+    
+    def get_statistics(self) -> Dict:
+        """Get generation statistics"""
+        favorite_voice = max(self.generation_stats['voice_usage'].items(), 
+                           key=lambda x: x[1], default=(None, 0))[0]
+        
+        success_rate = 0
+        total_attempts = self.generation_stats['total_generations'] + self.generation_stats['error_count']
+        if total_attempts > 0:
+            success_rate = (self.generation_stats['total_generations'] / total_attempts) * 100
+        
+        return {
+            'total_generations': self.generation_stats['total_generations'],
+            'total_duration': round(self.generation_stats['total_duration'], 1),
+            'favorite_voice': favorite_voice or '-',
+            'success_rate': round(success_rate, 1),
+            'error_count': self.generation_stats['error_count']
+        }
     
     def _estimate_duration(self, data_size: int, sample_rate: int = 24000, channels: int = 1, bits: int = 16) -> float:
         """Estimate audio duration in seconds"""
-        bytes_per_sample = bits // 8
-        total_samples = data_size // (channels * bytes_per_sample)
-        return total_samples / sample_rate
+        try:
+            bytes_per_sample = bits // 8
+            # Account for WAV header
+            data_size_audio = data_size - 44 if data_size > 44 else data_size
+            total_samples = data_size_audio // (channels * bytes_per_sample)
+            return total_samples / sample_rate
+        except:
+            return 0.0
 
 # Initialize TTS Manager
 tts_manager = TTSManager()
 
-# Flask Routes
+# Enhanced Flask Routes
 @app.route('/')
 def index():
-    """Main application page"""
+    """Main application page with enhanced data"""
     return render_template('index.html',
                          languages=TTSConfig.LANGUAGES,
                          voices=TTSConfig.VOICE_PROFILES,
-                         formats=TTSConfig.AUDIO_FORMATS)
+                         formats=TTSConfig.AUDIO_FORMATS,
+                         max_text_length=TTSConfig.MAX_TEXT_LENGTH)
 
 @app.route('/api/generate', methods=['POST'])
 async def generate_tts_api():
-    """API endpoint for TTS generation"""
+    """Enhanced API endpoint for TTS generation"""
     try:
         data = request.get_json()
         
-        # Validate required fields
+        # Enhanced validation
+        if not data:
+            return jsonify({'error': 'No data provided'}), 400
+            
         if not data.get('text'):
             return jsonify({'error': 'Text is required'}), 400
         
-        # Generate TTS
+        # Rate limiting check
+        text_length = len(data['text'])
+        if text_length > TTSConfig.MAX_TEXT_LENGTH:
+            return jsonify({
+                'error': f'Text too long. Maximum {TTSConfig.MAX_TEXT_LENGTH} characters allowed.',
+                'current_length': text_length
+            }), 400
+        
+        # Generate TTS with enhanced parameters
         result = await tts_manager.generate_tts(
             text=data['text'],
             engine=data.get('engine', 'gemini'),
@@ -406,6 +562,7 @@ async def generate_tts_api():
             enhance=data.get('enhance', False),
             enhancement_type=data.get('enhancement_type', 'basic'),
             format=data.get('format', 'wav'),
+            quality=data.get('quality', 'high'),
             multi_speaker=data.get('multi_speaker', False),
             speaker_configs=data.get('speaker_configs')
         )
@@ -414,73 +571,168 @@ async def generate_tts_api():
         
     except Exception as e:
         logger.error(f"API generation error: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': str(e), 'error_type': type(e).__name__}), 500
 
 @app.route('/api/voices/<engine>')
 def get_voices(engine):
-    """Get available voices for specific engine"""
+    """Get available voices for specific engine with enhanced info"""
     if engine in TTSConfig.VOICE_PROFILES:
-        return jsonify(TTSConfig.VOICE_PROFILES[engine])
+        return jsonify({
+            'voices': TTSConfig.VOICE_PROFILES[engine],
+            'total_count': len(TTSConfig.VOICE_PROFILES[engine]),
+            'engine': engine
+        })
     return jsonify({'error': 'Engine not found'}), 404
 
 @app.route('/api/download/<filename>')
 def download_file(filename):
-    """Download generated audio file"""
+    """Download generated audio file with security checks"""
     try:
-        filepath = os.path.join(TTSConfig.OUTPUT_FOLDER, secure_filename(filename))
-        if os.path.exists(filepath):
-            return send_file(filepath, as_attachment=True)
-        return jsonify({'error': 'File not found'}), 404
+        # Security: ensure filename is safe
+        filename = secure_filename(filename)
+        filepath = os.path.join(TTSConfig.OUTPUT_FOLDER, filename)
+        
+        if not os.path.exists(filepath):
+            return jsonify({'error': 'File not found'}), 404
+        
+        # Check if file is in allowed directory
+        if not os.path.abspath(filepath).startswith(os.path.abspath(TTSConfig.OUTPUT_FOLDER)):
+            return jsonify({'error': 'Access denied'}), 403
+            
+        return send_file(filepath, as_attachment=True)
     except Exception as e:
+        logger.error(f"Download error: {e}")
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/batch', methods=['POST'])
 async def batch_generate():
-    """Batch TTS generation endpoint"""
+    """Enhanced batch TTS generation endpoint"""
     try:
         data = request.get_json()
         texts = data.get('texts', [])
         config = data.get('config', {})
         
+        # Validate batch size
+        if len(texts) > TTSConfig.MAX_BATCH_SIZE:
+            return jsonify({
+                'error': f'Batch size too large. Maximum {TTSConfig.MAX_BATCH_SIZE} texts allowed.',
+                'provided': len(texts)
+            }), 400
+        
         results = []
+        successful = 0
+        
         for i, text in enumerate(texts):
-            result = await tts_manager.generate_tts(
-                text=text,
-                **config
-            )
-            result['index'] = i
-            results.append(result)
+            try:
+                result = await tts_manager.generate_tts(
+                    text=text,
+                    **config
+                )
+                result['index'] = i
+                results.append(result)
+                if result['success']:
+                    successful += 1
+            except Exception as e:
+                results.append({
+                    'success': False,
+                    'error': str(e),
+                    'index': i
+                })
         
         return jsonify({
             'success': True,
             'results': results,
             'total': len(texts),
-            'successful': sum(1 for r in results if r['success'])
+            'successful': successful,
+            'failed': len(texts) - successful
         })
         
     except Exception as e:
+        logger.error(f"Batch generation error: {e}")
         return jsonify({'error': str(e)}), 500
+
+@app.route('/api/statistics')
+def get_statistics():
+    """Get application statistics"""
+    try:
+        stats = tts_manager.get_statistics()
+        return jsonify(stats)
+    except Exception as e:
+        logger.error(f"Statistics error: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/health')
+def health_check():
+    """Health check endpoint for deployment monitoring"""
+    try:
+        return jsonify({
+            'status': 'healthy',
+            'timestamp': datetime.now().isoformat(),
+            'gemini_available': tts_manager.gemini_engine is not None,
+            'version': '2.0.0'
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'unhealthy',
+            'error': str(e)
+        }), 500
+
+@app.errorhandler(413)
+def request_entity_too_large(error):
+    """Handle file too large error"""
+    return jsonify({'error': 'File too large'}), 413
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    """Handle rate limiting"""
+    return jsonify({'error': 'Rate limit exceeded. Please try again later.'}), 429
 
 @app.errorhandler(Exception)
 def handle_error(e):
-    """Global error handler"""
-    logger.error(f"Unhandled error: {e}")
-    return jsonify({'error': 'Internal server error'}), 500
+    """Enhanced global error handler"""
+    error_id = datetime.now().strftime("%Y%m%d_%H%M%S_%f")[:-3]
+    logger.error(f"Unhandled error [{error_id}]: {e}")
+    return jsonify({
+        'error': 'Internal server error',
+        'error_id': error_id,
+        'error_type': type(e).__name__
+    }), 500
+
+# Render deployment check
+def is_render_environment():
+    """Check if running on Render"""
+    return os.environ.get('RENDER') is not None
 
 if __name__ == '__main__':
-    print("🎤 Professional AI TTS Web Application")
-    print("=" * 50)
-    print("✅ Sinhala & English Support")
-    print("✅ Multiple Voice Engines")
-    print("✅ Advanced Audio Processing")
+    print("🎤 Professional AI TTS Web Application - ENHANCED VERSION")
+    print("=" * 60)
+    print("✅ Extended Gemini Voice Collection (30+ voices)")
+    print("✅ Enhanced Error Handling & Validation")
+    print("✅ Improved Audio Processing")
+    print("✅ Statistics & Monitoring")
     print("✅ Batch Processing")
-    print("✅ Multi-format Export")
-    print("=" * 50)
+    print("✅ Security Enhancements")
+    print("✅ Render Deployment Ready")
+    print("=" * 60)
+    
+    if is_render_environment():
+        print("🌐 Running on Render platform")
+    else:
+        print("🌐 Running in local development mode")
+    
+    print(f"📊 Available Gemini Voices: {len(TTSConfig.VOICE_PROFILES['gemini'])}")
+    print(f"📊 Available Edge Voices: {len(TTSConfig.VOICE_PROFILES['edge'])}")
+    print(f"📊 Supported Languages: {len(TTSConfig.LANGUAGES)}")
+    print("=" * 60)
     print("🌐 Starting server...")
+    
+    # Enhanced configuration for production
+    port = int(os.environ.get('PORT', 5001))
+    debug = not is_render_environment()
     
     app.run(
         host='0.0.0.0',
-        port=5001,
-        debug=True,
+        port=port,
+        debug=debug,
         threaded=True
     )
