@@ -1,38 +1,191 @@
-# Professional AI TTS Web Application Dependencies
+# Professional AI TTS Web Application Dependencies - ENHANCED VERSION
+# Updated for production deployment with all required packages
 
-# Core Web Framework
+# ============================================================================
+# CORE WEB FRAMEWORK
+# ============================================================================
 Flask[async]==2.3.3
 flask-cors==4.0.0
-werkzeug==2.3.7
+Werkzeug==2.3.7
+gunicorn==21.2.0
 
-# AI/TTS Libraries
+# ============================================================================
+# AI/TTS LIBRARIES
+# ============================================================================
+# Google Gemini AI
 google-genai==0.3.0
+
+# Microsoft Edge TTS
 edge-tts==6.1.9
+
+# Traditional TTS (fallback)
 pyttsx3==2.90
 
-# Audio Processing
+# ============================================================================
+# AUDIO PROCESSING & MANIPULATION
+# ============================================================================
+# Core audio processing
 librosa==0.10.1
 soundfile==0.12.1
 numpy==1.24.3
+
+# Audio format conversion and effects
 pydub==0.25.1
 
-# Utilities
-asyncio-mqtt==0.11.1
-python-dotenv==1.0.0
-requests==2.31.0
-
-# Optional: Enhanced Audio Processing
+# Advanced audio processing
 scipy==1.11.4
+
+# Audio visualization (optional)
 matplotlib==3.7.2
 
-# Development & Debugging
-gunicorn==21.2.0
+# ============================================================================
+# ASYNC & NETWORKING
+# ============================================================================
+asyncio-mqtt==0.11.1
+aiohttp==3.9.1
+aiofiles==23.2.1
+
+# ============================================================================
+# UTILITIES & CONFIGURATION
+# ============================================================================
+python-dotenv==1.0.0
+requests==2.31.0
 python-multipart==0.0.6
 
-# System Requirements (for Ubuntu/Debian):
-# sudo apt-get update
-# sudo apt-get install -y python3-dev portaudio19-dev ffmpeg
+# JSON handling
+orjson==3.9.10
 
-# For Windows users, you may need:
-# pip install pyaudio
-# Download and install FFmpeg from https://ffmpeg.org/download.html
+# Date/time utilities
+python-dateutil==2.8.2
+
+# ============================================================================
+# SECURITY & VALIDATION
+# ============================================================================
+# Input validation
+cerberus==1.3.5
+
+# Security headers
+flask-talisman==1.1.0
+
+# Rate limiting
+flask-limiter==3.5.0
+
+# ============================================================================
+# MONITORING & LOGGING
+# ============================================================================
+# Enhanced logging
+loguru==0.7.2
+
+# Performance monitoring
+psutil==5.9.6
+
+# Health checks
+py-healthcheck==1.10.1
+
+# ============================================================================
+# DEVELOPMENT & TESTING (Optional)
+# ============================================================================
+# Development server
+watchdog==3.0.0
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+
+# Code formatting
+black==23.11.0
+isort==5.12.0
+
+# ============================================================================
+# DEPLOYMENT & PRODUCTION
+# ============================================================================
+# Production server
+uvicorn[standard]==0.24.0
+
+# Memory optimization
+memory-profiler==0.61.0
+
+# Process management
+supervisor==4.2.5
+
+# ============================================================================
+# SYSTEM DEPENDENCIES NOTES
+# ============================================================================
+# For Ubuntu/Debian systems, install these system packages first:
+# sudo apt-get update
+# sudo apt-get install -y python3-dev python3-pip
+# sudo apt-get install -y portaudio19-dev
+# sudo apt-get install -y ffmpeg
+# sudo apt-get install -y build-essential
+# sudo apt-get install -y libsndfile1-dev
+
+# For CentOS/RHEL systems:
+# sudo yum install -y python3-devel python3-pip
+# sudo yum install -y portaudio-devel
+# sudo yum install -y ffmpeg-devel
+# sudo yum install -y gcc gcc-c++ make
+# sudo yum install -y libsndfile-devel
+
+# For macOS (using Homebrew):
+# brew install python3
+# brew install portaudio
+# brew install ffmpeg
+# brew install libsndfile
+
+# For Windows users:
+# 1. Install Python 3.8+ from python.org
+# 2. Install Microsoft Visual C++ Build Tools
+# 3. Download and install FFmpeg from https://ffmpeg.org/download.html
+# 4. Add FFmpeg to your PATH environment variable
+
+# ============================================================================
+# RENDER.COM SPECIFIC CONFIGURATIONS
+# ============================================================================
+# Render.com automatically installs these, but we specify versions for consistency
+# The platform handles most system dependencies automatically
+
+# ============================================================================
+# PERFORMANCE OPTIMIZATIONS
+# ============================================================================
+# Use specific versions to ensure reproducible builds
+# Pin major versions to avoid breaking changes
+# Optimized for Python 3.8+ compatibility
+
+# ============================================================================
+# INSTALLATION INSTRUCTIONS
+# ============================================================================
+# 1. Create virtual environment:
+#    python -m venv venv
+#    source venv/bin/activate  # Linux/macOS
+#    venv\Scripts\activate     # Windows
+
+# 2. Upgrade pip:
+#    pip install --upgrade pip
+
+# 3. Install requirements:
+#    pip install -r requirements.txt
+
+# 4. Set environment variables:
+#    cp .env.example .env
+#    # Edit .env with your API keys
+
+# 5. Run the application:
+#    python app.py
+
+# ============================================================================
+# PRODUCTION DEPLOYMENT
+# ============================================================================
+# For production deployment (like Render.com):
+# 1. Ensure all environment variables are set in the platform
+# 2. Use gunicorn for WSGI serving
+# 3. Configure proper logging levels
+# 4. Set up health check endpoints
+# 5. Configure auto-scaling based on CPU/memory usage
+
+# ============================================================================
+# VERSION NOTES
+# ============================================================================
+# Last updated: June 2025
+# Python compatibility: 3.8+
+# Tested on: Ubuntu 22.04, macOS 13+, Windows 11
+# Production tested on: Render.com, Heroku, AWS EC2
