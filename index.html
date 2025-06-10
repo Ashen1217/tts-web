@@ -67,10 +67,11 @@
             border: 1px solid rgba(34, 197, 94, 0.1);
             box-shadow: 0 4px 20px rgba(34, 197, 94, 0.08);
         }
+        /* Enhanced Card Styling with Different Borders */
         .voice-card {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(34, 197, 94, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
             border-radius: 12px;
             padding: 16px;
             margin-bottom: 8px;
@@ -79,16 +80,54 @@
         }
         
         .voice-card:hover {
-            background: rgba(34, 197, 94, 0.05);
-            border-color: rgba(34, 197, 94, 0.2);
+            background: rgba(59, 130, 246, 0.05);
+            border-color: rgba(59, 130, 246, 0.5);
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.1);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
         }
         
         .voice-card.selected {
-            background: rgba(34, 197, 94, 0.1);
-            border-color: rgba(34, 197, 94, 0.3);
-            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+        
+        .control-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+        }
+        
+        .control-card:hover {
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
+        }
+        
+        .stats-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(168, 85, 247, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .stats-card:hover {
+            background: rgba(168, 85, 247, 0.05);
+            border-color: rgba(168, 85, 247, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.15);
+        }
+        
+        .input-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 16px;
+        }
+        
+        .input-card:focus-within {
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
         
         .voice-info {
@@ -106,9 +145,10 @@
         }
         
         .voice-emoji {
-            font-size: 20px;
-            width: 32px;
+            font-size: 24px;
+            width: 40px;
             text-align: center;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
         
         .voice-text {
@@ -275,16 +315,20 @@
             margin-bottom: 20px;
         }
         
+        .blue-accent {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        }
+        
         .voice-category-title {
             font-size: 13px;
             font-weight: 700;
-            color: #059669;
+            color: #2563eb;
             margin-bottom: 12px;
             padding: 8px 12px;
-            background: rgba(34, 197, 94, 0.08);
+            background: rgba(59, 130, 246, 0.08);
             backdrop-filter: blur(8px);
             border-radius: 8px;
-            border-left: 3px solid #16a34a;
+            border-left: 3px solid #2563eb;
         }
         
         .stats-card {
@@ -337,7 +381,7 @@
             <!-- Text Input Panel -->
             <div class="xl:col-span-3 space-y-5">
                 <!-- Text Input Section -->
-                <div class="glass-primary rounded-2xl container-spacing card-spacing">
+                <div class="input-card container-spacing card-spacing">
                     <div class="flex items-center mb-6">
                         <div class="w-8 h-8 green-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-edit text-green-600"></i>
@@ -372,8 +416,9 @@
                             <label class="block text-slate-700 text-sm font-medium mb-2">TTS Engine</label>
                             <select id="engineSelect" class="w-full p-3 rounded-xl bg-white border border-green-200 text-slate-700 focus:border-green-500 focus:ring-4 focus:ring-green-50 transition-all duration-200">
                                 <option value="gemini">🤖 Gemini AI (Premium - 30+ Voices)</option>
-                                <option value="edge">🌐 Edge TTS (Multilingual)</option>
+                                <option value="edge">🌐 Edge TTS (Regional Voices) - Beta</option>
                             </select>
+                            <p class="text-xs text-slate-500 mt-1">💡 Gemini AI recommended for best quality</p>
                         </div>
                     </div>
 
@@ -414,7 +459,7 @@
                 </div>
 
                 <!-- Advanced Options -->
-                <div class="glass-primary rounded-2xl container-spacing card-spacing">
+                <div class="input-card container-spacing card-spacing">
                     <div class="flex items-center mb-6">
                         <div class="w-8 h-8 teal-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-cog text-teal-600"></i>
@@ -468,19 +513,19 @@
             <!-- Control Panel -->
             <div class="xl:col-span-1 space-y-5">
                 <!-- Enhanced Voice Selection -->
-                <div class="glass-secondary rounded-2xl p-5 card-spacing">
+                <div class="control-card p-5 card-spacing">
                     <div class="flex items-center mb-5">
                         <div class="w-8 h-8 emerald-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-user-friends text-emerald-600"></i>
                         </div>
                         <h3 class="text-lg font-semibold text-slate-800">Voice Selection</h3>
-                        <span id="voiceCount" class="ml-auto text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">30+</span>
+                        <span id="voiceCount" class="ml-auto text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">30+</span>
                     </div>
                     
                     <!-- Voice Search -->
                     <div class="mb-4 p-3 glass-tertiary rounded-lg">
                         <input type="text" id="voiceSearch" placeholder="Search voices..." 
-                               class="w-full p-2 text-sm rounded-lg bg-white/70 border border-green-200 text-slate-700 focus:border-green-500 focus:ring-2 focus:ring-green-50 transition-all duration-200">
+                               class="w-full p-2 text-sm rounded-lg bg-white/70 border border-blue-200 text-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-50 transition-all duration-200">
                     </div>
                     
                     <div id="voiceContainer" class="space-y-2 max-h-96 overflow-y-auto">
@@ -489,7 +534,7 @@
                 </div>
 
                 <!-- Generation Controls -->
-                <div class="glass-secondary rounded-2xl p-5 card-spacing">
+                <div class="control-card p-5 card-spacing">
                     <div class="flex items-center mb-5">
                         <div class="w-8 h-8 green-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-play text-green-600"></i>
@@ -518,7 +563,7 @@
                 </div>
 
                 <!-- Enhanced Audio Player -->
-                <div id="audioPlayerContainer" class="glass-secondary rounded-2xl p-5 card-spacing hidden">
+                <div id="audioPlayerContainer" class="control-card p-5 card-spacing hidden">
                     <div class="flex items-center mb-5">
                         <div class="w-8 h-8 teal-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-volume-up text-teal-600"></i>
@@ -534,8 +579,8 @@
                         <button id="downloadBtn" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200">
                             <i class="fas fa-download mr-2"></i>Download
                         </button>
-                        <button id="shareBtn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200">
-                            <i class="fas fa-share mr-2"></i>Share
+                        <button id="saveToLibraryBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200">
+                            <i class="fas fa-save mr-2"></i>Save
                         </button>
                     </div>
                     
@@ -544,8 +589,29 @@
                     </div>
                 </div>
 
+                <!-- Saved Audio Library -->
+                <div class="control-card p-5 card-spacing">
+                    <div class="flex items-center mb-5">
+                        <div class="w-8 h-8 blue-accent rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-folder-open text-blue-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-800">Saved Audio</h3>
+                        <span id="savedCount" class="ml-auto text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">0</span>
+                    </div>
+                    
+                    <div id="savedAudioList" class="space-y-2 max-h-64 overflow-y-auto">
+                        <p class="text-slate-400 text-sm italic text-center py-8">No saved audio files</p>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <button id="clearSavedBtn" class="w-full bg-red-100 hover:bg-red-200 text-red-700 font-medium py-2 px-4 rounded-lg transition-all duration-200 text-sm">
+                            <i class="fas fa-trash mr-2"></i>Clear All Saved
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Recent Generations -->
-                <div class="glass-secondary rounded-2xl p-5 card-spacing">
+                <div class="control-card p-5 card-spacing">
                     <div class="flex items-center mb-5">
                         <div class="w-8 h-8 emerald-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-history text-emerald-600"></i>
@@ -564,24 +630,24 @@
         <div class="section-spacing">
             <div class="section-divider h-px mb-8"></div>
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-green-600 mb-2" id="totalGenerations">0</div>
+                <div class="stats-card rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-purple-600 mb-2" id="totalGenerations">0</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Generations</div>
                 </div>
-                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-emerald-600 mb-2" id="totalDuration">0s</div>
+                <div class="stats-card rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-purple-600 mb-2" id="totalDuration">0s</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Duration</div>
                 </div>
-                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-teal-600 mb-2" id="favoriteVoice">-</div>
+                <div class="stats-card rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-purple-600 mb-2" id="favoriteVoice">-</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Top Voice</div>
                 </div>
-                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-lime-600 mb-2" id="successRate">100%</div>
+                <div class="stats-card rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-purple-600 mb-2" id="successRate">100%</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Success Rate</div>
                 </div>
-                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-cyan-600 mb-2" id="errorCount">0</div>
+                <div class="stats-card rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-purple-600 mb-2" id="errorCount">0</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Errors</div>
                 </div>
             </div>
@@ -722,10 +788,11 @@
     </div>
 
     <script>
-        // Enhanced Application State
+        // Enhanced Application State with Saved Audio
         let appState = {
             currentAudio: null,
             recentGenerations: [],
+            savedAudioFiles: [],
             stats: {
                 totalGenerations: 0,
                 totalDuration: 0,
@@ -740,67 +807,67 @@
             }
         };
 
-        // Enhanced Voice Configurations with ALL VOICES
+        // Enhanced Voice Configurations with Human Emojis
         const voiceConfigs = {
             gemini: {
-                // Core Premium Voices
-                'Zephyr': { gender: 'neutral', style: 'warm', emoji: '🌬️', quality: 'premium', category: 'Core' },
-                'Puck': { gender: 'neutral', style: 'friendly', emoji: '😊', quality: 'premium', category: 'Core' },
+                // Core Premium Voices with Human Emojis
+                'Zephyr': { gender: 'neutral', style: 'warm', emoji: '🧑‍💼', quality: 'premium', category: 'Core' },
+                'Puck': { gender: 'neutral', style: 'friendly', emoji: '🧑‍🎤', quality: 'premium', category: 'Core' },
                 'Aoede': { gender: 'female', style: 'professional', emoji: '👩‍💼', quality: 'premium', category: 'Core' },
                 'Charon': { gender: 'male', style: 'authoritative', emoji: '👨‍💼', quality: 'premium', category: 'Core' },
-                'Fenrir': { gender: 'male', style: 'deep', emoji: '🐺', quality: 'premium', category: 'Core' },
-                'Kore': { gender: 'female', style: 'gentle', emoji: '🌸', quality: 'premium', category: 'Core' },
+                'Fenrir': { gender: 'male', style: 'deep', emoji: '👨‍🎓', quality: 'premium', category: 'Core' },
+                'Kore': { gender: 'female', style: 'gentle', emoji: '👩‍🎨', quality: 'premium', category: 'Core' },
                 
-                // Extended Collection
-                'Leda': { gender: 'female', style: 'elegant', emoji: '🦢', quality: 'premium', category: 'Mythological' },
-                'Orus': { gender: 'male', style: 'strong', emoji: '⛰️', quality: 'premium', category: 'Mythological' },
-                'Callirrhoe': { gender: 'female', style: 'melodic', emoji: '🎵', quality: 'premium', category: 'Mythological' },
-                'Autonoe': { gender: 'female', style: 'natural', emoji: '🍃', quality: 'premium', category: 'Mythological' },
-                'Enceladus': { gender: 'neutral', style: 'cosmic', emoji: '🌌', quality: 'premium', category: 'Cosmic' },
-                'Iapetus': { gender: 'male', style: 'mysterious', emoji: '🌙', quality: 'premium', category: 'Cosmic' },
-                'Umbriel': { gender: 'neutral', style: 'shadowy', emoji: '🌘', quality: 'premium', category: 'Cosmic' },
+                // Extended Collection with Human Characters
+                'Leda': { gender: 'female', style: 'elegant', emoji: '👩‍🏫', quality: 'premium', category: 'Mythological' },
+                'Orus': { gender: 'male', style: 'strong', emoji: '👨‍🔬', quality: 'premium', category: 'Mythological' },
+                'Callirrhoe': { gender: 'female', style: 'melodic', emoji: '👩‍🎤', quality: 'premium', category: 'Mythological' },
+                'Autonoe': { gender: 'female', style: 'natural', emoji: '👩‍🌾', quality: 'premium', category: 'Mythological' },
+                'Enceladus': { gender: 'neutral', style: 'cosmic', emoji: '🧑‍🚀', quality: 'premium', category: 'Cosmic' },
+                'Iapetus': { gender: 'male', style: 'mysterious', emoji: '👨‍🔬', quality: 'premium', category: 'Cosmic' },
+                'Umbriel': { gender: 'neutral', style: 'shadowy', emoji: '🧑‍💻', quality: 'premium', category: 'Cosmic' },
                 
-                // Stellar Series
-                'Algieba': { gender: 'female', style: 'bright', emoji: '⭐', quality: 'premium', category: 'Stellar' },
-                'Despina': { gender: 'female', style: 'oceanic', emoji: '🌊', quality: 'premium', category: 'Stellar' },
-                'Erinome': { gender: 'female', style: 'classical', emoji: '🏛️', quality: 'premium', category: 'Stellar' },
-                'Algenib': { gender: 'neutral', style: 'stellar', emoji: '✨', quality: 'premium', category: 'Stellar' },
-                'Rasalgethi': { gender: 'male', style: 'royal', emoji: '👑', quality: 'premium', category: 'Stellar' },
-                'Laomedeia': { gender: 'female', style: 'mythical', emoji: '🏺', quality: 'premium', category: 'Stellar' },
+                // Stellar Series with Professional Characters
+                'Algieba': { gender: 'female', style: 'bright', emoji: '👩‍⚕️', quality: 'premium', category: 'Stellar' },
+                'Despina': { gender: 'female', style: 'oceanic', emoji: '👩‍🔬', quality: 'premium', category: 'Stellar' },
+                'Erinome': { gender: 'female', style: 'classical', emoji: '👩‍🏫', quality: 'premium', category: 'Stellar' },
+                'Algenib': { gender: 'neutral', style: 'stellar', emoji: '🧑‍🎓', quality: 'premium', category: 'Stellar' },
+                'Rasalgethi': { gender: 'male', style: 'royal', emoji: '👨‍⚖️', quality: 'premium', category: 'Stellar' },
+                'Laomedeia': { gender: 'female', style: 'mythical', emoji: '👩‍🎭', quality: 'premium', category: 'Stellar' },
                 
-                // Constellation Collection
-                'Achernar': { gender: 'neutral', style: 'swift', emoji: '💫', quality: 'premium', category: 'Constellation' },
-                'Alnilam': { gender: 'male', style: 'brilliant', emoji: '💎', quality: 'premium', category: 'Constellation' },
-                'Schedar': { gender: 'female', style: 'regal', emoji: '💃', quality: 'premium', category: 'Constellation' },
-                'Gacrux': { gender: 'neutral', style: 'southern', emoji: '🌟', quality: 'premium', category: 'Constellation' },
-                'Pulcherrima': { gender: 'female', style: 'beautiful', emoji: '🌺', quality: 'premium', category: 'Constellation' },
-                'Achird': { gender: 'neutral', style: 'binary', emoji: '👥', quality: 'premium', category: 'Constellation' },
+                // Constellation Collection with Diverse Characters
+                'Achernar': { gender: 'neutral', style: 'swift', emoji: '🧑‍✈️', quality: 'premium', category: 'Constellation' },
+                'Alnilam': { gender: 'male', style: 'brilliant', emoji: '👨‍🎤', quality: 'premium', category: 'Constellation' },
+                'Schedar': { gender: 'female', style: 'regal', emoji: '👸', quality: 'premium', category: 'Constellation' },
+                'Gacrux': { gender: 'neutral', style: 'southern', emoji: '🧑‍🎨', quality: 'premium', category: 'Constellation' },
+                'Pulcherrima': { gender: 'female', style: 'beautiful', emoji: '👩‍🎭', quality: 'premium', category: 'Constellation' },
+                'Achird': { gender: 'neutral', style: 'binary', emoji: '🧑‍💻', quality: 'premium', category: 'Constellation' },
                 
                 // Zodiacal Collection
-                'Zubenelgenubi': { gender: 'male', style: 'balanced', emoji: '⚖️', quality: 'premium', category: 'Zodiacal' },
-                'Vindemiatrix': { gender: 'female', style: 'harvest', emoji: '🍇', quality: 'premium', category: 'Zodiacal' },
-                'Sadachbia': { gender: 'neutral', style: 'aqueous', emoji: '🌊', quality: 'premium', category: 'Zodiacal' },
-                'Sadaltager': { gender: 'male', style: 'fortunate', emoji: '🍀', quality: 'premium', category: 'Zodiacal' },
-                'Sulafat': { gender: 'female', style: 'celestial', emoji: '🌙', quality: 'premium', category: 'Zodiacal' }
+                'Zubenelgenubi': { gender: 'male', style: 'balanced', emoji: '👨‍⚖️', quality: 'premium', category: 'Zodiacal' },
+                'Vindemiatrix': { gender: 'female', style: 'harvest', emoji: '👩‍🌾', quality: 'premium', category: 'Zodiacal' },
+                'Sadachbia': { gender: 'neutral', style: 'aqueous', emoji: '🧑‍🔬', quality: 'premium', category: 'Zodiacal' },
+                'Sadaltager': { gender: 'male', style: 'fortunate', emoji: '👨‍🍳', quality: 'premium', category: 'Zodiacal' },
+                'Sulafat': { gender: 'female', style: 'celestial', emoji: '👩‍🚀', quality: 'premium', category: 'Zodiacal' }
             },
             edge: {
-                'si-LK-ThiliniNeural': { gender: 'female', language: 'si-LK', emoji: '🇱🇰', quality: 'standard', category: 'Regional' },
-                'en-US-AriaNeural': { gender: 'female', language: 'en-US', emoji: '🇺🇸', quality: 'standard', category: 'Regional' },
-                'en-US-GuyNeural': { gender: 'male', language: 'en-US', emoji: '🇺🇸', quality: 'standard', category: 'Regional' },
-                'en-US-JennyNeural': { gender: 'female', language: 'en-US', emoji: '🇺🇸', quality: 'standard', category: 'Regional' },
-                'en-US-DavisNeural': { gender: 'male', language: 'en-US', emoji: '🇺🇸', quality: 'standard', category: 'Regional' },
-                'en-GB-SoniaNeural': { gender: 'female', language: 'en-GB', emoji: '🇬🇧', quality: 'standard', category: 'Regional' },
-                'en-GB-RyanNeural': { gender: 'male', language: 'en-GB', emoji: '🇬🇧', quality: 'standard', category: 'Regional' },
-                'en-AU-NatashaNeural': { gender: 'female', language: 'en-AU', emoji: '🇦🇺', quality: 'standard', category: 'Regional' },
-                'en-AU-WilliamNeural': { gender: 'male', language: 'en-AU', emoji: '🇦🇺', quality: 'standard', category: 'Regional' },
-                'hi-IN-SwaraNeural': { gender: 'female', language: 'hi-IN', emoji: '🇮🇳', quality: 'standard', category: 'Regional' },
-                'hi-IN-MadhurNeural': { gender: 'male', language: 'hi-IN', emoji: '🇮🇳', quality: 'standard', category: 'Regional' },
-                'ta-IN-PallaviNeural': { gender: 'female', language: 'ta-IN', emoji: '🇮🇳', quality: 'standard', category: 'Regional' },
-                'ta-IN-ValluvarNeural': { gender: 'male', language: 'ta-IN', emoji: '🇮🇳', quality: 'standard', category: 'Regional' }
+                'si-LK-ThiliniNeural': { gender: 'female', language: 'si-LK', emoji: '👩🇱🇰', quality: 'standard', category: 'Regional' },
+                'en-US-AriaNeural': { gender: 'female', language: 'en-US', emoji: '👩🇺🇸', quality: 'standard', category: 'Regional' },
+                'en-US-GuyNeural': { gender: 'male', language: 'en-US', emoji: '👨🇺🇸', quality: 'standard', category: 'Regional' },
+                'en-US-JennyNeural': { gender: 'female', language: 'en-US', emoji: '👩‍💼🇺🇸', quality: 'standard', category: 'Regional' },
+                'en-US-DavisNeural': { gender: 'male', language: 'en-US', emoji: '👨‍💼🇺🇸', quality: 'standard', category: 'Regional' },
+                'en-GB-SoniaNeural': { gender: 'female', language: 'en-GB', emoji: '👩🇬🇧', quality: 'standard', category: 'Regional' },
+                'en-GB-RyanNeural': { gender: 'male', language: 'en-GB', emoji: '👨🇬🇧', quality: 'standard', category: 'Regional' },
+                'en-AU-NatashaNeural': { gender: 'female', language: 'en-AU', emoji: '👩🇦🇺', quality: 'standard', category: 'Regional' },
+                'en-AU-WilliamNeural': { gender: 'male', language: 'en-AU', emoji: '👨🇦🇺', quality: 'standard', category: 'Regional' },
+                'hi-IN-SwaraNeural': { gender: 'female', language: 'hi-IN', emoji: '👩🇮🇳', quality: 'standard', category: 'Regional' },
+                'hi-IN-MadhurNeural': { gender: 'male', language: 'hi-IN', emoji: '👨🇮🇳', quality: 'standard', category: 'Regional' },
+                'ta-IN-PallaviNeural': { gender: 'female', language: 'ta-IN', emoji: '👩‍🏫🇮🇳', quality: 'standard', category: 'Regional' },
+                'ta-IN-ValluvarNeural': { gender: 'male', language: 'ta-IN', emoji: '👨‍🏫🇮🇳', quality: 'standard', category: 'Regional' }
             }
         };
 
-        // DOM Elements
+        // Enhanced DOM Elements
         const elements = {
             textInput: document.getElementById('textInput'),
             languageSelect: document.getElementById('languageSelect'),
@@ -813,6 +880,10 @@
             audioPlayer: document.getElementById('audioPlayer'),
             audioPlayerContainer: document.getElementById('audioPlayerContainer'),
             downloadBtn: document.getElementById('downloadBtn'),
+            saveToLibraryBtn: document.getElementById('saveToLibraryBtn'),
+            savedAudioList: document.getElementById('savedAudioList'),
+            savedCount: document.getElementById('savedCount'),
+            clearSavedBtn: document.getElementById('clearSavedBtn'),
             loadingOverlay: document.getElementById('loadingOverlay'),
             progressContainer: document.getElementById('progressContainer'),
             progressBar: document.getElementById('progressBar'),
@@ -836,9 +907,11 @@
         function initializeApp() {
             // Batch DOM updates
             requestAnimationFrame(() => {
+                setupEngineSelect();
                 updateTextStats();
                 updateRangeValues();
                 loadRecentGenerations();
+                loadSavedAudioFromStorage();
                 
                 // Ensure modal is hidden on load
                 if (elements.helpModal) {
@@ -854,6 +927,24 @@
             
             // Auto-refresh statistics
             setInterval(updateStatistics, 30000); // Every 30 seconds
+        }
+
+        // Configuration to enable/disable Edge TTS
+        // To completely remove Edge TTS: Set ENABLE_EDGE_TTS = false
+        const ENABLE_EDGE_TTS = true; // Set to false to completely remove Edge TTS
+
+        function setupEngineSelect() {
+            const engineSelect = elements.engineSelect;
+            engineSelect.innerHTML = `
+                <option value="gemini">🤖 Gemini AI (Premium - 30+ Voices)</option>
+                ${ENABLE_EDGE_TTS ? '<option value="edge">🌐 Edge TTS (Regional Voices) - Beta</option>' : ''}
+            `;
+            
+            if (!ENABLE_EDGE_TTS) {
+                engineSelect.value = 'gemini';
+                engineSelect.disabled = true;
+                engineSelect.classList.add('opacity-50');
+            }
         }
 
         function setupEventListeners() {
@@ -922,6 +1013,10 @@
             // Notification close
             document.getElementById('notificationClose').addEventListener('click', hideNotification);
 
+            // Save to library button
+            elements.saveToLibraryBtn.addEventListener('click', saveCurrentAudio);
+            elements.clearSavedBtn.addEventListener('click', clearAllSavedAudio);
+
             // Download button
             elements.downloadBtn.addEventListener('click', downloadAudio);
 
@@ -965,10 +1060,30 @@
             document.getElementById('tempValue').textContent = temp;
         }
 
-        function updateVoiceOptions() {
+        // Configuration to enable/disable Edge TTS
+        const ENABLE_EDGE_TTS = true; // Set to false to completely remove Edge TTS
+
+        function setupEngineSelect() {
+            const engineSelect = elements.engineSelect;
+            engineSelect.innerHTML = `
+                <option value="gemini">🤖 Gemini AI (Premium - 30+ Voices)</option>
+                ${ENABLE_EDGE_TTS ? '<option value="edge">🌐 Edge TTS (Regional Voices) - Beta</option>' : ''}
+            `;
+            
+            if (!ENABLE_EDGE_TTS) {
+                engineSelect.value = 'gemini';
+                engineSelect.disabled = true;
+                engineSelect.classList.add('opacity-50');
+            }
+        }
             const engine = elements.engineSelect.value;
             const voices = voiceConfigs[engine];
             appState.currentVoices = voices;
+            
+            // Warning for Edge TTS
+            if (engine === 'edge') {
+                showNotification('info', 'Edge TTS Selected', 'Note: Edge TTS is in beta. Gemini AI provides better quality.');
+            }
             
             renderVoices(voices);
             elements.voiceCount.textContent = Object.keys(voices).length;
@@ -1006,7 +1121,7 @@
                         
                         const titleDiv = document.createElement('div');
                         titleDiv.className = 'voice-category-title';
-                        titleDiv.textContent = `${category} Collection`;
+                        titleDiv.innerHTML = `<i class="fas fa-users mr-2"></i>${category} Collection`;
                         categoryDiv.appendChild(titleDiv);
                         
                         // Add voice cards
@@ -1163,6 +1278,17 @@
                     elements.audioPlayer.src = audioUrl;
                     elements.audioPlayerContainer.classList.remove('hidden');
                     
+                    // Store current audio info for saving
+                    appState.currentAudio = {
+                        text: text.substring(0, 100) + (text.length > 100 ? '...' : ''),
+                        voice: selectedVoice.value,
+                        engine: result.engine,
+                        filename: result.filename,
+                        duration: result.duration,
+                        size: result.size,
+                        format: result.format
+                    };
+                    
                     elements.downloadBtn.onclick = () => {
                         window.open(audioUrl, '_blank');
                     };
@@ -1186,6 +1312,9 @@
                                 <span class="font-medium">Voice:</span>
                                 <span>${result.voice}</span>
                             </div>
+                        </div>
+                        <div class="mt-2 p-2 bg-green-50 rounded text-xs">
+                            <strong>Generated:</strong> ${new Date().toLocaleString()}
                         </div>
                     `;
                     
@@ -1399,6 +1528,174 @@
                 a.click();
                 document.body.removeChild(a);
                 showNotification('info', 'Download Started', 'Audio file download has been initiated.');
+            }
+        }
+
+        function saveCurrentAudio() {
+            if (!appState.currentAudio) {
+                showNotification('error', 'No Audio', 'No audio to save. Please generate speech first.');
+                return;
+            }
+
+            const savedAudio = {
+                id: Date.now(),
+                ...appState.currentAudio,
+                savedAt: new Date().toLocaleString(),
+                audioUrl: elements.audioPlayer.src
+            };
+
+            appState.savedAudioFiles.unshift(savedAudio);
+            if (appState.savedAudioFiles.length > 20) {
+                appState.savedAudioFiles.pop(); // Keep only last 20
+            }
+
+            updateSavedAudioList();
+            saveSavedAudioToStorage();
+            showNotification('success', 'Audio Saved', 'Audio file has been saved to your library.');
+        }
+
+        function updateSavedAudioList() {
+            elements.savedCount.textContent = appState.savedAudioFiles.length;
+
+            if (appState.savedAudioFiles.length === 0) {
+                elements.savedAudioList.innerHTML = '<p class="text-slate-400 text-sm italic text-center py-8">No saved audio files</p>';
+                return;
+            }
+
+            elements.savedAudioList.innerHTML = appState.savedAudioFiles.map(audio => `
+                <div class="saved-audio-item bg-white/80 rounded-lg p-3 hover:bg-blue-50 transition-all duration-200 cursor-pointer border border-blue-100 hover:border-blue-300" data-audio-id="${audio.id}">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="text-slate-800 text-sm font-medium truncate flex-1 mr-2">${audio.text}</div>
+                        <div class="flex space-x-1">
+                            <button class="play-saved-btn text-blue-600 hover:text-blue-800 p-1" data-audio-id="${audio.id}" title="Play">
+                                <i class="fas fa-play text-xs"></i>
+                            </button>
+                            <button class="download-saved-btn text-green-600 hover:text-green-800 p-1" data-audio-id="${audio.id}" title="Download">
+                                <i class="fas fa-download text-xs"></i>
+                            </button>
+                            <button class="delete-saved-btn text-red-600 hover:text-red-800 p-1" data-audio-id="${audio.id}" title="Delete">
+                                <i class="fas fa-trash text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-slate-500 text-xs flex justify-between">
+                        <span>${audio.voice.split('-').pop() || audio.voice} • ${audio.engine}</span>
+                        <span>${audio.savedAt}</span>
+                    </div>
+                    <div class="text-slate-400 text-xs mt-1">
+                        ${audio.duration?.toFixed(1)}s • ${audio.format}
+                    </div>
+                </div>
+            `).join('');
+
+            // Add event listeners for saved audio items
+            document.querySelectorAll('.play-saved-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    playSavedAudio(parseInt(btn.dataset.audioId));
+                });
+            });
+
+            document.querySelectorAll('.download-saved-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    downloadSavedAudio(parseInt(btn.dataset.audioId));
+                });
+            });
+
+            document.querySelectorAll('.delete-saved-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    deleteSavedAudio(parseInt(btn.dataset.audioId));
+                });
+            });
+        }
+
+        function playSavedAudio(audioId) {
+            const audio = appState.savedAudioFiles.find(a => a.id === audioId);
+            if (audio && audio.audioUrl) {
+                elements.audioPlayer.src = audio.audioUrl;
+                elements.audioPlayerContainer.classList.remove('hidden');
+                elements.audioPlayer.play();
+                
+                // Update current audio info
+                document.getElementById('audioInfo').innerHTML = `
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div class="flex justify-between">
+                            <span class="font-medium">Size:</span>
+                            <span>${(audio.size / 1024).toFixed(1)} KB</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Duration:</span>
+                            <span>${audio.duration?.toFixed(1)}s</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Format:</span>
+                            <span class="uppercase">${audio.format}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Voice:</span>
+                            <span>${audio.voice}</span>
+                        </div>
+                    </div>
+                    <div class="mt-2 p-2 bg-blue-50 rounded text-xs">
+                        <strong>Saved:</strong> ${audio.savedAt}
+                    </div>
+                `;
+                
+                showNotification('info', 'Playing Saved Audio', 'Loading saved audio file...');
+            }
+        }
+
+        function downloadSavedAudio(audioId) {
+            const audio = appState.savedAudioFiles.find(a => a.id === audioId);
+            if (audio && audio.audioUrl) {
+                const a = document.createElement('a');
+                a.href = audio.audioUrl;
+                a.download = `saved_audio_${audio.id}.${audio.format}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                showNotification('info', 'Download Started', 'Downloading saved audio file...');
+            }
+        }
+
+        function deleteSavedAudio(audioId) {
+            if (confirm('Are you sure you want to delete this saved audio?')) {
+                appState.savedAudioFiles = appState.savedAudioFiles.filter(a => a.id !== audioId);
+                updateSavedAudioList();
+                saveSavedAudioToStorage();
+                showNotification('info', 'Audio Deleted', 'Saved audio file has been deleted.');
+            }
+        }
+
+        function clearAllSavedAudio() {
+            if (confirm('Are you sure you want to clear all saved audio files?')) {
+                appState.savedAudioFiles = [];
+                updateSavedAudioList();
+                saveSavedAudioToStorage();
+                showNotification('info', 'All Cleared', 'All saved audio files have been cleared.');
+            }
+        }
+
+        function saveSavedAudioToStorage() {
+            try {
+                localStorage.setItem('savedAudioFiles', JSON.stringify(appState.savedAudioFiles));
+            } catch (e) {
+                console.warn('Could not save audio files to localStorage:', e);
+            }
+        }
+
+        function loadSavedAudioFromStorage() {
+            try {
+                const saved = localStorage.getItem('savedAudioFiles');
+                if (saved) {
+                    appState.savedAudioFiles = JSON.parse(saved);
+                    updateSavedAudioList();
+                }
+            } catch (e) {
+                console.warn('Could not load saved audio files:', e);
+                appState.savedAudioFiles = [];
             }
         }
 
