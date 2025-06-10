@@ -9,25 +9,126 @@
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 25%, #bbf7d0 50%, #86efac 75%, #4ade80 100%);
+        
+        .notification {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10000;
+            max-width: 350px;
+            width: 100%;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 100vw;
+                max-height: 100vh;
+                border-radius: 16px;
+                margin: 8px;
+            }
+            
+            .voice-card {
+                padding: 12px;
+            }
+            
+            .notification {
+                max-width: calc(100vw - 2rem);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .modal-overlay {
+                padding: 0;
+            }
+            
+            .modal-content {
+                border-radius: 0;
+                max-height: 100vh;
+                margin: 0;
+            }
         }
         .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.08);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.12);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.08);
         }
         .voice-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(0);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
+        
         .voice-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+            background: rgba(34, 197, 94, 0.05);
+            border-color: rgba(34, 197, 94, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.1);
         }
+        
         .voice-card.selected {
-            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-            border-color: #16a34a;
-            box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.3);
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+        }
+        
+        .voice-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .voice-details {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+        
+        .voice-emoji {
+            font-size: 20px;
+            width: 32px;
+            text-align: center;
+        }
+        
+        .voice-text {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .voice-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+        
+        .voice-meta {
+            font-size: 11px;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         .loading-spinner {
             animation: spin 1s linear infinite;
@@ -170,125 +271,31 @@
             border: 1px solid;
         }
         
-        .voice-quality-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.025em;
-        }
-        
-        .quality-premium {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: white;
-        }
-        
-        .quality-standard {
-            background: linear-gradient(135deg, #6b7280, #4b5563);
-            color: white;
-        }
-        
-        .voice-search {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
-            border-bottom: 1px solid #e5e7eb;
-            margin-bottom: 1rem;
-        }
-        
-        .voice-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-            padding: 0 1rem;
-        }
-        
-        .notification {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 10000;
-            max-width: 400px;
-            width: 100%;
-            transform: translateX(100%);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        /* Mobile Responsive Improvements */
-        @media (max-width: 768px) {
-            .modal-content {
-                max-width: 100vw;
-                max-height: 100vh;
-                border-radius: 0;
-                margin: 0;
-            }
-            
-            .modal-header {
-                padding: 1rem;
-            }
-            
-            .help-section {
-                margin: 0.5rem;
-                padding: 1rem;
-            }
-            
-            .voice-grid {
-                grid-template-columns: 1fr;
-                padding: 0 0.5rem;
-            }
-            
-            .voice-card {
-                padding: 0.75rem;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            .modal-overlay {
-                padding: 0;
-            }
-            
-            .modal-content {
-                border-radius: 0;
-                max-height: 100vh;
-            }
-            
-            .help-section {
-                margin: 0.25rem;
-                padding: 0.75rem;
-            }
-        }
-        
-        /* Voice card enhancements */
         .voice-category {
-            margin-bottom: 2rem;
+            margin-bottom: 20px;
         }
         
         .voice-category-title {
-            font-size: 1.1rem;
+            font-size: 13px;
             font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 1rem;
-            padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-            border-radius: 0.5rem;
-            border-left: 4px solid #16a34a;
+            color: #059669;
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            background: rgba(34, 197, 94, 0.08);
+            backdrop-filter: blur(8px);
+            border-radius: 8px;
+            border-left: 3px solid #16a34a;
         }
         
         .stats-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            transition: all 0.2s ease;
         }
         
         .stats-card:hover {
+            background: rgba(255, 255, 255, 0.9);
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
         }
@@ -328,9 +335,9 @@
         <div class="grid grid-cols-1 xl:grid-cols-4 gap-6 lg:gap-8">
             
             <!-- Text Input Panel -->
-            <div class="xl:col-span-3 space-y-6">
+            <div class="xl:col-span-3 space-y-5">
                 <!-- Text Input Section -->
-                <div class="glass-effect rounded-2xl p-6 lg:p-8 card-shadow">
+                <div class="glass-primary rounded-2xl container-spacing card-spacing">
                     <div class="flex items-center mb-6">
                         <div class="w-8 h-8 green-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-edit text-green-600"></i>
@@ -407,7 +414,7 @@
                 </div>
 
                 <!-- Advanced Options -->
-                <div class="glass-effect rounded-2xl p-6 lg:p-8 card-shadow">
+                <div class="glass-primary rounded-2xl container-spacing card-spacing">
                     <div class="flex items-center mb-6">
                         <div class="w-8 h-8 teal-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-cog text-teal-600"></i>
@@ -459,10 +466,10 @@
             </div>
 
             <!-- Control Panel -->
-            <div class="xl:col-span-1 space-y-6">
+            <div class="xl:col-span-1 space-y-5">
                 <!-- Enhanced Voice Selection -->
-                <div class="glass-effect rounded-2xl p-6 card-shadow">
-                    <div class="flex items-center mb-6">
+                <div class="glass-secondary rounded-2xl p-5 card-spacing">
+                    <div class="flex items-center mb-5">
                         <div class="w-8 h-8 emerald-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-user-friends text-emerald-600"></i>
                         </div>
@@ -471,19 +478,19 @@
                     </div>
                     
                     <!-- Voice Search -->
-                    <div class="mb-4">
+                    <div class="mb-4 p-3 glass-tertiary rounded-lg">
                         <input type="text" id="voiceSearch" placeholder="Search voices..." 
-                               class="w-full p-2 text-sm rounded-lg bg-white border border-green-200 text-slate-700 focus:border-green-500 focus:ring-2 focus:ring-green-50 transition-all duration-200">
+                               class="w-full p-2 text-sm rounded-lg bg-white/70 border border-green-200 text-slate-700 focus:border-green-500 focus:ring-2 focus:ring-green-50 transition-all duration-200">
                     </div>
                     
-                    <div id="voiceContainer" class="space-y-3 max-h-96 overflow-y-auto">
+                    <div id="voiceContainer" class="space-y-2 max-h-96 overflow-y-auto">
                         <!-- Voice options will be populated here -->
                     </div>
                 </div>
 
                 <!-- Generation Controls -->
-                <div class="glass-effect rounded-2xl p-6 card-shadow">
-                    <div class="flex items-center mb-6">
+                <div class="glass-secondary rounded-2xl p-5 card-spacing">
+                    <div class="flex items-center mb-5">
                         <div class="w-8 h-8 green-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-play text-green-600"></i>
                         </div>
@@ -511,8 +518,8 @@
                 </div>
 
                 <!-- Enhanced Audio Player -->
-                <div id="audioPlayerContainer" class="glass-effect rounded-2xl p-6 card-shadow hidden">
-                    <div class="flex items-center mb-6">
+                <div id="audioPlayerContainer" class="glass-secondary rounded-2xl p-5 card-spacing hidden">
+                    <div class="flex items-center mb-5">
                         <div class="w-8 h-8 teal-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-volume-up text-teal-600"></i>
                         </div>
@@ -532,14 +539,14 @@
                         </button>
                     </div>
                     
-                    <div id="audioInfo" class="p-3 bg-green-50 rounded-lg text-slate-600 text-sm">
+                    <div id="audioInfo" class="p-3 glass-tertiary rounded-lg text-slate-600 text-sm">
                         <!-- Audio information will be displayed here -->
                     </div>
                 </div>
 
                 <!-- Recent Generations -->
-                <div class="glass-effect rounded-2xl p-6 card-shadow">
-                    <div class="flex items-center mb-6">
+                <div class="glass-secondary rounded-2xl p-5 card-spacing">
+                    <div class="flex items-center mb-5">
                         <div class="w-8 h-8 emerald-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-history text-emerald-600"></i>
                         </div>
@@ -554,28 +561,28 @@
         </div>
 
         <!-- Enhanced Statistics Panel -->
-        <div class="mt-8">
+        <div class="section-spacing">
             <div class="section-divider h-px mb-8"></div>
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div class="stats-card glass-effect rounded-xl p-6 text-center card-shadow">
-                    <div class="text-3xl font-bold text-green-600 mb-1" id="totalGenerations">0</div>
-                    <div class="text-slate-600 text-sm font-medium">Generations</div>
+                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-green-600 mb-2" id="totalGenerations">0</div>
+                    <div class="text-slate-600 text-xs sm:text-sm font-medium">Generations</div>
                 </div>
-                <div class="stats-card glass-effect rounded-xl p-6 text-center card-shadow">
-                    <div class="text-3xl font-bold text-emerald-600 mb-1" id="totalDuration">0s</div>
-                    <div class="text-slate-600 text-sm font-medium">Duration</div>
+                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-emerald-600 mb-2" id="totalDuration">0s</div>
+                    <div class="text-slate-600 text-xs sm:text-sm font-medium">Duration</div>
                 </div>
-                <div class="stats-card glass-effect rounded-xl p-6 text-center card-shadow">
-                    <div class="text-3xl font-bold text-teal-600 mb-1" id="favoriteVoice">-</div>
-                    <div class="text-slate-600 text-sm font-medium">Top Voice</div>
+                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-teal-600 mb-2" id="favoriteVoice">-</div>
+                    <div class="text-slate-600 text-xs sm:text-sm font-medium">Top Voice</div>
                 </div>
-                <div class="stats-card glass-effect rounded-xl p-6 text-center card-shadow">
-                    <div class="text-3xl font-bold text-lime-600 mb-1" id="successRate">100%</div>
-                    <div class="text-slate-600 text-sm font-medium">Success Rate</div>
+                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-lime-600 mb-2" id="successRate">100%</div>
+                    <div class="text-slate-600 text-xs sm:text-sm font-medium">Success Rate</div>
                 </div>
-                <div class="stats-card glass-effect rounded-xl p-6 text-center card-shadow">
-                    <div class="text-3xl font-bold text-cyan-600 mb-1" id="errorCount">0</div>
-                    <div class="text-slate-600 text-sm font-medium">Errors</div>
+                <div class="stats-card glass-secondary rounded-xl p-5 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-cyan-600 mb-2" id="errorCount">0</div>
+                    <div class="text-slate-600 text-xs sm:text-sm font-medium">Errors</div>
                 </div>
             </div>
         </div>
@@ -643,129 +650,69 @@
             </div>
             
             <div class="modal-body">
-                <div class="p-6 space-y-6">
+                <div class="p-6 space-y-5">
                     
-                    <section class="help-section bg-green-50 border-green-200">
-                        <h3 class="text-lg font-semibold mb-3 text-green-800">🎯 Getting Started</h3>
+                    <section class="help-section bg-green-50 border border-green-200 rounded-xl p-4">
+                        <h3 class="text-lg font-semibold mb-3 text-green-800 flex items-center">
+                            <i class="fas fa-play-circle mr-2"></i>Quick Start
+                        </h3>
                         <div class="space-y-2 text-sm text-green-700">
-                            <p>1. <strong>Choose Language:</strong> Select from 15+ supported languages including Sinhala</p>
-                            <p>2. <strong>Select Voice:</strong> Pick from 30+ premium Gemini voices or Edge TTS voices</p>
-                            <p>3. <strong>Enter Text:</strong> Type or paste text (max 5,000 characters)</p>
-                            <p>4. <strong>Adjust Settings:</strong> Customize rate, pitch, temperature for perfect output</p>
-                            <p>5. <strong>Generate:</strong> Click "Generate Speech" and download your audio</p>
+                            <p><strong>1.</strong> Select language and voice engine</p>
+                            <p><strong>2.</strong> Enter your text (max 5,000 characters)</p>
+                            <p><strong>3.</strong> Choose voice and adjust settings</p>
+                            <p><strong>4.</strong> Click "Generate Speech" and download</p>
                         </div>
                     </section>
                     
-                    <section class="help-section bg-blue-50 border-blue-200">
-                        <h3 class="text-lg font-semibold mb-3 text-blue-800">🤖 Voice Engines</h3>
-                        <div class="space-y-3 text-sm text-blue-700">
-                            <div class="bg-white p-3 rounded-lg border border-blue-100">
-                                <p><strong>Gemini AI (Premium):</strong></p>
-                                <p>• 30+ premium voices with stellar names</p>
-                                <p>• Advanced expressiveness control</p>
-                                <p>• Multi-speaker support</p>
-                                <p>• Best quality for professional use</p>
+                    <section class="help-section bg-blue-50 border border-blue-200 rounded-xl p-4">
+                        <h3 class="text-lg font-semibold mb-3 text-blue-800 flex items-center">
+                            <i class="fas fa-microphone mr-2"></i>Voice Engines
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                            <div class="bg-white/70 p-3 rounded-lg border border-blue-100">
+                                <p class="font-semibold text-blue-800">🤖 Gemini AI</p>
+                                <p class="text-blue-600">30+ premium voices, best quality</p>
                             </div>
-                            <div class="bg-white p-3 rounded-lg border border-blue-100">
-                                <p><strong>Edge TTS (Standard):</strong></p>
-                                <p>• Excellent multilingual support</p>
-                                <p>• Fast generation times</p>
-                                <p>• Good for everyday use</p>
-                                <p>• Free and reliable</p>
+                            <div class="bg-white/70 p-3 rounded-lg border border-blue-100">
+                                <p class="font-semibold text-blue-800">🌐 Edge TTS</p>
+                                <p class="text-blue-600">Fast, multilingual, reliable</p>
                             </div>
                         </div>
                     </section>
                     
-                    <section class="help-section bg-purple-50 border-purple-200">
-                        <h3 class="text-lg font-semibold mb-3 text-purple-800">🌟 Premium Gemini Voices</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-purple-700">
-                            <div class="bg-white p-3 rounded-lg border border-purple-100">
-                                <p><strong>Core Voices:</strong></p>
-                                <p>• Zephyr (Warm & Neutral)</p>
-                                <p>• Puck (Friendly)</p>
-                                <p>• Aoede (Professional Female)</p>
-                                <p>• Charon (Authoritative Male)</p>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border border-purple-100">
-                                <p><strong>Extended Collection:</strong></p>
-                                <p>• Stellar voices (Achernar, Alnilam, etc.)</p>
-                                <p>• Mythological (Leda, Enceladus, etc.)</p>
-                                <p>• Constellation series</p>
-                                <p>• 30+ unique personalities</p>
-                            </div>
+                    <section class="help-section bg-purple-50 border border-purple-200 rounded-xl p-4">
+                        <h3 class="text-lg font-semibold mb-3 text-purple-800 flex items-center">
+                            <i class="fas fa-language mr-2"></i>Languages
+                        </h3>
+                        <div class="text-sm text-purple-700">
+                            <p><strong>Supported:</strong> 🇱🇰 Sinhala, 🇺🇸 English, 🇮🇳 Tamil/Hindi, 🇯🇵 Japanese, 🇰🇷 Korean, 🇫🇷 French, 🇩🇪 German, 🇪🇸 Spanish + 8 more</p>
                         </div>
                     </section>
                     
-                    <section class="help-section bg-teal-50 border-teal-200">
-                        <h3 class="text-lg font-semibold mb-3 text-teal-800">🇱🇰 Sinhala Support</h3>
-                        <div class="space-y-2 text-sm text-teal-700">
-                            <p>• Full Unicode Sinhala text support</p>
-                            <p>• Natural pronunciation with Edge TTS</p>
-                            <p>• Gemini AI also supports Sinhala text</p>
-                            <p>• Try: "ආයුබෝවන්! ඔබට සුභ දිනයක් වේවා!"</p>
-                        </div>
-                    </section>
-                    
-                    <section class="help-section bg-orange-50 border-orange-200">
-                        <h3 class="text-lg font-semibold mb-3 text-orange-800">⚙️ Advanced Features</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-orange-700">
+                    <section class="help-section bg-teal-50 border border-teal-200 rounded-xl p-4">
+                        <h3 class="text-lg font-semibold mb-3 text-teal-800 flex items-center">
+                            <i class="fas fa-sliders-h mr-2"></i>Advanced Settings
+                        </h3>
+                        <div class="grid grid-cols-2 gap-3 text-sm text-teal-700">
                             <div>
-                                <p><strong>Speech Controls:</strong></p>
-                                <p>• Rate: -50% to +50% speed adjustment</p>
-                                <p>• Pitch: ±20Hz voice pitch control</p>
-                                <p>• Temperature: 0.1-2.0 expressiveness</p>
+                                <p><strong>Rate:</strong> Speed control (-50% to +50%)</p>
+                                <p><strong>Pitch:</strong> Voice tone (±20Hz)</p>
                             </div>
                             <div>
-                                <p><strong>Audio Options:</strong></p>
-                                <p>• Multiple formats (WAV, MP3, OGG, FLAC)</p>
-                                <p>• Audio enhancement filters</p>
-                                <p>• High-quality output option</p>
+                                <p><strong>Temperature:</strong> Expressiveness (0.1-2.0)</p>
+                                <p><strong>Formats:</strong> WAV, MP3, OGG, FLAC</p>
                             </div>
                         </div>
                     </section>
                     
-                    <section class="help-section bg-cyan-50 border-cyan-200">
-                        <h3 class="text-lg font-semibold mb-3 text-cyan-800">📱 Mobile & Responsive</h3>
-                        <div class="space-y-2 text-sm text-cyan-700">
-                            <p>• Fully responsive design for all devices</p>
-                            <p>• Touch-optimized controls</p>
-                            <p>• Swipe gestures for voice browsing</p>
-                            <p>• Works perfectly on phones and tablets</p>
-                        </div>
-                    </section>
-                    
-                    <section class="help-section bg-indigo-50 border-indigo-200">
-                        <h3 class="text-lg font-semibold mb-3 text-indigo-800">🎵 Audio Formats Guide</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-indigo-700">
-                            <div class="space-y-2">
-                                <p><strong>WAV:</strong> Uncompressed, highest quality, larger files</p>
-                                <p><strong>MP3:</strong> Compressed, good quality, smaller files</p>
-                            </div>
-                            <div class="space-y-2">
-                                <p><strong>OGG:</strong> Open source, good compression</p>
-                                <p><strong>FLAC:</strong> Lossless compression, best for archival</p>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <section class="help-section bg-pink-50 border-pink-200">
-                        <h3 class="text-lg font-semibold mb-3 text-pink-800">💡 Pro Tips</h3>
-                        <div class="space-y-2 text-sm text-pink-700">
-                            <p>• Use punctuation for natural pauses</p>
-                            <p>• Try different voices for various content types</p>
-                            <p>• Lower temperature for consistent speech</p>
-                            <p>• Higher temperature for expressive narration</p>
-                            <p>• Use audio enhancement for professional output</p>
-                        </div>
-                    </section>
-                    
-                    <section class="help-section bg-yellow-50 border-yellow-200">
-                        <h3 class="text-lg font-semibold mb-3 text-yellow-800">🚀 Deployment & Performance</h3>
-                        <div class="space-y-2 text-sm text-yellow-700">
-                            <p>• Optimized for Render.com deployment</p>
-                            <p>• Automatic scaling and load balancing</p>
-                            <p>• Built-in error handling and retry logic</p>
-                            <p>• Real-time statistics and monitoring</p>
+                    <section class="help-section bg-orange-50 border border-orange-200 rounded-xl p-4">
+                        <h3 class="text-lg font-semibold mb-3 text-orange-800 flex items-center">
+                            <i class="fas fa-keyboard mr-2"></i>Shortcuts
+                        </h3>
+                        <div class="text-sm text-orange-700 space-y-1">
+                            <p><kbd class="bg-white px-2 py-1 rounded text-xs">Ctrl + Enter</kbd> Generate speech</p>
+                            <p><kbd class="bg-white px-2 py-1 rounded text-xs">Escape</kbd> Close help</p>
+                            <p><kbd class="bg-white px-2 py-1 rounded text-xs">Ctrl + ?</kbd> Open help</p>
                         </div>
                     </section>
                     
@@ -885,17 +832,25 @@
             updateStatistics();
         });
 
+        // Enhanced initialization with performance optimizations
         function initializeApp() {
-            updateTextStats();
-            updateRangeValues();
-            loadRecentGenerations();
-            
-            // Ensure modal is hidden on load
-            if (elements.helpModal) {
-                elements.helpModal.style.display = 'none';
-                elements.helpModal.classList.add('hidden');
-                elements.helpModal.style.opacity = '0';
-            }
+            // Batch DOM updates
+            requestAnimationFrame(() => {
+                updateTextStats();
+                updateRangeValues();
+                loadRecentGenerations();
+                
+                // Ensure modal is hidden on load
+                if (elements.helpModal) {
+                    elements.helpModal.style.display = 'none';
+                    elements.helpModal.classList.add('hidden');
+                    elements.helpModal.style.opacity = '0';
+                }
+                
+                // Initialize with better performance
+                updateVoiceOptions();
+                updateStatistics();
+            });
             
             // Auto-refresh statistics
             setInterval(updateStatistics, 30000); // Every 30 seconds
@@ -1020,70 +975,92 @@
         }
 
         function renderVoices(voices) {
+            // Clear container efficiently
             elements.voiceContainer.innerHTML = '';
             
-            // Group voices by category for Gemini
+            const fragment = document.createDocumentFragment();
+            
+            // Group voices by category for Gemini with better organization
             if (elements.engineSelect.value === 'gemini') {
-                const categories = {};
+                const categories = {
+                    'Core': [],
+                    'Stellar': [],
+                    'Constellation': [],
+                    'Mythological': [],
+                    'Cosmic': [],
+                    'Zodiacal': []
+                };
+                
                 Object.entries(voices).forEach(([voiceName, config]) => {
-                    const category = config.category || 'Other';
-                    if (!categories[category]) categories[category] = [];
-                    categories[category].push([voiceName, config]);
+                    const category = config.category || 'Core';
+                    if (categories[category]) {
+                        categories[category].push([voiceName, config]);
+                    }
                 });
                 
+                // Render categories that have voices
                 Object.entries(categories).forEach(([category, categoryVoices]) => {
-                    // Category title
-                    const categoryDiv = document.createElement('div');
-                    categoryDiv.className = 'voice-category';
-                    categoryDiv.innerHTML = `<div class="voice-category-title">${category} Voices</div>`;
-                    
-                    // Voice cards
-                    categoryVoices.forEach(([voiceName, config]) => {
-                        categoryDiv.appendChild(createVoiceCard(voiceName, config));
-                    });
-                    
-                    elements.voiceContainer.appendChild(categoryDiv);
+                    if (categoryVoices.length > 0) {
+                        const categoryDiv = document.createElement('div');
+                        categoryDiv.className = 'voice-category';
+                        
+                        const titleDiv = document.createElement('div');
+                        titleDiv.className = 'voice-category-title';
+                        titleDiv.textContent = `${category} Collection`;
+                        categoryDiv.appendChild(titleDiv);
+                        
+                        // Add voice cards
+                        categoryVoices.forEach(([voiceName, config]) => {
+                            categoryDiv.appendChild(createVoiceCard(voiceName, config));
+                        });
+                        
+                        fragment.appendChild(categoryDiv);
+                    }
                 });
             } else {
                 // Simple list for Edge TTS
                 Object.entries(voices).forEach(([voiceName, config]) => {
-                    elements.voiceContainer.appendChild(createVoiceCard(voiceName, config));
+                    fragment.appendChild(createVoiceCard(voiceName, config));
                 });
             }
+            
+            elements.voiceContainer.appendChild(fragment);
             
             // Select first voice by default
             const firstVoiceCard = elements.voiceContainer.querySelector('.voice-card');
             if (firstVoiceCard) {
-                firstVoiceCard.click();
+                // Use requestAnimationFrame for smooth interaction
+                requestAnimationFrame(() => {
+                    firstVoiceCard.click();
+                });
             }
         }
 
         function createVoiceCard(voiceName, config) {
             const voiceCard = document.createElement('div');
-            voiceCard.className = 'voice-card p-3 rounded-xl bg-white hover:bg-green-50 cursor-pointer transition-all duration-200 border border-green-200 hover:border-green-300';
+            voiceCard.className = 'voice-card';
             
             const displayName = voiceName.includes('-') ? voiceName.split('-').pop() || voiceName : voiceName;
-            const qualityBadge = `<span class="voice-quality-badge quality-${config.quality}">${config.quality}</span>`;
             
             voiceCard.innerHTML = `
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">${config.emoji}</span>
-                        <div>
-                            <div class="text-slate-800 font-medium text-sm">${displayName}</div>
-                            <div class="text-slate-500 text-xs flex items-center space-x-2">
+                <div class="voice-info">
+                    <div class="voice-details">
+                        <span class="voice-emoji">${config.emoji}</span>
+                        <div class="voice-text">
+                            <div class="voice-name">${displayName}</div>
+                            <div class="voice-meta">
                                 <span>${config.gender}</span>
                                 <span>•</span>
                                 <span>${config.style || config.language}</span>
-                                <span class="ml-2">${qualityBadge}</span>
                             </div>
                         </div>
                     </div>
-                    <input type="radio" name="voice" value="${voiceName}" class="w-4 h-4 text-green-600 bg-white border-green-300 focus:ring-green-500 focus:ring-2">
+                    <input type="radio" name="voice" value="${voiceName}" class="w-4 h-4 text-green-600 bg-white border-green-300 focus:ring-green-500 focus:ring-2 flex-shrink-0">
                 </div>
             `;
             
-            voiceCard.addEventListener('click', () => {
+            voiceCard.addEventListener('click', (e) => {
+                e.preventDefault();
                 document.querySelectorAll('input[name="voice"]').forEach(radio => radio.checked = false);
                 voiceCard.querySelector('input[type="radio"]').checked = true;
                 
@@ -1096,7 +1073,21 @@
             return voiceCard;
         }
 
-        function filterVoices() {
+        // Performance optimizations
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Optimized voice filtering with debounce
+        const debouncedFilterVoices = debounce(function() {
             const searchTerm = elements.voiceSearch.value.toLowerCase();
             appState.filters.search = searchTerm;
             
@@ -1113,6 +1104,10 @@
             });
             
             renderVoices(filteredVoices);
+        }, 300);
+
+        function filterVoices() {
+            debouncedFilterVoices();
         }
 
         async function generateSpeech() {
