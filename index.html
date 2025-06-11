@@ -3,115 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI TTS Pro</title>
+    <title>AI TTS Pro - Premium Glassmorphism Experience</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
+        /* Advanced Glassmorphism System */
+        :root {
+            --glass-primary: rgba(255, 255, 255, 0.12);
+            --glass-secondary: rgba(255, 255, 255, 0.08);
+            --glass-tertiary: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(34, 197, 94, 0.18);
+            --glass-border-hover: rgba(34, 197, 94, 0.28);
+            --glass-shadow: 0 8px 32px rgba(34, 197, 94, 0.12);
+            --glass-shadow-hover: 0 12px 48px rgba(34, 197, 94, 0.18);
+            --glass-backdrop: blur(24px);
+            --glass-backdrop-strong: blur(32px);
         }
-        
-        body {
-            background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 25%, #34d399 50%, #10b981 75%, #059669 100%);
-            min-height: 100vh;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+        /* Dynamic Background */
+        .premium-gradient-bg {
+            background: linear-gradient(135deg, 
+                #f0fdf4 0%, 
+                #dcfce7 12%, 
+                #bbf7d0 25%, 
+                #86efac 37%, 
+                #4ade80 50%, 
+                #22c55e 62%, 
+                #16a34a 75%, 
+                #15803d 87%, 
+                #166534 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
         }
-        
-        /* Enhanced Glassmorphism Effects */
-        .glass {
-            background: rgba(255, 255, 255, 0.25);
+
+        .premium-gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(13, 148, 136, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            animation: floatingOrbs 25s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes floatingOrbs {
+            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        /* Premium Glass Components */
+        .glass-premium {
+            background: var(--glass-primary);
+            backdrop-filter: var(--glass-backdrop);
+            -webkit-backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .glass-premium:hover {
+            background: rgba(255, 255, 255, 0.16);
+            border-color: var(--glass-border-hover);
+            box-shadow: var(--glass-shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .glass-secondary {
+            background: var(--glass-secondary);
+            backdrop-filter: var(--glass-backdrop);
+            -webkit-backdrop-filter: var(--glass-backdrop);
+            border: 1px solid rgba(34, 197, 94, 0.12);
+            box-shadow: 0 4px 24px rgba(34, 197, 94, 0.08);
+        }
+
+        .glass-tertiary {
+            background: var(--glass-tertiary);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(34, 197, 94, 0.08);
+        }
+
+        .glass-input {
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.15);
-        }
-        
-        .glass-dark {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.2);
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 50px rgba(16, 185, 129, 0.25);
-        }
-        
-        /* Floating Elements */
-        .floating-orb {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .orb-1 {
-            width: 150px;
-            height: 150px;
-            top: 10%;
-            right: 15%;
-            animation-delay: 0s;
-        }
-        
-        .orb-2 {
-            width: 100px;
-            height: 100px;
-            bottom: 20%;
-            left: 10%;
-            animation-delay: 2s;
-        }
-        
-        .orb-3 {
-            width: 80px;
-            height: 80px;
-            top: 60%;
-            right: 25%;
-            animation-delay: 4s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(120deg); }
-            66% { transform: translateY(10px) rotate(240deg); }
-        }
-        
-        /* Enhanced Button Styles */
-        .btn-glass {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            font-weight: 600;
+            border: 1px solid rgba(34, 197, 94, 0.2);
             transition: all 0.3s ease;
+        }
+
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(34, 197, 94, 0.4);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1), 0 8px 32px rgba(34, 197, 94, 0.15);
+        }
+
+        /* Navigation Enhancement */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: var(--glass-backdrop-strong);
+            -webkit-backdrop-filter: var(--glass-backdrop-strong);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+            box-shadow: 0 4px 24px rgba(34, 197, 94, 0.08);
+        }
+
+        /* Premium Voice Cards */
+        .voice-card-premium {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
-        
-        .btn-glass:hover:not(:disabled) {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.9) 0%, rgba(6, 182, 212, 0.9) 100%);
+
+        .voice-card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(34, 197, 94, 0.03) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .voice-card-premium:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(34, 197, 94, 0.25);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(34, 197, 94, 0.15);
+        }
+
+        .voice-card-premium:hover::before {
+            opacity: 1;
+        }
+
+        .voice-card-premium.selected {
+            background: rgba(34, 197, 94, 0.12);
+            border-color: rgba(34, 197, 94, 0.35);
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), 0 8px 32px rgba(34, 197, 94, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
         }
-        
-        .btn-glass:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
+
+        /* Premium Buttons */
+        .btn-premium {
+            background: linear-gradient(135deg, 
+                rgba(22, 163, 74, 0.9) 0%, 
+                rgba(5, 150, 105, 0.9) 35%, 
+                rgba(13, 148, 136, 0.9) 70%, 
+                rgba(15, 118, 110, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(22, 163, 74, 0.25);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .btn-glass::before {
+
+        .btn-premium::before {
             content: '';
             position: absolute;
             top: 0;
@@ -119,411 +190,275 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            transition: left 0.6s ease;
         }
-        
-        .btn-glass:hover::before {
+
+        .btn-premium:hover::before {
             left: 100%;
         }
-        
-        .btn-secondary {
-            background: linear-gradient(135deg, rgba(13, 148, 136, 0.8) 0%, rgba(20, 184, 166, 0.8) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
+
+        .btn-premium:hover:not(:disabled) {
+            background: linear-gradient(135deg, 
+                rgba(22, 163, 74, 1) 0%, 
+                rgba(5, 150, 105, 1) 35%, 
+                rgba(13, 148, 136, 1) 70%, 
+                rgba(15, 118, 110, 1) 100%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 48px rgba(22, 163, 74, 0.35);
         }
-        
-        .btn-secondary:hover {
-            background: linear-gradient(135deg, rgba(15, 118, 110, 0.9) 0%, rgba(15, 118, 110, 0.9) 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(13, 148, 136, 0.3);
+
+        .btn-secondary-premium {
+            background: linear-gradient(135deg, 
+                rgba(13, 148, 136, 0.9) 0%, 
+                rgba(20, 184, 166, 0.9) 50%, 
+                rgba(6, 182, 212, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(13, 148, 136, 0.25);
         }
-        
-        /* Enhanced Voice Selection Cards */
-        .voice-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 8px;
+
+        /* Enhanced Loading Animation */
+        .loading-premium {
+            animation: spinPremium 2s linear infinite;
         }
-        
-        .voice-card:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(16, 185, 129, 0.5);
-            transform: scale(1.02);
-        }
-        
-        .voice-card.selected {
-            background: rgba(16, 185, 129, 0.2);
-            border-color: rgba(16, 185, 129, 0.8);
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-        }
-        
-        .voice-category {
-            margin-bottom: 20px;
-        }
-        
-        .voice-category-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #059669;
-            margin-bottom: 12px;
-            padding: 8px 12px;
-            background: rgba(34, 197, 94, 0.15);
-            backdrop-filter: blur(8px);
-            border-radius: 8px;
-            border-left: 3px solid #16a34a;
-        }
-        
-        .voice-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-        
-        .voice-details {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-        }
-        
-        .voice-emoji {
-            font-size: 20px;
-            width: 32px;
-            text-align: center;
-        }
-        
-        .voice-text {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .voice-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 2px;
-        }
-        
-        .voice-meta {
-            font-size: 11px;
-            color: #6b7280;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        /* Loading Animations */
-        .loading-overlay {
-            background: rgba(16, 185, 129, 0.1);
-            backdrop-filter: blur(30px);
-        }
-        
-        .loading-spinner {
-            width: 80px;
-            height: 80px;
-            border: 6px solid rgba(255, 255, 255, 0.3);
-            border-top: 6px solid rgba(16, 185, 129, 0.8);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
+
+        @keyframes spinPremium {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
-        /* Particle Animation */
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            animation: particle-float 8s infinite linear;
+
+        .wave-premium {
+            animation: wavePremium 2.5s ease-in-out infinite;
         }
-        
-        @keyframes particle-float {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
+
+        .wave-premium:nth-child(2) { animation-delay: 0.1s; }
+        .wave-premium:nth-child(3) { animation-delay: 0.2s; }
+        .wave-premium:nth-child(4) { animation-delay: 0.3s; }
+        .wave-premium:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes wavePremium {
+            0%, 100% { 
+                transform: scaleY(1);
+                background: rgba(34, 197, 94, 0.6);
             }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) translateX(100px);
-                opacity: 0;
-            }
-        }
-        
-        /* Enhanced Input Styles */
-        .glass-input {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: rgba(31, 41, 55, 0.9);
-            transition: all 0.3s ease;
-        }
-        
-        .glass-input:focus {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(16, 185, 129, 0.5);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-            outline: none;
-        }
-        
-        .glass-input::placeholder {
-            color: rgba(107, 114, 128, 0.7);
-        }
-        
-        /* Text Gradient */
-        .text-gradient {
-            background: linear-gradient(135deg, #064e3b, #065f46, #047857);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Enhanced Notification */
-        .notification {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 10000;
-            max-width: 350px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            animation: slideIn 0.3s ease-out;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            overflow-y: auto;
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-        }
-        
-        .modal-overlay.show {
-            display: flex !important;
-            opacity: 1 !important;
-        }
-        
-        .modal-content {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 1.5rem;
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-            max-width: 95vw;
-            max-height: 90vh;
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transform: scale(0.95);
-            transition: transform 0.2s ease-in-out;
-        }
-        
-        .modal-overlay.show .modal-content {
-            transform: scale(1);
-        }
-        
-        .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(34, 197, 94, 0.1);
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        
-        .modal-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 0;
-        }
-        
-        .help-section {
-            padding: 1.5rem;
-            margin: 1rem;
-            border-radius: 1rem;
-            border: 1px solid;
-        }
-        
-        /* Audio Player Enhancement */
-        .audio-player {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        /* Statistics Cards */
-        .stats-card {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.2s ease;
-        }
-        
-        .stats-card:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: rgba(16, 185, 129, 0.5);
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(16, 185, 129, 0.7);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .glass {
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
-            }
-            
-            .floating-orb {
-                display: none;
-            }
-            
-            .modal-content {
-                max-width: 100vw;
-                max-height: 100vh;
-                border-radius: 16px;
-                margin: 8px;
-            }
-            
-            .voice-card {
-                padding: 12px;
-            }
-            
-            .notification {
-                max-width: calc(100vw - 2rem);
-            }
-        }
-        
-        @media (max-width: 640px) {
-            .modal-overlay {
-                padding: 0;
-            }
-            
-            .modal-content {
-                border-radius: 0;
-                max-height: 100vh;
-                margin: 0;
+            50% { 
+                transform: scaleY(0.3);
+                background: rgba(34, 197, 94, 1);
             }
         }
 
-        /* Heart beat animation */
-        .heart-beat {
-            animation: heartbeat 1.5s ease-in-out infinite;
+        /* Premium Text Gradient */
+        .text-premium-gradient {
+            background: linear-gradient(135deg, 
+                #16a34a 0%, 
+                #059669 25%, 
+                #0d9488 50%, 
+                #0f766e 75%, 
+                #134e4a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: textShimmer 3s ease-in-out infinite;
         }
-        
-        @keyframes heartbeat {
+
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Premium Modal */
+        .modal-premium {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .modal-content-premium {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: var(--glass-backdrop-strong);
+            -webkit-backdrop-filter: var(--glass-backdrop-strong);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3), 0 0 60px rgba(34, 197, 94, 0.1);
+        }
+
+        /* Premium Notifications */
+        .notification-premium {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: var(--glass-backdrop);
+            -webkit-backdrop-filter: var(--glass-backdrop);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            box-shadow: 0 12px 40px rgba(34, 197, 94, 0.15);
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .notification-premium.show {
+            transform: translateX(0);
+        }
+
+        /* Premium Stats Cards */
+        .stats-premium {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .stats-premium:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(34, 197, 94, 0.2);
+        }
+
+        /* Premium Scrollbar */
+        .premium-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .premium-scroll::-webkit-scrollbar-track {
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 4px;
+        }
+
+        .premium-scroll::-webkit-scrollbar-thumb {
+            background: rgba(34, 197, 94, 0.3);
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .premium-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(34, 197, 94, 0.5);
+        }
+
+        /* Premium Range Inputs */
+        .range-premium {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .range-premium::-webkit-slider-track {
+            background: rgba(34, 197, 94, 0.2);
+            height: 6px;
+            border-radius: 3px;
+        }
+
+        .range-premium::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(135deg, #16a34a, #059669);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .range-premium::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        /* Premium Category Styling */
+        .category-premium {
+            background: rgba(34, 197, 94, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            border-left: 4px solid rgba(34, 197, 94, 0.6);
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .premium-gradient-bg {
+                background-size: 300% 300%;
+            }
+            
+            .glass-premium {
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+            }
+            
+            .voice-card-premium {
+                padding: 16px;
+                margin-bottom: 8px;
+            }
+        }
+
+        /* Premium Animations */
+        .fade-in-premium {
+            animation: fadeInPremium 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes fadeInPremium {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse-premium {
+            animation: pulsePremium 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulsePremium {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .7;
+            }
+        }
+
+        /* Heart Beat Animation */
+        .heart-premium {
+            animation: heartbeatPremium 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeatPremium {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
     </style>
 </head>
-<body class="relative overflow-x-hidden">
-    <!-- Floating Background Elements -->
-    <div class="floating-orb orb-1"></div>
-    <div class="floating-orb orb-2"></div>
-    <div class="floating-orb orb-3"></div>
-    
-    <!-- Animated Particles -->
-    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-    <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
-    <div class="particle" style="left: 50%; animation-delay: 1s;"></div>
-    <div class="particle" style="left: 60%; animation-delay: 3s;"></div>
-    <div class="particle" style="left: 70%; animation-delay: 5s;"></div>
-    <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
-    <div class="particle" style="left: 90%; animation-delay: 2.5s;"></div>
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Premium Dynamic Background -->
+    <div class="premium-gradient-bg"></div>
 
-    <!-- Enhanced Navigation -->
-    <nav class="glass sticky top-0 z-40 rounded-b-3xl border-b border-white border-opacity-30">
-        <div class="container mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+    <!-- Enhanced Premium Navigation -->
+    <nav class="nav-glass sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-4">
-                    <div class="w-14 h-14 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg">
                         <i class="fas fa-microphone-alt text-white text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold text-gradient">AI TTS Pro</h1>
-                        <p class="text-emerald-800 text-sm opacity-80">Enhanced Glassmorphism Edition</p>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-premium-gradient">
+                            AI TTS Pro
+                        </h1>
+                        <p class="text-sm text-emerald-700 font-semibold">Premium Glassmorphism Experience</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-3">
-                    <button id="statsBtn" class="glass-card p-3 rounded-2xl text-blue-700 hover:text-blue-800 transition-all duration-200">
-                        <i class="fas fa-chart-bar text-xl"></i>
+                    <button id="statsBtn" class="p-3 rounded-xl glass-secondary hover:glass-premium text-blue-600 transition-all duration-300">
+                        <i class="fas fa-chart-bar text-lg"></i>
                     </button>
-                    <button id="helpBtn" class="glass-card p-3 rounded-2xl text-emerald-700 hover:text-emerald-800 transition-all duration-200">
-                        <i class="fas fa-question-circle text-xl"></i>
+                    <button id="themeToggle" class="p-3 rounded-xl glass-secondary hover:glass-premium text-green-600 transition-all duration-300">
+                        <i class="fas fa-sun text-lg"></i>
                     </button>
-                    <button id="settingsBtn" class="glass-card p-3 rounded-2xl text-emerald-700 hover:text-emerald-800 transition-all duration-200">
-                        <i class="fas fa-cog text-xl"></i>
+                    <button id="helpBtn" class="p-3 rounded-xl glass-secondary hover:glass-premium text-teal-600 transition-all duration-300">
+                        <i class="fas fa-question-circle text-lg"></i>
                     </button>
                 </div>
             </div>
@@ -532,25 +467,25 @@
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
         <!-- Main Content Grid -->
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 xl:grid-cols-4 gap-8 fade-in-premium">
             
-            <!-- Left Panel - Text Input -->
-            <div class="xl:col-span-2 space-y-8">
+            <!-- Text Input Panel -->
+            <div class="xl:col-span-3 space-y-6">
                 <!-- Text Input Section -->
-                <div class="glass rounded-3xl p-8">
+                <div class="glass-premium rounded-3xl p-8">
                     <div class="flex items-center mb-8">
-                        <div class="w-12 h-12 glass-card rounded-2xl flex items-center justify-center mr-4">
-                            <i class="fas fa-edit text-emerald-600 text-xl"></i>
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-edit text-white"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-800">Text Input</h2>
-                        <span id="textLimitIndicator" class="ml-auto text-sm text-gray-500">0 / 5000</span>
+                        <h2 class="text-2xl font-bold text-slate-800">Text Input</h2>
+                        <span id="textLimitIndicator" class="ml-auto text-sm font-medium text-slate-600 glass-tertiary px-3 py-1 rounded-full">0 / 5000</span>
                     </div>
                     
-                    <!-- Language Selection -->
+                    <!-- Language and Engine Selection -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div>
-                            <label class="block text-gray-700 text-sm font-semibold mb-3">Language</label>
-                            <select id="languageSelect" class="w-full p-4 rounded-2xl glass-input transition-all duration-200">
+                            <label class="block text-slate-800 text-sm font-semibold mb-3">Language</label>
+                            <select id="languageSelect" class="w-full p-4 rounded-2xl glass-input text-slate-800 focus:outline-none transition-all duration-300">
                                 <option value="si-LK">🇱🇰 Sinhala (Sri Lanka)</option>
                                 <option value="en-US" selected>🇺🇸 English (US)</option>
                                 <option value="en-GB">🇬🇧 English (UK)</option>
@@ -569,358 +504,367 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-gray-700 text-sm font-semibold mb-3">Voice Quality</label>
-                            <select id="qualitySelect" class="w-full p-4 rounded-2xl glass-input transition-all duration-200">
-                                <option value="premium">🌟 Premium Quality (30+ Voices)</option>
-                                <option value="standard">⚡ Standard Quality</option>
+                            <label class="block text-slate-800 text-sm font-semibold mb-3">TTS Engine</label>
+                            <select id="engineSelect" class="w-full p-4 rounded-2xl glass-input text-slate-800 focus:outline-none transition-all duration-300">
+                                <option value="gemini">🤖 Gemini AI (Premium - 30+ Voices)</option>
+                                <option value="edge">🌐 Edge TTS (Multilingual)</option>
                             </select>
                         </div>
                     </div>
 
                     <!-- Text Area -->
                     <div class="mb-8">
-                        <label class="block text-gray-700 text-sm font-semibold mb-4">Enter Your Text</label>
+                        <label class="block text-slate-800 text-sm font-semibold mb-4">Enter Your Text</label>
                         <div class="relative">
                             <textarea 
                                 id="textInput" 
                                 placeholder="ඔබේ පෙළ මෙහි ලියන්න... / Enter your text here..."
                                 maxlength="5000"
-                                class="w-full h-48 p-6 rounded-2xl glass-input resize-none transition-all duration-200 text-gray-800 placeholder-gray-500"
+                                class="w-full h-48 p-6 rounded-2xl glass-input text-slate-800 placeholder-slate-500 resize-none focus:outline-none transition-all duration-300"
                             ></textarea>
-                            <div class="absolute bottom-4 right-4 glass-card px-3 py-2 rounded-xl text-xs text-gray-600">
-                                <span id="charCount">0 characters</span> • <span id="wordCount">0 words</span>
+                            <div class="absolute bottom-4 right-4 glass-tertiary rounded-lg px-3 py-2">
+                                <div class="text-xs text-slate-600 font-medium">
+                                    <span id="charCount">0 characters</span> • <span id="wordCount">0 words</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Enhanced Quick Templates -->
-                    <div>
-                        <label class="block text-gray-700 text-sm font-semibold mb-4">Quick Templates</label>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <button class="template-btn glass-card p-4 rounded-2xl text-emerald-700 text-sm font-medium transition-all duration-200" data-text="ආයුබෝවන්! ඔබට සුභ දිනයක් වේවා! අපගේ නව AI TTS සේවාවට සාදරයෙන් පිළිගන්නවා.">
+                    <div class="mb-8">
+                        <label class="block text-slate-800 text-sm font-semibold mb-4">Quick Templates</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <button class="template-btn p-4 rounded-2xl glass-secondary hover:glass-premium text-green-700 text-sm font-semibold transition-all duration-300" data-text="ආයුබෝවන්! ඔබට සුභ දිනයක් වේවා! අපගේ නව AI TTS සේවාවට සාදරයෙන් පිළිගන්නවා.">
                                 <i class="fas fa-globe mr-2"></i>Sinhala Greeting
                             </button>
-                            <button class="template-btn glass-card p-4 rounded-2xl text-emerald-700 text-sm font-medium transition-all duration-200" data-text="Hello and welcome! This is our advanced AI-powered text-to-speech system with over 30 premium voices.">
+                            <button class="template-btn p-4 rounded-2xl glass-secondary hover:glass-premium text-emerald-700 text-sm font-semibold transition-all duration-300" data-text="Hello and welcome! This is our advanced AI-powered text-to-speech system with over 30 premium voices.">
                                 <i class="fas fa-hand-wave mr-2"></i>English Greeting
                             </button>
-                            <button class="template-btn glass-card p-4 rounded-2xl text-emerald-700 text-sm font-medium transition-all duration-200" data-text="This is a comprehensive test of our enhanced text-to-speech system featuring Gemini AI with premium voice quality.">
+                            <button class="template-btn p-4 rounded-2xl glass-secondary hover:glass-premium text-teal-700 text-sm font-semibold transition-all duration-300" data-text="This is a comprehensive test of our enhanced text-to-speech system featuring Gemini AI with premium voice quality.">
                                 <i class="fas fa-vial mr-2"></i>Test Message
+                            </button>
+                            <button class="template-btn p-4 rounded-2xl glass-secondary hover:glass-premium text-cyan-700 text-sm font-semibold transition-all duration-300" data-text="Speaker 1: Hello there! How are you today?\nSpeaker 2: I'm doing wonderfully! This new AI system is amazing.">
+                                <i class="fas fa-users mr-2"></i>Multi-Speaker
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Advanced Settings -->
-                <div class="glass rounded-3xl p-8">
+                <!-- Advanced Options -->
+                <div class="glass-premium rounded-3xl p-8">
                     <div class="flex items-center mb-8">
-                        <div class="w-12 h-12 glass-card rounded-2xl flex items-center justify-center mr-4">
-                            <i class="fas fa-sliders-h text-cyan-600 text-xl"></i>
+                        <div class="w-10 h-10 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-cog text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800">Advanced Settings</h3>
+                        <h3 class="text-2xl font-bold text-slate-800">Advanced Options</h3>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div>
-                            <label class="block text-gray-700 text-sm font-semibold mb-4">Speech Rate</label>
-                            <input type="range" id="speechRate" min="-50" max="50" value="0" class="w-full h-3 bg-white bg-opacity-30 rounded-full appearance-none cursor-pointer">
-                            <span id="rateValue" class="text-gray-600 text-sm mt-2 block text-center">Normal (0%)</span>
+                            <label class="block text-slate-800 text-sm font-semibold mb-4">Speech Rate</label>
+                            <input type="range" id="speechRate" min="-50" max="50" value="0" class="w-full range-premium">
+                            <span id="rateValue" class="text-slate-600 text-sm mt-2 block font-medium">Normal (0%)</span>
                         </div>
                         
                         <div>
-                            <label class="block text-gray-700 text-sm font-semibold mb-4">Pitch</label>
-                            <input type="range" id="speechPitch" min="-20" max="20" value="0" class="w-full h-3 bg-white bg-opacity-30 rounded-full appearance-none cursor-pointer">
-                            <span id="pitchValue" class="text-gray-600 text-sm mt-2 block text-center">Normal (0Hz)</span>
+                            <label class="block text-slate-800 text-sm font-semibold mb-4">Pitch</label>
+                            <input type="range" id="speechPitch" min="-20" max="20" value="0" class="w-full range-premium">
+                            <span id="pitchValue" class="text-slate-600 text-sm mt-2 block font-medium">Normal (0Hz)</span>
                         </div>
                         
                         <div>
-                            <label class="block text-gray-700 text-sm font-semibold mb-4">Expressiveness</label>
-                            <input type="range" id="temperature" min="0.1" max="2.0" step="0.1" value="1.0" class="w-full h-3 bg-white bg-opacity-30 rounded-full appearance-none cursor-pointer">
-                            <span id="tempValue" class="text-gray-600 text-sm mt-2 block text-center">1.0</span>
+                            <label class="block text-slate-800 text-sm font-semibold mb-4">Temperature</label>
+                            <input type="range" id="temperature" min="0.1" max="2.0" step="0.1" value="1.0" class="w-full range-premium">
+                            <span id="tempValue" class="text-slate-600 text-sm mt-2 block font-medium">1.0</span>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-slate-800 text-sm font-semibold mb-4">Output Format</label>
+                            <select id="formatSelect" class="w-full p-3 rounded-xl glass-input text-slate-800 focus:outline-none transition-all duration-300">
+                                <option value="wav">WAV (High Quality)</option>
+                                <option value="mp3">MP3 (Compressed)</option>
+                                <option value="ogg">OGG (Open Source)</option>
+                                <option value="flac">FLAC (Lossless)</option>
+                            </select>
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-white border-opacity-20">
-                        <div class="flex flex-wrap gap-6">
-                            <label class="flex items-center text-gray-700 cursor-pointer glass-card p-3 rounded-xl">
-                                <input type="checkbox" id="enhanceAudio" class="w-5 h-5 text-emerald-600 bg-white bg-opacity-50 border-emerald-300 rounded focus:ring-emerald-500 focus:ring-2">
-                                <span class="ml-3 text-sm font-medium">Audio Enhancement</span>
-                            </label>
-                            <label class="flex items-center text-gray-700 cursor-pointer glass-card p-3 rounded-xl">
-                                <input type="checkbox" id="highQuality" class="w-5 h-5 text-emerald-600 bg-white bg-opacity-50 border-emerald-300 rounded focus:ring-emerald-500 focus:ring-2">
-                                <span class="ml-3 text-sm font-medium">High Quality Output</span>
-                            </label>
-                            <label class="flex items-center text-gray-700 cursor-pointer glass-card p-3 rounded-xl">
-                                <input type="checkbox" id="autoPlay" class="w-5 h-5 text-emerald-600 bg-white bg-opacity-50 border-emerald-300 rounded focus:ring-emerald-500 focus:ring-2">
-                                <span class="ml-3 text-sm font-medium">Auto Play</span>
-                            </label>
-                        </div>
+                    <div class="mt-8 pt-8 border-t border-green-200/30 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <label class="flex items-center text-slate-800 cursor-pointer group">
+                            <input type="checkbox" id="enhanceAudio" class="w-5 h-5 text-green-600 bg-white/80 border-green-300 rounded focus:ring-green-500 focus:ring-2 transition-all duration-300">
+                            <span class="ml-3 text-sm font-semibold group-hover:text-green-700 transition-colors duration-300">Enable Audio Enhancement</span>
+                        </label>
+                        <label class="flex items-center text-slate-800 cursor-pointer group">
+                            <input type="checkbox" id="highQuality" class="w-5 h-5 text-green-600 bg-white/80 border-green-300 rounded focus:ring-green-500 focus:ring-2 transition-all duration-300">
+                            <span class="ml-3 text-sm font-semibold group-hover:text-green-700 transition-colors duration-300">High Quality Output</span>
+                        </label>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Panel - Controls -->
-            <div class="space-y-8">
+            <!-- Control Panel -->
+            <div class="xl:col-span-1 space-y-6">
                 <!-- Enhanced Voice Selection -->
-                <div class="glass rounded-3xl p-6">
+                <div class="glass-premium rounded-3xl p-6">
                     <div class="flex items-center mb-6">
-                        <div class="w-10 h-10 glass-card rounded-xl flex items-center justify-center mr-3">
-                            <i class="fas fa-user-friends text-emerald-600"></i>
+                        <div class="w-10 h-10 bg-gradient-to-br from-emerald-400 to-green-500 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-user-friends text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Voice Selection</h3>
-                        <span id="voiceCount" class="ml-auto text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">30+</span>
+                        <h3 class="text-xl font-bold text-slate-800">Voice Selection</h3>
+                        <span id="voiceCount" class="ml-auto text-xs glass-secondary text-green-800 px-3 py-1 rounded-full font-semibold">30+</span>
                     </div>
                     
                     <!-- Voice Search -->
-                    <div class="mb-4 glass-card p-3 rounded-lg">
+                    <div class="mb-6">
                         <input type="text" id="voiceSearch" placeholder="Search voices..." 
-                               class="w-full p-2 text-sm rounded-lg bg-white/70 border-none text-gray-700 placeholder-gray-500 focus:outline-none">
+                               class="w-full p-3 text-sm rounded-xl glass-input text-slate-800 focus:outline-none transition-all duration-300">
                     </div>
                     
-                    <div id="voiceContainer" class="space-y-2 max-h-96 overflow-y-auto">
+                    <div id="voiceContainer" class="space-y-3 max-h-96 overflow-y-auto premium-scroll">
                         <!-- Voice options will be populated here -->
                     </div>
                 </div>
 
                 <!-- Generation Controls -->
-                <div class="glass rounded-3xl p-6">
+                <div class="glass-premium rounded-3xl p-6">
                     <div class="flex items-center mb-6">
-                        <div class="w-10 h-10 glass-card rounded-xl flex items-center justify-center mr-3">
-                            <i class="fas fa-play text-emerald-600"></i>
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-play text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Generate</h3>
+                        <h3 class="text-xl font-bold text-slate-800">Generation</h3>
                     </div>
                     
-                    <button id="generateBtn" class="w-full btn-glass py-4 px-6 rounded-2xl text-lg font-semibold mb-4">
-                        <i class="fas fa-magic mr-3"></i>
-                        <span id="generateBtnText">Generate Speech</span>
-                    </button>
-                    
-                    <div class="grid grid-cols-2 gap-3 mb-4">
-                        <select id="formatSelect" class="glass-input p-3 rounded-xl text-sm">
-                            <option value="wav">WAV (High Quality)</option>
-                            <option value="mp3">MP3 (Compressed)</option>
-                            <option value="ogg">OGG (Open Source)</option>
-                            <option value="flac">FLAC (Lossless)</option>
-                        </select>
-                        <button id="clearBtn" class="glass-card text-gray-700 py-3 px-4 rounded-xl text-sm font-medium hover:bg-white hover:bg-opacity-40">
-                            <i class="fas fa-trash mr-2"></i>Clear
+                    <div class="space-y-4">
+                        <button id="generateBtn" class="w-full btn-premium text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 relative overflow-hidden">
+                            <i class="fas fa-magic mr-2"></i>
+                            <span id="generateBtnText">Generate Speech</span>
+                        </button>
+                        
+                        <button id="batchBtn" class="w-full btn-secondary-premium text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 relative overflow-hidden">
+                            <i class="fas fa-layer-group mr-2"></i>
+                            Batch Process
                         </button>
                     </div>
                     
-                    <button id="batchBtn" class="w-full btn-secondary text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
-                        <i class="fas fa-layer-group mr-2"></i>Batch Process
-                    </button>
-                    
-                    <div id="progressContainer" class="hidden mt-4">
-                        <div class="bg-white bg-opacity-30 rounded-full h-3 mb-2">
-                            <div id="progressBar" class="bg-gradient-to-r from-emerald-500 to-cyan-600 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    <div id="progressContainer" class="hidden mt-6">
+                        <div class="glass-secondary rounded-full h-4 mb-3 overflow-hidden">
+                            <div id="progressBar" class="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-600 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
                         </div>
-                        <p id="progressText" class="text-gray-600 text-sm text-center">Processing...</p>
+                        <p id="progressText" class="text-slate-700 text-sm text-center font-medium">Processing...</p>
                     </div>
                 </div>
 
                 <!-- Enhanced Audio Player -->
-                <div id="audioPlayerContainer" class="glass rounded-3xl p-6 hidden">
+                <div id="audioPlayerContainer" class="glass-premium rounded-3xl p-6 hidden">
                     <div class="flex items-center mb-6">
-                        <div class="w-10 h-10 glass-card rounded-xl flex items-center justify-center mr-3">
-                            <i class="fas fa-volume-up text-cyan-600"></i>
+                        <div class="w-10 h-10 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-volume-up text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Audio Player</h3>
+                        <h3 class="text-xl font-bold text-slate-800">Audio Player</h3>
                     </div>
                     
-                    <div class="audio-player mb-4">
-                        <audio id="audioPlayer" controls class="w-full">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
+                    <audio id="audioPlayer" controls class="w-full mb-6 rounded-xl">
+                        Your browser does not support the audio element.
+                    </audio>
                     
-                    <div class="grid grid-cols-2 gap-3 mb-4">
-                        <button id="downloadBtn" class="btn-glass py-3 px-4 rounded-xl text-sm font-semibold">
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <button id="downloadBtn" class="btn-premium text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300">
                             <i class="fas fa-download mr-2"></i>Download
                         </button>
-                        <button id="shareBtn" class="glass-card text-gray-700 py-3 px-4 rounded-xl text-sm font-medium hover:bg-white hover:bg-opacity-40">
+                        <button id="shareBtn" class="btn-secondary-premium text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300">
                             <i class="fas fa-share mr-2"></i>Share
                         </button>
                     </div>
                     
-                    <div id="audioInfo" class="glass-card p-4 rounded-xl text-gray-600 text-sm">
+                    <div id="audioInfo" class="glass-secondary rounded-xl p-4 text-slate-700 text-sm">
                         <!-- Audio information will be displayed here -->
                     </div>
                 </div>
 
-                <!-- Recent History -->
-                <div class="glass rounded-3xl p-6">
+                <!-- Recent Generations -->
+                <div class="glass-premium rounded-3xl p-6">
                     <div class="flex items-center mb-6">
-                        <div class="w-10 h-10 glass-card rounded-xl flex items-center justify-center mr-3">
-                            <i class="fas fa-history text-emerald-600"></i>
+                        <div class="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-history text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Recent</h3>
+                        <h3 class="text-xl font-bold text-slate-800">Recent</h3>
                     </div>
                     
-                    <div id="recentList" class="space-y-3 max-h-64 overflow-y-auto">
-                        <p class="text-gray-500 text-sm italic text-center py-8">No recent generations</p>
+                    <div id="recentList" class="space-y-3 max-h-64 overflow-y-auto premium-scroll">
+                        <p class="text-slate-500 text-sm italic text-center py-8">No recent generations</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Enhanced Statistics Panel -->
-        <div class="mt-8">
-            <div class="bg-gradient-to-r from-transparent via-white/30 to-transparent h-px mb-8"></div>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div class="stats-card rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-emerald-600 mb-2" id="totalGenerations">0</div>
-                    <div class="text-gray-600 text-xs sm:text-sm font-medium">Generations</div>
+        <div class="mt-12">
+            <div class="h-px bg-gradient-to-r from-transparent via-green-300 to-transparent mb-8"></div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <div class="stats-premium rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-green-600 mb-2" id="totalGenerations">0</div>
+                    <div class="text-slate-700 text-sm font-semibold">Generations</div>
                 </div>
-                <div class="stats-card rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-cyan-600 mb-2" id="totalDuration">0s</div>
-                    <div class="text-gray-600 text-xs sm:text-sm font-medium">Duration</div>
+                <div class="stats-premium rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-emerald-600 mb-2" id="totalDuration">0s</div>
+                    <div class="text-slate-700 text-sm font-semibold">Duration</div>
                 </div>
-                <div class="stats-card rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-teal-600 mb-2" id="favoriteVoice">-</div>
-                    <div class="text-gray-600 text-xs sm:text-sm font-medium">Top Voice</div>
+                <div class="stats-premium rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-teal-600 mb-2" id="favoriteVoice">-</div>
+                    <div class="text-slate-700 text-sm font-semibold">Top Voice</div>
                 </div>
-                <div class="stats-card rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-lime-600 mb-2" id="successRate">100%</div>
-                    <div class="text-gray-600 text-xs sm:text-sm font-medium">Success Rate</div>
+                <div class="stats-premium rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-cyan-600 mb-2" id="successRate">100%</div>
+                    <div class="text-slate-700 text-sm font-semibold">Success Rate</div>
                 </div>
-                <div class="stats-card rounded-xl p-5 text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-blue-600 mb-2" id="errorCount">0</div>
-                    <div class="text-gray-600 text-xs sm:text-sm font-medium">Errors</div>
+                <div class="stats-premium rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-lime-600 mb-2" id="errorCount">0</div>
+                    <div class="text-slate-700 text-sm font-semibold">Errors</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Enhanced Footer -->
-    <footer class="mt-16 bg-gradient-to-r from-emerald-800 via-teal-800 to-cyan-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="text-center">
-                <p class="text-emerald-100 text-sm mb-2">
-                    Made with <span class="text-red-400 heart-beat inline-block">♥</span> by 
-                    <span class="font-semibold text-white">Ashen</span>
-                </p>
-                <p class="text-emerald-200 text-xs">
-                    Enhanced Glassmorphism Edition • 30+ Premium Gemini Voices • Advanced AI Technology
-                </p>
+    <footer class="mt-20 relative">
+        <div class="glass-premium border-t border-green-200/30">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="text-center">
+                    <p class="text-slate-700 text-lg mb-2">
+                        Made with <span class="text-red-500 heart-premium inline-block">♥</span> by 
+                        <span class="font-bold text-premium-gradient">Ashen</span>
+                    </p>
+                    <p class="text-slate-600 text-sm">
+                        Enhanced with 30+ Premium Gemini Voices • Advanced AI Technology • Glassmorphism UI
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Enhanced Loading Overlay -->
-    <div id="loadingOverlay" class="fixed inset-0 loading-overlay z-50 hidden flex items-center justify-center">
-        <div class="glass-dark rounded-3xl p-12 max-w-md mx-4 text-center">
-            <div class="relative mb-8">
-                <div class="loading-spinner mx-auto"></div>
-            </div>
-            
-            <h3 class="text-white text-xl font-bold mb-3">Generating Speech</h3>
-            <p id="loadingText" class="text-gray-200 mb-6">Processing your text...</p>
-            
-            <div class="flex justify-center space-x-2">
-                <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
-                <div class="w-3 h-3 bg-emerald-600 rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+    <!-- Premium Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 modal-premium z-50 hidden flex items-center justify-center">
+        <div class="modal-content-premium rounded-3xl p-10 max-w-sm mx-4">
+            <div class="text-center">
+                <div class="loading-premium w-16 h-16 border-4 border-green-200 border-t-green-500 rounded-full mx-auto mb-6"></div>
+                <h3 class="text-slate-800 text-xl font-bold mb-3">Generating Speech</h3>
+                <p id="loadingText" class="text-slate-600 mb-6 font-medium">Please wait...</p>
+                <div class="flex justify-center space-x-2">
+                    <div class="w-3 h-10 bg-green-300 rounded-full wave-premium"></div>
+                    <div class="w-3 h-10 bg-green-400 rounded-full wave-premium"></div>
+                    <div class="w-3 h-10 bg-green-500 rounded-full wave-premium"></div>
+                    <div class="w-3 h-10 bg-green-400 rounded-full wave-premium"></div>
+                    <div class="w-3 h-10 bg-green-300 rounded-full wave-premium"></div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Enhanced Notifications -->
-    <div id="notification" class="notification rounded-2xl card-shadow">
-        <div class="p-4">
+    <!-- Premium Notifications -->
+    <div id="notification" class="notification-premium fixed top-6 right-6 z-50 max-w-sm rounded-2xl">
+        <div class="p-6">
             <div class="flex items-start">
-                <i id="notificationIcon" class="text-2xl mr-3 mt-1"></i>
+                <i id="notificationIcon" class="text-2xl mr-4 mt-1"></i>
                 <div class="flex-1">
-                    <h4 id="notificationTitle" class="text-gray-800 font-semibold text-sm"></h4>
-                    <p id="notificationMessage" class="text-gray-600 text-xs mt-1"></p>
+                    <h4 id="notificationTitle" class="text-slate-800 font-bold text-sm"></h4>
+                    <p id="notificationMessage" class="text-slate-600 text-xs mt-1"></p>
                 </div>
-                <button id="notificationClose" class="text-gray-400 hover:text-gray-600 ml-3">
+                <button id="notificationClose" class="text-slate-400 hover:text-slate-600 ml-4">
                     <i class="fas fa-times text-sm"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Enhanced Help Modal -->
-    <div id="helpModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Help & Guide</h2>
-                    <button id="closeHelp" class="text-gray-400 hover:text-gray-600 text-2xl p-2 hover:bg-gray-100 rounded-lg transition-all duration-200">
-                        <i class="fas fa-times"></i>
-                    </button>
+    <!-- Premium Help Modal -->
+    <div id="helpModal" class="modal-premium fixed inset-0 z-50 hidden" style="display: none;">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="modal-content-premium rounded-3xl w-full max-w-5xl max-h-[90vh] overflow-hidden">
+                <div class="glass-premium border-b border-green-200/30 p-6 sticky top-0 z-10">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-2xl font-bold text-slate-800">Help & Guide</h2>
+                        <button id="closeHelp" class="text-slate-400 hover:text-slate-600 text-2xl p-2 hover:bg-slate-100/20 rounded-xl transition-all duration-300">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="modal-body">
-                <div class="p-6 space-y-5">
-                    
-                    <section class="help-section bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-                        <h3 class="text-lg font-semibold mb-3 text-emerald-800 flex items-center">
-                            <i class="fas fa-play-circle mr-2"></i>Quick Start
-                        </h3>
-                        <div class="space-y-2 text-sm text-emerald-700">
-                            <p><strong>1.</strong> Select language from 15+ supported options</p>
-                            <p><strong>2.</strong> Enter your text (max 5,000 characters)</p>
-                            <p><strong>3.</strong> Choose from 30+ premium Gemini voices</p>
-                            <p><strong>4.</strong> Click "Generate Speech" and download</p>
-                        </div>
-                    </section>
-                    
-                    <section class="help-section bg-blue-50 border border-blue-200 rounded-xl p-4">
-                        <h3 class="text-lg font-semibold mb-3 text-blue-800 flex items-center">
-                            <i class="fas fa-microphone mr-2"></i>Premium Gemini Voices
-                        </h3>
-                        <div class="text-sm text-blue-700">
-                            <p><strong>30+ Premium Voices:</strong> Including Core, Stellar, Constellation, Mythological, Cosmic, and Zodiacal collections</p>
-                            <p><strong>Quality:</strong> Ultra-high quality AI-generated speech with natural expressiveness</p>
-                        </div>
-                    </section>
-                    
-                    <section class="help-section bg-purple-50 border border-purple-200 rounded-xl p-4">
-                        <h3 class="text-lg font-semibold mb-3 text-purple-800 flex items-center">
-                            <i class="fas fa-language mr-2"></i>Supported Languages
-                        </h3>
-                        <div class="text-sm text-purple-700">
-                            <p><strong>15+ Languages:</strong> 🇱🇰 Sinhala, 🇺🇸 English, 🇮🇳 Tamil/Hindi, 🇯🇵 Japanese, 🇰🇷 Korean, 🇫🇷 French, 🇩🇪 German, 🇪🇸 Spanish, 🇮🇹 Italian, 🇧🇷 Portuguese, 🇹🇭 Thai, 🇻🇳 Vietnamese + more</p>
-                        </div>
-                    </section>
-                    
-                    <section class="help-section bg-teal-50 border border-teal-200 rounded-xl p-4">
-                        <h3 class="text-lg font-semibold mb-3 text-teal-800 flex items-center">
-                            <i class="fas fa-sliders-h mr-2"></i>Advanced Controls
-                        </h3>
-                        <div class="grid grid-cols-2 gap-3 text-sm text-teal-700">
-                            <div>
-                                <p><strong>Speech Rate:</strong> -50% to +50%</p>
-                                <p><strong>Pitch:</strong> ±20Hz adjustment</p>
+                
+                <div class="overflow-y-auto max-h-[70vh] premium-scroll">
+                    <div class="p-8 space-y-6">
+                        
+                        <section class="category-premium rounded-2xl p-6">
+                            <h3 class="text-lg font-bold mb-4 text-green-800 flex items-center">
+                                <i class="fas fa-play-circle mr-2"></i>Quick Start Guide
+                            </h3>
+                            <div class="space-y-3 text-sm text-green-700">
+                                <p><strong>1.</strong> Select your preferred language and voice engine</p>
+                                <p><strong>2.</strong> Enter your text (maximum 5,000 characters)</p>
+                                <p><strong>3.</strong> Choose from 30+ premium voices</p>
+                                <p><strong>4.</strong> Adjust advanced settings as needed</p>
+                                <p><strong>5.</strong> Click "Generate Speech" and download your audio</p>
                             </div>
-                            <div>
-                                <p><strong>Expressiveness:</strong> 0.1-2.0 range</p>
-                                <p><strong>Formats:</strong> WAV, MP3, OGG, FLAC</p>
+                        </section>
+                        
+                        <section class="glass-secondary rounded-2xl p-6 border border-blue-200/30">
+                            <h3 class="text-lg font-bold mb-4 text-blue-800 flex items-center">
+                                <i class="fas fa-microphone mr-2"></i>Voice Engines
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div class="glass-tertiary p-4 rounded-xl border border-blue-100/50">
+                                    <p class="font-semibold text-blue-800">🤖 Gemini AI</p>
+                                    <p class="text-blue-600">30+ premium voices with natural expressiveness</p>
+                                </div>
+                                <div class="glass-tertiary p-4 rounded-xl border border-blue-100/50">
+                                    <p class="font-semibold text-blue-800">🌐 Edge TTS</p>
+                                    <p class="text-blue-600">Fast, reliable, multilingual support</p>
+                                </div>
                             </div>
-                        </div>
-                    </section>
-                    
-                    <section class="help-section bg-orange-50 border border-orange-200 rounded-xl p-4">
-                        <h3 class="text-lg font-semibold mb-3 text-orange-800 flex items-center">
-                            <i class="fas fa-keyboard mr-2"></i>Keyboard Shortcuts
-                        </h3>
-                        <div class="text-sm text-orange-700 space-y-1">
-                            <p><kbd class="bg-white px-2 py-1 rounded text-xs">Ctrl + Enter</kbd> Generate speech</p>
-                            <p><kbd class="bg-white px-2 py-1 rounded text-xs">Escape</kbd> Close help/modals</p>
-                            <p><kbd class="bg-white px-2 py-1 rounded text-xs">Ctrl + ?</kbd> Open help</p>
-                        </div>
-                    </section>
-                    
+                        </section>
+                        
+                        <section class="glass-secondary rounded-2xl p-6 border border-purple-200/30">
+                            <h3 class="text-lg font-bold mb-4 text-purple-800 flex items-center">
+                                <i class="fas fa-language mr-2"></i>Supported Languages
+                            </h3>
+                            <div class="text-sm text-purple-700">
+                                <p><strong>15 Languages:</strong> 🇱🇰 Sinhala, 🇺🇸 English, 🇮🇳 Tamil/Hindi, 🇯🇵 Japanese, 🇰🇷 Korean, 🇫🇷 French, 🇩🇪 German, 🇪🇸 Spanish, 🇮🇹 Italian, 🇧🇷 Portuguese, 🇹🇭 Thai, 🇻🇳 Vietnamese, and more</p>
+                            </div>
+                        </section>
+                        
+                        <section class="glass-secondary rounded-2xl p-6 border border-teal-200/30">
+                            <h3 class="text-lg font-bold mb-4 text-teal-800 flex items-center">
+                                <i class="fas fa-sliders-h mr-2"></i>Advanced Features
+                            </h3>
+                            <div class="grid grid-cols-2 gap-4 text-sm text-teal-700">
+                                <div>
+                                    <p><strong>Speech Rate:</strong> Control speed (-50% to +50%)</p>
+                                    <p><strong>Pitch Control:</strong> Adjust voice tone (±20Hz)</p>
+                                </div>
+                                <div>
+                                    <p><strong>Temperature:</strong> Voice expressiveness (0.1-2.0)</p>
+                                    <p><strong>Formats:</strong> WAV, MP3, OGG, FLAC</p>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="glass-secondary rounded-2xl p-6 border border-orange-200/30">
+                            <h3 class="text-lg font-bold mb-4 text-orange-800 flex items-center">
+                                <i class="fas fa-keyboard mr-2"></i>Keyboard Shortcuts
+                            </h3>
+                            <div class="text-sm text-orange-700 space-y-2">
+                                <p><kbd class="glass-tertiary px-3 py-1 rounded text-xs font-mono">Ctrl + Enter</kbd> Generate speech</p>
+                                <p><kbd class="glass-tertiary px-3 py-1 rounded text-xs font-mono">Escape</kbd> Close help modal</p>
+                                <p><kbd class="glass-tertiary px-3 py-1 rounded text-xs font-mono">Ctrl + ?</kbd> Open help</p>
+                            </div>
+                        </section>
+                        
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Enhanced Application State
+        // Enhanced Application State with Premium Features
         let appState = {
             currentAudio: null,
             recentGenerations: [],
@@ -939,53 +883,71 @@
             isGenerating: false
         };
 
-        // COMPLETE GEMINI VOICE CONFIGURATIONS (30+ Voices) - EDGE REMOVED
+        // Enhanced Voice Configurations with Premium Collection
         const voiceConfigs = {
-            // Core Premium Voices
-            'Zephyr': { gender: 'neutral', style: 'warm', emoji: '🌬️', quality: 'premium', category: 'Core' },
-            'Puck': { gender: 'neutral', style: 'friendly', emoji: '😊', quality: 'premium', category: 'Core' },
-            'Aoede': { gender: 'female', style: 'professional', emoji: '👩‍💼', quality: 'premium', category: 'Core' },
-            'Charon': { gender: 'male', style: 'authoritative', emoji: '👨‍💼', quality: 'premium', category: 'Core' },
-            'Fenrir': { gender: 'male', style: 'deep', emoji: '🐺', quality: 'premium', category: 'Core' },
-            'Kore': { gender: 'female', style: 'gentle', emoji: '🌸', quality: 'premium', category: 'Core' },
-            
-            // Extended Collection
-            'Leda': { gender: 'female', style: 'elegant', emoji: '🦢', quality: 'premium', category: 'Mythological' },
-            'Orus': { gender: 'male', style: 'strong', emoji: '⛰️', quality: 'premium', category: 'Mythological' },
-            'Callirrhoe': { gender: 'female', style: 'melodic', emoji: '🎵', quality: 'premium', category: 'Mythological' },
-            'Autonoe': { gender: 'female', style: 'natural', emoji: '🍃', quality: 'premium', category: 'Mythological' },
-            'Enceladus': { gender: 'neutral', style: 'cosmic', emoji: '🌌', quality: 'premium', category: 'Cosmic' },
-            'Iapetus': { gender: 'male', style: 'mysterious', emoji: '🌙', quality: 'premium', category: 'Cosmic' },
-            'Umbriel': { gender: 'neutral', style: 'shadowy', emoji: '🌘', quality: 'premium', category: 'Cosmic' },
-            
-            // Stellar Series
-            'Algieba': { gender: 'female', style: 'bright', emoji: '⭐', quality: 'premium', category: 'Stellar' },
-            'Despina': { gender: 'female', style: 'oceanic', emoji: '🌊', quality: 'premium', category: 'Stellar' },
-            'Erinome': { gender: 'female', style: 'classical', emoji: '🏛️', quality: 'premium', category: 'Stellar' },
-            'Algenib': { gender: 'neutral', style: 'stellar', emoji: '✨', quality: 'premium', category: 'Stellar' },
-            'Rasalgethi': { gender: 'male', style: 'royal', emoji: '👑', quality: 'premium', category: 'Stellar' },
-            'Laomedeia': { gender: 'female', style: 'mythical', emoji: '🏺', quality: 'premium', category: 'Stellar' },
-            
-            // Constellation Collection
-            'Achernar': { gender: 'neutral', style: 'swift', emoji: '💫', quality: 'premium', category: 'Constellation' },
-            'Alnilam': { gender: 'male', style: 'brilliant', emoji: '💎', quality: 'premium', category: 'Constellation' },
-            'Schedar': { gender: 'female', style: 'regal', emoji: '💃', quality: 'premium', category: 'Constellation' },
-            'Gacrux': { gender: 'neutral', style: 'southern', emoji: '🌟', quality: 'premium', category: 'Constellation' },
-            'Pulcherrima': { gender: 'female', style: 'beautiful', emoji: '🌺', quality: 'premium', category: 'Constellation' },
-            'Achird': { gender: 'neutral', style: 'binary', emoji: '👥', quality: 'premium', category: 'Constellation' },
-            
-            // Zodiacal Collection
-            'Zubenelgenubi': { gender: 'male', style: 'balanced', emoji: '⚖️', quality: 'premium', category: 'Zodiacal' },
-            'Vindemiatrix': { gender: 'female', style: 'harvest', emoji: '🍇', quality: 'premium', category: 'Zodiacal' },
-            'Sadachbia': { gender: 'neutral', style: 'aqueous', emoji: '🌊', quality: 'premium', category: 'Zodiacal' },
-            'Sadaltager': { gender: 'male', style: 'fortunate', emoji: '🍀', quality: 'premium', category: 'Zodiacal' },
-            'Sulafat': { gender: 'female', style: 'celestial', emoji: '🌙', quality: 'premium', category: 'Zodiacal' }
+            gemini: {
+                // Core Premium Voices
+                'Zephyr': { gender: 'neutral', style: 'warm', emoji: '🌬️', quality: 'premium', category: 'Core' },
+                'Puck': { gender: 'neutral', style: 'friendly', emoji: '😊', quality: 'premium', category: 'Core' },
+                'Aoede': { gender: 'female', style: 'professional', emoji: '👩‍💼', quality: 'premium', category: 'Core' },
+                'Charon': { gender: 'male', style: 'authoritative', emoji: '👨‍💼', quality: 'premium', category: 'Core' },
+                'Fenrir': { gender: 'male', style: 'deep', emoji: '🐺', quality: 'premium', category: 'Core' },
+                'Kore': { gender: 'female', style: 'gentle', emoji: '🌸', quality: 'premium', category: 'Core' },
+                
+                // Extended Premium Collection
+                'Leda': { gender: 'female', style: 'elegant', emoji: '🦢', quality: 'premium', category: 'Mythological' },
+                'Orus': { gender: 'male', style: 'strong', emoji: '⛰️', quality: 'premium', category: 'Mythological' },
+                'Callirrhoe': { gender: 'female', style: 'melodic', emoji: '🎵', quality: 'premium', category: 'Mythological' },
+                'Autonoe': { gender: 'female', style: 'natural', emoji: '🍃', quality: 'premium', category: 'Mythological' },
+                'Enceladus': { gender: 'neutral', style: 'cosmic', emoji: '🌌', quality: 'premium', category: 'Cosmic' },
+                'Iapetus': { gender: 'male', style: 'mysterious', emoji: '🌙', quality: 'premium', category: 'Cosmic' },
+                'Umbriel': { gender: 'neutral', style: 'shadowy', emoji: '🌘', quality: 'premium', category: 'Cosmic' },
+                
+                // Stellar Premium Series
+                'Algieba': { gender: 'female', style: 'bright', emoji: '⭐', quality: 'premium', category: 'Stellar' },
+                'Despina': { gender: 'female', style: 'oceanic', emoji: '🌊', quality: 'premium', category: 'Stellar' },
+                'Erinome': { gender: 'female', style: 'classical', emoji: '🏛️', quality: 'premium', category: 'Stellar' },
+                'Algenib': { gender: 'neutral', style: 'stellar', emoji: '✨', quality: 'premium', category: 'Stellar' },
+                'Rasalgethi': { gender: 'male', style: 'royal', emoji: '👑', quality: 'premium', category: 'Stellar' },
+                'Laomedeia': { gender: 'female', style: 'mythical', emoji: '🏺', quality: 'premium', category: 'Stellar' },
+                
+                // Constellation Premium Collection
+                'Achernar': { gender: 'neutral', style: 'swift', emoji: '💫', quality: 'premium', category: 'Constellation' },
+                'Alnilam': { gender: 'male', style: 'brilliant', emoji: '💎', quality: 'premium', category: 'Constellation' },
+                'Schedar': { gender: 'female', style: 'regal', emoji: '💃', quality: 'premium', category: 'Constellation' },
+                'Gacrux': { gender: 'neutral', style: 'southern', emoji: '🌟', quality: 'premium', category: 'Constellation' },
+                'Pulcherrima': { gender: 'female', style: 'beautiful', emoji: '🌺', quality: 'premium', category: 'Constellation' },
+                'Achird': { gender: 'neutral', style: 'binary', emoji: '👥', quality: 'premium', category: 'Constellation' },
+                
+                // Zodiacal Premium Collection
+                'Zubenelgenubi': { gender: 'male', style: 'balanced', emoji: '⚖️', quality: 'premium', category: 'Zodiacal' },
+                'Vindemiatrix': { gender: 'female', style: 'harvest', emoji: '🍇', quality: 'premium', category: 'Zodiacal' },
+                'Sadachbia': { gender: 'neutral', style: 'aqueous', emoji: '🌊', quality: 'premium', category: 'Zodiacal' },
+                'Sadaltager': { gender: 'male', style: 'fortunate', emoji: '🍀', quality: 'premium', category: 'Zodiacal' },
+                'Sulafat': { gender: 'female', style: 'celestial', emoji: '🌙', quality: 'premium', category: 'Zodiacal' }
+            },
+            edge: {
+                'si-LK-ThiliniNeural': { gender: 'female', language: 'si-LK', emoji: '🇱🇰', quality: 'standard', category: 'Regional' },
+                'en-US-AriaNeural': { gender: 'female', language: 'en-US', emoji: '🇺🇸', quality: 'standard', category: 'Regional' },
+                'en-US-GuyNeural': { gender: 'male', language: 'en-US', emoji: '🇺🇸', quality: 'standard', category: 'Regional' },
+                'en-US-JennyNeural': { gender: 'female', language: 'en-US', emoji: '🇺🇸', quality: 'standard', category: 'Regional' },
+                'en-US-DavisNeural': { gender: 'male', language: 'en-US', emoji: '🇺🇸', quality: 'standard', category: 'Regional' },
+                'en-GB-SoniaNeural': { gender: 'female', language: 'en-GB', emoji: '🇬🇧', quality: 'standard', category: 'Regional' },
+                'en-GB-RyanNeural': { gender: 'male', language: 'en-GB', emoji: '🇬🇧', quality: 'standard', category: 'Regional' },
+                'en-AU-NatashaNeural': { gender: 'female', language: 'en-AU', emoji: '🇦🇺', quality: 'standard', category: 'Regional' },
+                'en-AU-WilliamNeural': { gender: 'male', language: 'en-AU', emoji: '🇦🇺', quality: 'standard', category: 'Regional' },
+                'hi-IN-SwaraNeural': { gender: 'female', language: 'hi-IN', emoji: '🇮🇳', quality: 'standard', category: 'Regional' },
+                'hi-IN-MadhurNeural': { gender: 'male', language: 'hi-IN', emoji: '🇮🇳', quality: 'standard', category: 'Regional' },
+                'ta-IN-PallaviNeural': { gender: 'female', language: 'ta-IN', emoji: '🇮🇳', quality: 'standard', category: 'Regional' },
+                'ta-IN-ValluvarNeural': { gender: 'male', language: 'ta-IN', emoji: '🇮🇳', quality: 'standard', category: 'Regional' }
+            }
         };
 
-        // DOM Elements
+        // Enhanced DOM Elements
         const elements = {
             textInput: document.getElementById('textInput'),
             languageSelect: document.getElementById('languageSelect'),
+            engineSelect: document.getElementById('engineSelect'),
             voiceContainer: document.getElementById('voiceContainer'),
             voiceSearch: document.getElementById('voiceSearch'),
             generateBtn: document.getElementById('generateBtn'),
@@ -1001,38 +963,33 @@
             helpModal: document.getElementById('helpModal'),
             recentList: document.getElementById('recentList'),
             textLimitIndicator: document.getElementById('textLimitIndicator'),
-            voiceCount: document.getElementById('voiceCount'),
-            clearBtn: document.getElementById('clearBtn')
+            voiceCount: document.getElementById('voiceCount')
         };
 
-        // Initialize Application
+        // Initialize Application with Enhanced Performance
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing app...');
             initializeApp();
             setupEventListeners();
             updateVoiceOptions();
             loadUserPreferences();
-            setTimeout(() => showWelcomeMessage(), 500);
+            updateStatistics();
         });
 
         function initializeApp() {
-            console.log('Initializing application...');
             // Batch DOM updates for better performance
             requestAnimationFrame(() => {
                 updateTextStats();
                 updateRangeValues();
                 loadRecentGenerations();
-                updateStatistics();
                 
-                // Ensure modal is hidden on load
+                // Ensure modal is properly hidden
                 if (elements.helpModal) {
                     elements.helpModal.style.display = 'none';
                     elements.helpModal.classList.add('hidden');
-                    elements.helpModal.classList.remove('show');
-                    console.log('Help modal initialized as hidden');
                 }
                 
-                console.log('App initialization complete');
+                updateVoiceOptions();
+                updateStatistics();
             });
             
             // Auto-refresh statistics every 30 seconds
@@ -1043,78 +1000,63 @@
             // Text input events
             elements.textInput.addEventListener('input', updateTextStats);
             
-            // Template buttons
+            // Template buttons with enhanced feedback
             document.querySelectorAll('.template-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     elements.textInput.value = this.dataset.text;
                     updateTextStats();
-                    showNotification('info', 'Template Loaded', 'Text template has been loaded successfully.');
-                    
-                    // Visual feedback
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => this.style.transform = 'scale(1)', 150);
+                    showNotification('info', 'Template Loaded', 'Text template loaded successfully.');
                 });
             });
 
-            // Voice search with debouncing
-            elements.voiceSearch.addEventListener('input', debounce(filterVoices, 300));
+            // Engine and voice events
+            elements.engineSelect.addEventListener('change', updateVoiceOptions);
+            elements.voiceSearch.addEventListener('input', filterVoices);
 
-            // Range inputs
+            // Range inputs with real-time feedback
             document.getElementById('speechRate').addEventListener('input', updateRangeValues);
             document.getElementById('speechPitch').addEventListener('input', updateRangeValues);
             document.getElementById('temperature').addEventListener('input', updateRangeValues);
 
-            // Main buttons
+            // Enhanced button events
             elements.generateBtn.addEventListener('click', generateSpeech);
             elements.batchBtn.addEventListener('click', showBatchModal);
-            elements.clearBtn.addEventListener('click', clearAll);
             document.getElementById('statsBtn').addEventListener('click', fetchStatistics);
 
-            // Modal events
-            document.getElementById('helpBtn').addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Help button clicked');
-                showHelpModal();
-            });
+            // Modal events with improved UX
+            document.getElementById('helpBtn').addEventListener('click', showHelpModal);
+            document.getElementById('closeHelp').addEventListener('click', hideHelpModal);
             
-            document.getElementById('closeHelp').addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Close help clicked');
-                hideHelpModal();
-            });
-            
-            // Click outside modal to close
-            if (elements.helpModal) {
-                elements.helpModal.addEventListener('click', function(e) {
-                    if (e.target === elements.helpModal) {
-                        console.log('Clicked outside modal');
-                        hideHelpModal();
-                    }
-                });
-
-                // Prevent modal content clicks from closing modal
-                const modalContent = elements.helpModal.querySelector('.modal-content');
-                if (modalContent) {
-                    modalContent.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                    });
+            // Enhanced modal interaction
+            elements.helpModal.addEventListener('click', function(e) {
+                if (e.target === elements.helpModal) {
+                    hideHelpModal();
                 }
-            }
+            });
 
-            // Notification close
+            // Prevent modal content clicks from closing modal
+            elements.helpModal.querySelector('.modal-content-premium').addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Enhanced keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !elements.helpModal.classList.contains('hidden')) {
+                    hideHelpModal();
+                }
+                if ((e.ctrlKey || e.metaKey) && e.key === '?') {
+                    e.preventDefault();
+                    showHelpModal();
+                }
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && !appState.isGenerating) {
+                    e.preventDefault();
+                    generateSpeech();
+                }
+            });
+
+            // Notification events
             document.getElementById('notificationClose').addEventListener('click', hideNotification);
-
-            // Download and share
             elements.downloadBtn.addEventListener('click', downloadAudio);
-            document.getElementById('shareBtn').addEventListener('click', shareAudio);
-            
-            // Ensure download button works for each generation
-            elements.downloadBtn.onclick = downloadAudio;
-
-            // Keyboard shortcuts
-            document.addEventListener('keydown', handleKeyboardShortcuts);
         }
 
         function updateTextStats() {
@@ -1127,16 +1069,13 @@
             document.getElementById('wordCount').textContent = `${wordCount} words`;
             elements.textLimitIndicator.textContent = `${charCount} / ${maxLength}`;
             
-            // Color coding for limit
+            // Enhanced color coding
             if (charCount > maxLength * 0.9) {
-                elements.textLimitIndicator.classList.add('text-red-500');
-                elements.textLimitIndicator.classList.remove('text-gray-500', 'text-yellow-500');
+                elements.textLimitIndicator.className = 'ml-auto text-sm font-medium text-red-600 glass-tertiary px-3 py-1 rounded-full';
             } else if (charCount > maxLength * 0.7) {
-                elements.textLimitIndicator.classList.add('text-yellow-500');
-                elements.textLimitIndicator.classList.remove('text-gray-500', 'text-red-500');
+                elements.textLimitIndicator.className = 'ml-auto text-sm font-medium text-yellow-600 glass-tertiary px-3 py-1 rounded-full';
             } else {
-                elements.textLimitIndicator.classList.add('text-gray-500');
-                elements.textLimitIndicator.classList.remove('text-yellow-500', 'text-red-500');
+                elements.textLimitIndicator.className = 'ml-auto text-sm font-medium text-slate-600 glass-tertiary px-3 py-1 rounded-full';
             }
         }
 
@@ -1151,121 +1090,106 @@
         }
 
         function updateVoiceOptions() {
-            console.log('Updating voice options...');
-            const voices = voiceConfigs;
+            const engine = elements.engineSelect.value;
+            const voices = voiceConfigs[engine];
             appState.currentVoices = voices;
             
             renderVoices(voices);
             elements.voiceCount.textContent = Object.keys(voices).length;
-            console.log(`Loaded ${Object.keys(voices).length} voices`);
         }
 
         function renderVoices(voices) {
-            console.log('Rendering voices...');
-            // Clear container efficiently
             elements.voiceContainer.innerHTML = '';
-            
             const fragment = document.createDocumentFragment();
             
-            // Group voices by category for better organization
-            const categories = {
-                'Core': [],
-                'Stellar': [],
-                'Constellation': [],
-                'Mythological': [],
-                'Cosmic': [],
-                'Zodiacal': []
-            };
-            
-            Object.entries(voices).forEach(([voiceName, config]) => {
-                const category = config.category || 'Core';
-                if (categories[category]) {
-                    categories[category].push([voiceName, config]);
-                }
-            });
-            
-            // Render categories that have voices
-            Object.entries(categories).forEach(([category, categoryVoices]) => {
-                if (categoryVoices.length > 0) {
-                    const categoryDiv = document.createElement('div');
-                    categoryDiv.className = 'voice-category';
-                    
-                    const titleDiv = document.createElement('div');
-                    titleDiv.className = 'voice-category-title';
-                    titleDiv.textContent = `${category} Collection`;
-                    categoryDiv.appendChild(titleDiv);
-                    
-                    // Add voice cards
-                    categoryVoices.forEach(([voiceName, config]) => {
-                        categoryDiv.appendChild(createVoiceCard(voiceName, config));
-                    });
-                    
-                    fragment.appendChild(categoryDiv);
-                }
-            });
+            if (elements.engineSelect.value === 'gemini') {
+                const categories = {
+                    'Core': [],
+                    'Stellar': [],
+                    'Constellation': [],
+                    'Mythological': [],
+                    'Cosmic': [],
+                    'Zodiacal': []
+                };
+                
+                Object.entries(voices).forEach(([voiceName, config]) => {
+                    const category = config.category || 'Core';
+                    if (categories[category]) {
+                        categories[category].push([voiceName, config]);
+                    }
+                });
+                
+                Object.entries(categories).forEach(([category, categoryVoices]) => {
+                    if (categoryVoices.length > 0) {
+                        const categoryDiv = document.createElement('div');
+                        categoryDiv.className = 'voice-category mb-6';
+                        
+                        const titleDiv = document.createElement('div');
+                        titleDiv.className = 'category-premium text-xs font-bold text-green-800 mb-3 px-3 py-2 rounded-xl';
+                        titleDiv.textContent = `${category} Collection`;
+                        categoryDiv.appendChild(titleDiv);
+                        
+                        categoryVoices.forEach(([voiceName, config]) => {
+                            categoryDiv.appendChild(createVoiceCard(voiceName, config));
+                        });
+                        
+                        fragment.appendChild(categoryDiv);
+                    }
+                });
+            } else {
+                Object.entries(voices).forEach(([voiceName, config]) => {
+                    fragment.appendChild(createVoiceCard(voiceName, config));
+                });
+            }
             
             elements.voiceContainer.appendChild(fragment);
-            console.log(`Rendered ${Object.keys(voices).length} voice cards`);
             
-            // Select first voice by default
-            setTimeout(() => {
-                const firstVoiceCard = elements.voiceContainer.querySelector('.voice-card');
-                if (firstVoiceCard) {
-                    console.log('Selecting first voice');
-                    firstVoiceCard.click();
-                }
-            }, 100);
+            // Auto-select first voice
+            const firstVoiceCard = elements.voiceContainer.querySelector('.voice-card-premium');
+            if (firstVoiceCard) {
+                setTimeout(() => firstVoiceCard.click(), 100);
+            }
         }
 
         function createVoiceCard(voiceName, config) {
             const voiceCard = document.createElement('div');
-            voiceCard.className = 'voice-card';
-            voiceCard.dataset.voiceName = voiceName;
+            voiceCard.className = 'voice-card-premium';
+            
+            const displayName = voiceName.includes('-') ? voiceName.split('-').pop() || voiceName : voiceName;
             
             voiceCard.innerHTML = `
                 <div class="voice-info">
                     <div class="voice-details">
-                        <span class="voice-emoji">${config.emoji}</span>
-                        <div class="voice-text">
-                            <div class="voice-name">${voiceName}</div>
-                            <div class="voice-meta">
-                                <span>${config.gender}</span>
+                        <span class="voice-emoji text-2xl mr-3">${config.emoji}</span>
+                        <div class="voice-text flex-1">
+                            <div class="voice-name text-sm font-bold text-slate-800 mb-1">${displayName}</div>
+                            <div class="voice-meta text-xs text-slate-600 flex items-center gap-2">
+                                <span class="capitalize">${config.gender}</span>
                                 <span>•</span>
-                                <span>${config.style}</span>
+                                <span class="capitalize">${config.style || config.language}</span>
+                                ${config.quality === 'premium' ? '<span class="glass-tertiary text-green-700 px-2 py-0.5 rounded-full text-xs font-semibold">Premium</span>' : ''}
                             </div>
                         </div>
                     </div>
-                    <input type="radio" name="voice" value="${voiceName}" class="w-4 h-4 text-emerald-600 bg-white border-emerald-300 focus:ring-emerald-500 focus:ring-2 flex-shrink-0">
+                    <input type="radio" name="voice" value="${voiceName}" class="w-5 h-5 text-green-600 bg-white/80 border-green-300 focus:ring-green-500 focus:ring-2 flex-shrink-0">
                 </div>
             `;
             
             voiceCard.addEventListener('click', (e) => {
                 e.preventDefault();
-                e.stopPropagation();
-                console.log('Voice selected:', voiceName);
-                selectVoice(voiceCard, voiceName);
+                document.querySelectorAll('input[name="voice"]').forEach(radio => radio.checked = false);
+                voiceCard.querySelector('input[type="radio"]').checked = true;
+                
+                document.querySelectorAll('.voice-card-premium').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                voiceCard.classList.add('selected');
             });
             
             return voiceCard;
         }
 
-        function selectVoice(card, voiceName) {
-            console.log('Selecting voice:', voiceName);
-            // Remove selection from all cards
-            document.querySelectorAll('.voice-card').forEach(c => {
-                c.classList.remove('selected');
-                const radio = c.querySelector('input[type="radio"]');
-                if (radio) radio.checked = false;
-            });
-            
-            // Add selection to clicked card
-            card.classList.add('selected');
-            const radio = card.querySelector('input[type="radio"]');
-            if (radio) radio.checked = true;
-            
-            console.log('Voice selected successfully:', voiceName);
-        }
-
+        // Enhanced debounce for better performance
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -1278,7 +1202,7 @@
             };
         }
 
-        function filterVoices() {
+        const debouncedFilterVoices = debounce(function() {
             const searchTerm = elements.voiceSearch.value.toLowerCase();
             appState.filters.search = searchTerm;
             
@@ -1286,18 +1210,24 @@
             const filteredVoices = {};
             
             Object.entries(voices).forEach(([voiceName, config]) => {
-                if (voiceName.toLowerCase().includes(searchTerm) || 
+                const displayName = voiceName.includes('-') ? voiceName.split('-').pop() || voiceName : voiceName;
+                if (displayName.toLowerCase().includes(searchTerm) || 
                     config.style?.toLowerCase().includes(searchTerm) ||
-                    config.category?.toLowerCase().includes(searchTerm) ||
-                    config.gender?.toLowerCase().includes(searchTerm)) {
+                    config.category?.toLowerCase().includes(searchTerm)) {
                     filteredVoices[voiceName] = config;
                 }
             });
             
             renderVoices(filteredVoices);
+        }, 300);
+
+        function filterVoices() {
+            debouncedFilterVoices();
         }
 
         async function generateSpeech() {
+            if (appState.isGenerating) return;
+            
             const text = elements.textInput.value.trim();
             if (!text) {
                 showNotification('error', 'Error', 'Please enter some text to generate speech.');
@@ -1315,8 +1245,7 @@
                 return;
             }
 
-            if (appState.isGenerating) return;
-
+            // Set generating state
             appState.isGenerating = true;
             elements.generateBtn.disabled = true;
             elements.generateBtnText.textContent = 'Generating...';
@@ -1326,7 +1255,7 @@
             try {
                 const requestData = {
                     text: text,
-                    engine: 'gemini', // Only Gemini now
+                    engine: elements.engineSelect.value,
                     voice: selectedVoice.value,
                     language: elements.languageSelect.value,
                     rate: `${document.getElementById('speechRate').value > 0 ? '+' : ''}${document.getElementById('speechRate').value}%`,
@@ -1337,11 +1266,62 @@
                     quality: document.getElementById('highQuality').checked ? 'high' : 'standard'
                 };
 
-                // Simulate API call with realistic timing
-                const result = await simulateApiCall(requestData);
-                
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                const result = await response.json();
+
                 if (result.success) {
-                    handleSuccessfulGeneration(result, text, selectedVoice.value);
+                    const audioUrl = `/api/download/${result.filename}`;
+                    elements.audioPlayer.src = audioUrl;
+                    elements.audioPlayerContainer.classList.remove('hidden');
+                    
+                    elements.downloadBtn.onclick = () => {
+                        window.open(audioUrl, '_blank');
+                    };
+                    
+                    // Enhanced audio info display
+                    document.getElementById('audioInfo').innerHTML = `
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="flex justify-between">
+                                <span class="font-semibold">Size:</span>
+                                <span class="text-slate-600">${(result.size / 1024).toFixed(1)} KB</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-semibold">Duration:</span>
+                                <span class="text-slate-600">${result.duration.toFixed(1)}s</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-semibold">Format:</span>
+                                <span class="uppercase text-slate-600">${result.format}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-semibold">Engine:</span>
+                                <span class="capitalize text-slate-600">${elements.engineSelect.value}</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Add to recent generations
+                    addToRecentGenerations({
+                        text: text.substring(0, 50) + (text.length > 50 ? '...' : ''),
+                        voice: selectedVoice.value,
+                        timestamp: new Date().toLocaleTimeString(),
+                        filename: result.filename,
+                        duration: result.duration,
+                        engine: elements.engineSelect.value
+                    });
+                    
+                    // Update statistics
+                    appState.stats.totalGenerations++;
+                    appState.stats.totalDuration += result.duration;
+                    updateStatistics();
+                    
                     showNotification('success', 'Success!', 'Speech generated successfully.');
                 } else {
                     throw new Error(result.error || 'Generation failed');
@@ -1357,167 +1337,6 @@
                 showProgress(false);
                 elements.generateBtn.disabled = false;
                 elements.generateBtnText.textContent = 'Generate Speech';
-                updateStatistics();
-            }
-        }
-
-        function generateDemoAudio() {
-            try {
-                // Create a simple demo audio tone
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const sampleRate = audioContext.sampleRate;
-                const duration = 2; // 2 seconds
-                const length = sampleRate * duration;
-                const buffer = audioContext.createBuffer(1, length, sampleRate);
-                const data = buffer.getChannelData(0);
-                
-                // Generate a pleasant tone sequence
-                for (let i = 0; i < length; i++) {
-                    const t = i / sampleRate;
-                    // Create a melody with multiple frequencies
-                    const freq1 = 440; // A4
-                    const freq2 = 523.25; // C5
-                    const freq3 = 659.25; // E5
-                    
-                    let sample = 0;
-                    sample += Math.sin(2 * Math.PI * freq1 * t) * 0.3 * Math.exp(-t * 2);
-                    sample += Math.sin(2 * Math.PI * freq2 * t) * 0.2 * Math.exp(-t * 1.5);
-                    sample += Math.sin(2 * Math.PI * freq3 * t) * 0.1 * Math.exp(-t * 1);
-                    
-                    data[i] = sample * Math.exp(-t * 0.5); // Fade out
-                }
-                
-                // Convert to WAV and create blob URL
-                const wavBlob = audioBufferToWav(buffer);
-                return URL.createObjectURL(wavBlob);
-            } catch (error) {
-                console.error('Audio generation failed:', error);
-                // Fallback: return a data URL with a simple beep
-                return 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBgAAA';
-            }
-        }
-        
-        function audioBufferToWav(buffer) {
-            const length = buffer.length;
-            const arrayBuffer = new ArrayBuffer(44 + length * 2);
-            const view = new DataView(arrayBuffer);
-            const channels = 1;
-            const sampleRate = buffer.sampleRate;
-            
-            // WAV header
-            const writeString = (offset, string) => {
-                for (let i = 0; i < string.length; i++) {
-                    view.setUint8(offset + i, string.charCodeAt(i));
-                }
-            };
-            
-            writeString(0, 'RIFF');
-            view.setUint32(4, 36 + length * 2, true);
-            writeString(8, 'WAVE');
-            writeString(12, 'fmt ');
-            view.setUint32(16, 16, true);
-            view.setUint16(20, 1, true);
-            view.setUint16(22, channels, true);
-            view.setUint32(24, sampleRate, true);
-            view.setUint32(28, sampleRate * 2, true);
-            view.setUint16(32, 2, true);
-            view.setUint16(34, 16, true);
-            writeString(36, 'data');
-            view.setUint32(40, length * 2, true);
-            
-            // Convert float samples to 16-bit PCM
-            const data = buffer.getChannelData(0);
-            let offset = 44;
-            for (let i = 0; i < length; i++) {
-                const sample = Math.max(-1, Math.min(1, data[i]));
-                view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7FFF, true);
-                offset += 2;
-            }
-            
-            return new Blob([arrayBuffer], { type: 'audio/wav' });
-        }
-            // Enhanced simulation with better realism
-            return new Promise((resolve, reject) => {
-                const processingTime = Math.random() * 2000 + 3000; // 3-5 seconds
-                
-                setTimeout(() => {
-                    if (Math.random() > 0.05) { // 95% success rate
-                        const duration = Math.random() * 10 + 5; // 5-15 seconds
-                        const size = Math.random() * 500000 + 100000; // 100KB-600KB
-                        
-                        resolve({
-                            success: true,
-                            filename: `tts_${Date.now()}.${data.format}`,
-                            size: size,
-                            duration: duration,
-                            format: data.format,
-                            voice: data.voice,
-                            engine: data.engine
-                        });
-                    } else {
-                        reject(new Error('API simulation failure - please try again'));
-                    }
-                }, processingTime);
-            });
-        }
-
-        function handleSuccessfulGeneration(result, text, voice) {
-            // Generate a simple beep sound for demo purposes
-            const audioUrl = generateDemoAudio();
-            elements.audioPlayer.src = audioUrl;
-            elements.audioPlayerContainer.classList.remove('hidden');
-            
-            // Store the audio URL for download
-            appState.currentAudio = audioUrl;
-            
-            // Update audio info
-            document.getElementById('audioInfo').innerHTML = `
-                <div class="grid grid-cols-2 gap-4 text-sm">
-                    <div class="flex justify-between">
-                        <span class="font-medium">Size:</span>
-                        <span>${(result.size / 1024).toFixed(1)} KB</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="font-medium">Duration:</span>
-                        <span>${result.duration.toFixed(1)}s</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="font-medium">Format:</span>
-                        <span class="uppercase">${result.format}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="font-medium">Voice:</span>
-                        <span>${result.voice}</span>
-                    </div>
-                </div>
-            `;
-            
-            // Add to recent generations
-            addToRecentGenerations({
-                text: text.substring(0, 50) + (text.length > 50 ? '...' : ''),
-                voice: voice,
-                timestamp: new Date().toLocaleTimeString(),
-                filename: result.filename,
-                duration: result.duration,
-                engine: 'gemini'
-            });
-            
-            // Update statistics
-            appState.stats.totalGenerations++;
-            appState.stats.totalDuration += result.duration;
-            updateFavoriteVoice(voice);
-            updateSuccessRate();
-            
-            // Auto-play if enabled
-            if (document.getElementById('autoPlay').checked) {
-                setTimeout(() => {
-                    elements.audioPlayer.play().catch(e => {
-                        console.log('Auto-play prevented by browser policy');
-                        showNotification('info', 'Audio Ready', 'Click play button to listen to your generated speech.');
-                    });
-                }, 500);
-            } else {
-                showNotification('success', 'Audio Generated', 'Your speech is ready to play!');
             }
         }
 
@@ -1526,75 +1345,60 @@
                 elements.progressContainer.classList.remove('hidden');
                 let progress = 0;
                 const interval = setInterval(() => {
-                    progress += Math.random() * 20;
+                    progress += Math.random() * 25;
                     if (progress > 90) progress = 90;
                     elements.progressBar.style.width = `${progress}%`;
                     
                     if (elements.progressContainer.classList.contains('hidden')) {
                         clearInterval(interval);
                     }
-                }, 300);
+                }, 600);
             } else {
                 elements.progressBar.style.width = '100%';
                 setTimeout(() => {
                     elements.progressContainer.classList.add('hidden');
                     elements.progressBar.style.width = '0%';
-                }, 300);
+                }, 400);
             }
         }
 
         function showHelpModal() {
-            console.log('Opening help modal');
-            if (elements.helpModal) {
-                elements.helpModal.style.display = 'flex';
-                elements.helpModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                
-                // Add show class with slight delay for smooth animation
-                setTimeout(() => {
-                    elements.helpModal.classList.add('show');
-                }, 10);
-            }
+            elements.helpModal.style.display = 'flex';
+            elements.helpModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            setTimeout(() => {
+                elements.helpModal.classList.add('show');
+            }, 10);
         }
 
         function hideHelpModal() {
-            console.log('Closing help modal');
-            if (elements.helpModal) {
-                elements.helpModal.classList.remove('show');
-                
-                // Wait for fade-out animation
-                setTimeout(() => {
-                    elements.helpModal.style.display = 'none';
-                    elements.helpModal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                }, 200);
-            }
+            elements.helpModal.classList.remove('show');
+            
+            setTimeout(() => {
+                elements.helpModal.style.display = 'none';
+                elements.helpModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 200);
         }
 
         function showNotification(type, title, message) {
-            console.log('Showing notification:', type, title, message);
             const iconMap = {
-                'success': 'fas fa-check-circle text-emerald-500',
+                'success': 'fas fa-check-circle text-green-500',
                 'error': 'fas fa-exclamation-circle text-red-500',
                 'info': 'fas fa-info-circle text-blue-500',
                 'warning': 'fas fa-exclamation-triangle text-yellow-500'
             };
             
-            const iconElement = document.getElementById('notificationIcon');
-            const titleElement = document.getElementById('notificationTitle');
-            const messageElement = document.getElementById('notificationMessage');
+            document.getElementById('notificationIcon').className = iconMap[type];
+            document.getElementById('notificationTitle').textContent = title;
+            document.getElementById('notificationMessage').textContent = message;
             
-            if (iconElement) iconElement.className = iconMap[type];
-            if (titleElement) titleElement.textContent = title;
-            if (messageElement) messageElement.textContent = message;
+            elements.notification.classList.add('show');
             
-            if (elements.notification) {
-                elements.notification.classList.add('show');
-                
-                setTimeout(() => {
-                    elements.notification.classList.remove('show');
-                }, 5000);
-            }
+            setTimeout(() => {
+                elements.notification.classList.remove('show');
+            }, 5000);
         }
 
         function hideNotification() {
@@ -1604,7 +1408,7 @@
         function showLoading(show) {
             if (show) {
                 elements.loadingOverlay.classList.remove('hidden');
-                document.getElementById('loadingText').textContent = 'Generating speech with Gemini AI...';
+                document.getElementById('loadingText').textContent = 'Processing with premium AI voices...';
             } else {
                 elements.loadingOverlay.classList.add('hidden');
             }
@@ -1622,80 +1426,33 @@
 
         function updateRecentList() {
             if (appState.recentGenerations.length === 0) {
-                elements.recentList.innerHTML = '<p class="text-gray-500 text-sm italic text-center py-8">No recent generations</p>';
+                elements.recentList.innerHTML = '<p class="text-slate-500 text-sm italic text-center py-8">No recent generations</p>';
                 return;
             }
             
             elements.recentList.innerHTML = appState.recentGenerations.map(gen => `
-                <div class="glass-card p-4 rounded-2xl hover:bg-white hover:bg-opacity-30 transition-all duration-200 cursor-pointer">
-                    <div class="text-gray-800 text-sm font-medium mb-2">${gen.text}</div>
-                    <div class="text-gray-600 text-xs flex justify-between items-center">
-                        <span>${gen.voice}</span>
-                        <span class="text-xs bg-emerald-100 text-emerald-600 px-2 py-1 rounded">Gemini</span>
+                <div class="glass-secondary rounded-xl p-4 hover:glass-premium transition-all duration-300 cursor-pointer border border-green-100/30">
+                    <div class="text-slate-800 text-sm font-semibold mb-2">${gen.text}</div>
+                    <div class="text-slate-600 text-xs flex justify-between items-center">
+                        <span class="capitalize">${gen.voice.split('-').pop() || gen.voice}</span>
+                        <span class="glass-tertiary px-2 py-1 rounded-full text-xs font-medium ${gen.engine === 'gemini' ? 'text-purple-600' : 'text-blue-600'}">${gen.engine}</span>
                         <span>${gen.timestamp}</span>
                     </div>
                 </div>
             `).join('');
         }
 
-        function clearAll() {
-            console.log('Clearing all inputs...');
-            elements.textInput.value = '';
-            updateTextStats();
-            elements.audioPlayerContainer.classList.add('hidden');
-            
-            // Reset sliders
-            document.getElementById('speechRate').value = 0;
-            document.getElementById('speechPitch').value = 0;
-            document.getElementById('temperature').value = 1.0;
-            updateRangeValues();
-            
-            // Reset checkboxes
-            document.getElementById('enhanceAudio').checked = false;
-            document.getElementById('highQuality').checked = false;
-            document.getElementById('autoPlay').checked = false;
-            
-            // Reset voice search
-            elements.voiceSearch.value = '';
-            
-            // Clear current audio
-            appState.currentAudio = null;
-            
-            showNotification('info', 'Cleared', 'All inputs have been reset.');
-        }
-
-        function downloadAudio() {
-            if (elements.audioPlayer.src) {
-                const a = document.createElement('a');
-                a.href = elements.audioPlayer.src;
-                a.download = `ai_tts_${Date.now()}.wav`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                showNotification('success', 'Download Started', 'Audio file download has been initiated.');
-            } else {
-                showNotification('error', 'No Audio', 'No audio file available to download.');
+        async function fetchStatistics() {
+            try {
+                // Simulate API call since we don't have a real endpoint
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                showNotification('info', 'Statistics Updated', 'Latest statistics have been refreshed.');
+                updateStatistics();
+            } catch (error) {
+                console.error('Statistics error:', error);
+                showNotification('error', 'Statistics Error', 'Failed to load statistics.');
             }
-        }
-
-        function shareAudio() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'AI Generated Speech',
-                    text: 'Check out this AI-generated speech!',
-                    url: window.location.href
-                });
-            } else {
-                // Fallback for browsers without Web Share API
-                navigator.clipboard.writeText(window.location.href);
-                showNotification('info', 'Link Copied', 'Share link copied to clipboard.');
-            }
-        }
-
-        function fetchStatistics() {
-            // Simulate fetching updated statistics
-            showNotification('info', 'Statistics Updated', 'Latest statistics have been loaded.');
-            updateStatistics();
         }
 
         function updateStatistics() {
@@ -1704,18 +1461,6 @@
             document.getElementById('favoriteVoice').textContent = appState.stats.favoriteVoice || '-';
             document.getElementById('successRate').textContent = `${(appState.stats.successRate || 100).toFixed(1)}%`;
             document.getElementById('errorCount').textContent = appState.stats.errorCount || 0;
-        }
-
-        function updateFavoriteVoice(voice) {
-            // Simple favorite voice tracking
-            appState.stats.favoriteVoice = voice;
-        }
-
-        function updateSuccessRate() {
-            const total = appState.stats.totalGenerations + appState.stats.errorCount;
-            if (total > 0) {
-                appState.stats.successRate = (appState.stats.totalGenerations / total) * 100;
-            }
         }
 
         function loadRecentGenerations() {
@@ -1740,6 +1485,7 @@
                 try {
                     const preferences = JSON.parse(prefs);
                     if (preferences.language) elements.languageSelect.value = preferences.language;
+                    if (preferences.engine) elements.engineSelect.value = preferences.engine;
                 } catch (e) {
                     console.error('Failed to load preferences:', e);
                 }
@@ -1748,70 +1494,34 @@
 
         function savePreferences() {
             const preferences = {
-                language: elements.languageSelect.value
+                language: elements.languageSelect.value,
+                engine: elements.engineSelect.value
             };
             localStorage.setItem('userPreferences', JSON.stringify(preferences));
         }
 
-        function showBatchModal() {
-            showNotification('info', 'Coming Soon', 'Batch processing feature will be available soon!');
-        }
-
-        function showWelcomeMessage() {
-            console.log('Showing welcome message...');
-            showNotification('info', 'Welcome!', 'Welcome to AI TTS Pro - Enhanced Glassmorphism Edition with 30+ Premium Voices!');
-        }
-
-        function handleKeyboardShortcuts(e) {
-            // Check if modal is open
-            const isModalOpen = elements.helpModal && !elements.helpModal.classList.contains('hidden');
-            
-            if (!isModalOpen) {
-                if (e.ctrlKey || e.metaKey) {
-                    switch(e.key) {
-                        case 'Enter':
-                            e.preventDefault();
-                            if (!elements.generateBtn.disabled && !appState.isGenerating) {
-                                console.log('Keyboard shortcut: Generate');
-                                generateSpeech();
-                            }
-                            break;
-                        case '?':
-                            e.preventDefault();
-                            console.log('Keyboard shortcut: Help');
-                            showHelpModal();
-                            break;
-                    }
-                }
-            } else {
-                if (e.key === 'Escape') {
-                    e.preventDefault();
-                    console.log('Keyboard shortcut: Close modal');
-                    hideHelpModal();
-                }
+        function downloadAudio() {
+            if (elements.audioPlayer.src) {
+                const a = document.createElement('a');
+                a.href = elements.audioPlayer.src;
+                a.download = 'ai_tts_premium_audio.wav';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                showNotification('info', 'Download Started', 'Premium audio file download initiated.');
             }
+        }
+
+        function showBatchModal() {
+            showNotification('info', 'Coming Soon', 'Batch processing with premium voices will be available soon!');
         }
 
         // Save preferences when changed
         elements.languageSelect.addEventListener('change', savePreferences);
+        elements.engineSelect.addEventListener('change', savePreferences);
 
-        // Initialize voices on load
-        setTimeout(() => {
-            updateVoiceOptions();
-            console.log('Voice options updated after timeout');
-        }, 100);
-        
-        // Debug: Log when page is fully loaded
-        window.addEventListener('load', function() {
-            console.log('Page fully loaded');
-            console.log('Voice configs available:', Object.keys(voiceConfigs).length);
-            console.log('DOM elements found:', {
-                textInput: !!elements.textInput,
-                voiceContainer: !!elements.voiceContainer,
-                generateBtn: !!elements.generateBtn,
-                helpModal: !!elements.helpModal
-            });
-        });
+        // Initialize voice options on first load
+        updateVoiceOptions();
     </script>
 </body>
 </html>
