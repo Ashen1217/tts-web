@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI TTS Pro - Enhanced Glassmorphism Edition</title>
+    <title>AI TTS Pro</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -1007,14 +1007,16 @@
 
         // Initialize Application
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing app...');
             initializeApp();
             setupEventListeners();
             updateVoiceOptions();
             loadUserPreferences();
-            showWelcomeMessage();
+            setTimeout(() => showWelcomeMessage(), 500);
         });
 
         function initializeApp() {
+            console.log('Initializing application...');
             // Batch DOM updates for better performance
             requestAnimationFrame(() => {
                 updateTextStats();
@@ -1025,8 +1027,12 @@
                 // Ensure modal is hidden on load
                 if (elements.helpModal) {
                     elements.helpModal.style.display = 'none';
+                    elements.helpModal.classList.add('hidden');
                     elements.helpModal.classList.remove('show');
+                    console.log('Help modal initialized as hidden');
                 }
+                
+                console.log('App initialization complete');
             });
             
             // Auto-refresh statistics every 30 seconds
@@ -1067,25 +1073,35 @@
             // Modal events
             document.getElementById('helpBtn').addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
+                console.log('Help button clicked');
                 showHelpModal();
             });
             
             document.getElementById('closeHelp').addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
+                console.log('Close help clicked');
                 hideHelpModal();
             });
             
             // Click outside modal to close
-            elements.helpModal.addEventListener('click', function(e) {
-                if (e.target === elements.helpModal) {
-                    hideHelpModal();
-                }
-            });
+            if (elements.helpModal) {
+                elements.helpModal.addEventListener('click', function(e) {
+                    if (e.target === elements.helpModal) {
+                        console.log('Clicked outside modal');
+                        hideHelpModal();
+                    }
+                });
 
-            // Prevent modal content clicks from closing modal
-            elements.helpModal.querySelector('.modal-content').addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
+                // Prevent modal content clicks from closing modal
+                const modalContent = elements.helpModal.querySelector('.modal-content');
+                if (modalContent) {
+                    modalContent.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                    });
+                }
+            }
 
             // Notification close
             document.getElementById('notificationClose').addEventListener('click', hideNotification);
@@ -1135,14 +1151,17 @@
         }
 
         function updateVoiceOptions() {
+            console.log('Updating voice options...');
             const voices = voiceConfigs;
             appState.currentVoices = voices;
             
             renderVoices(voices);
             elements.voiceCount.textContent = Object.keys(voices).length;
+            console.log(`Loaded ${Object.keys(voices).length} voices`);
         }
 
         function renderVoices(voices) {
+            console.log('Rendering voices...');
             // Clear container efficiently
             elements.voiceContainer.innerHTML = '';
             
@@ -1186,14 +1205,16 @@
             });
             
             elements.voiceContainer.appendChild(fragment);
+            console.log(`Rendered ${Object.keys(voices).length} voice cards`);
             
             // Select first voice by default
-            const firstVoiceCard = elements.voiceContainer.querySelector('.voice-card');
-            if (firstVoiceCard) {
-                requestAnimationFrame(() => {
+            setTimeout(() => {
+                const firstVoiceCard = elements.voiceContainer.querySelector('.voice-card');
+                if (firstVoiceCard) {
+                    console.log('Selecting first voice');
                     firstVoiceCard.click();
-                });
-            }
+                }
+            }, 100);
         }
 
         function createVoiceCard(voiceName, config) {
@@ -1220,6 +1241,8 @@
             
             voiceCard.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
+                console.log('Voice selected:', voiceName);
                 selectVoice(voiceCard, voiceName);
             });
             
@@ -1227,15 +1250,20 @@
         }
 
         function selectVoice(card, voiceName) {
+            console.log('Selecting voice:', voiceName);
             // Remove selection from all cards
             document.querySelectorAll('.voice-card').forEach(c => {
                 c.classList.remove('selected');
-                c.querySelector('input[type="radio"]').checked = false;
+                const radio = c.querySelector('input[type="radio"]');
+                if (radio) radio.checked = false;
             });
             
             // Add selection to clicked card
             card.classList.add('selected');
-            card.querySelector('input[type="radio"]').checked = true;
+            const radio = card.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+            
+            console.log('Voice selected successfully:', voiceName);
         }
 
         function debounce(func, wait) {
@@ -1516,24 +1544,35 @@
         }
 
         function showHelpModal() {
-            elements.helpModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            
-            setTimeout(() => {
-                elements.helpModal.classList.add('show');
-            }, 10);
+            console.log('Opening help modal');
+            if (elements.helpModal) {
+                elements.helpModal.style.display = 'flex';
+                elements.helpModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                // Add show class with slight delay for smooth animation
+                setTimeout(() => {
+                    elements.helpModal.classList.add('show');
+                }, 10);
+            }
         }
 
         function hideHelpModal() {
-            elements.helpModal.classList.remove('show');
-            
-            setTimeout(() => {
-                elements.helpModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }, 200);
+            console.log('Closing help modal');
+            if (elements.helpModal) {
+                elements.helpModal.classList.remove('show');
+                
+                // Wait for fade-out animation
+                setTimeout(() => {
+                    elements.helpModal.style.display = 'none';
+                    elements.helpModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, 200);
+            }
         }
 
         function showNotification(type, title, message) {
+            console.log('Showing notification:', type, title, message);
             const iconMap = {
                 'success': 'fas fa-check-circle text-emerald-500',
                 'error': 'fas fa-exclamation-circle text-red-500',
@@ -1541,15 +1580,21 @@
                 'warning': 'fas fa-exclamation-triangle text-yellow-500'
             };
             
-            document.getElementById('notificationIcon').className = iconMap[type];
-            document.getElementById('notificationTitle').textContent = title;
-            document.getElementById('notificationMessage').textContent = message;
+            const iconElement = document.getElementById('notificationIcon');
+            const titleElement = document.getElementById('notificationTitle');
+            const messageElement = document.getElementById('notificationMessage');
             
-            elements.notification.classList.add('show');
+            if (iconElement) iconElement.className = iconMap[type];
+            if (titleElement) titleElement.textContent = title;
+            if (messageElement) messageElement.textContent = message;
             
-            setTimeout(() => {
-                elements.notification.classList.remove('show');
-            }, 5000);
+            if (elements.notification) {
+                elements.notification.classList.add('show');
+                
+                setTimeout(() => {
+                    elements.notification.classList.remove('show');
+                }, 5000);
+            }
         }
 
         function hideNotification() {
@@ -1594,6 +1639,7 @@
         }
 
         function clearAll() {
+            console.log('Clearing all inputs...');
             elements.textInput.value = '';
             updateTextStats();
             elements.audioPlayerContainer.classList.add('hidden');
@@ -1608,6 +1654,12 @@
             document.getElementById('enhanceAudio').checked = false;
             document.getElementById('highQuality').checked = false;
             document.getElementById('autoPlay').checked = false;
+            
+            // Reset voice search
+            elements.voiceSearch.value = '';
+            
+            // Clear current audio
+            appState.currentAudio = null;
             
             showNotification('info', 'Cleared', 'All inputs have been reset.');
         }
@@ -1706,24 +1758,27 @@
         }
 
         function showWelcomeMessage() {
-            setTimeout(() => {
-                showNotification('info', 'Welcome!', 'Welcome to AI TTS Pro - Enhanced Glassmorphism Edition with 30+ Premium Voices!');
-            }, 1000);
+            console.log('Showing welcome message...');
+            showNotification('info', 'Welcome!', 'Welcome to AI TTS Pro - Enhanced Glassmorphism Edition with 30+ Premium Voices!');
         }
 
         function handleKeyboardShortcuts(e) {
-            // Don't trigger shortcuts when modal is open
-            if (!elements.helpModal.classList.contains('show')) {
+            // Check if modal is open
+            const isModalOpen = elements.helpModal && !elements.helpModal.classList.contains('hidden');
+            
+            if (!isModalOpen) {
                 if (e.ctrlKey || e.metaKey) {
                     switch(e.key) {
                         case 'Enter':
                             e.preventDefault();
                             if (!elements.generateBtn.disabled && !appState.isGenerating) {
+                                console.log('Keyboard shortcut: Generate');
                                 generateSpeech();
                             }
                             break;
                         case '?':
                             e.preventDefault();
+                            console.log('Keyboard shortcut: Help');
                             showHelpModal();
                             break;
                     }
@@ -1731,6 +1786,7 @@
             } else {
                 if (e.key === 'Escape') {
                     e.preventDefault();
+                    console.log('Keyboard shortcut: Close modal');
                     hideHelpModal();
                 }
             }
@@ -1740,7 +1796,22 @@
         elements.languageSelect.addEventListener('change', savePreferences);
 
         // Initialize voices on load
-        updateVoiceOptions();
+        setTimeout(() => {
+            updateVoiceOptions();
+            console.log('Voice options updated after timeout');
+        }, 100);
+        
+        // Debug: Log when page is fully loaded
+        window.addEventListener('load', function() {
+            console.log('Page fully loaded');
+            console.log('Voice configs available:', Object.keys(voiceConfigs).length);
+            console.log('DOM elements found:', {
+                textInput: !!elements.textInput,
+                voiceContainer: !!elements.voiceContainer,
+                generateBtn: !!elements.generateBtn,
+                helpModal: !!elements.helpModal
+            });
+        });
     </script>
 </body>
 </html>
