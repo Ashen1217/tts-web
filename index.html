@@ -292,10 +292,31 @@
             box-shadow: 0 12px 40px rgba(34, 197, 94, 0.15);
             transform: translateX(100%);
             transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 9999;
+            max-width: 20rem;
+            width: calc(100vw - 3rem);
         }
 
         .notification-premium.show {
             transform: translateX(0);
+        }
+
+        @media (max-width: 640px) {
+            .notification-premium {
+                top: 1rem;
+                right: 1rem;
+                left: 1rem;
+                width: auto;
+                max-width: none;
+                transform: translateY(-100%);
+            }
+            
+            .notification-premium.show {
+                transform: translateY(0);
+            }
         }
 
         /* Premium Stats Cards */
@@ -373,7 +394,30 @@
             border-left: 4px solid rgba(34, 197, 94, 0.6);
         }
 
-        /* Responsive Enhancements */
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 1280px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .premium-gradient-bg {
+                background-size: 300% 300%;
+            }
+            
+            .glass-premium {
+                padding: 1.5rem;
+                border-radius: 1.5rem;
+            }
+            
+            .nav-glass .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .premium-gradient-bg {
                 background-size: 300% 300%;
@@ -382,17 +426,152 @@
             .glass-premium {
                 backdrop-filter: blur(16px);
                 -webkit-backdrop-filter: blur(16px);
+                padding: 1.25rem;
+                border-radius: 1.25rem;
             }
             
             .voice-card-premium {
-                padding: 16px;
+                padding: 14px;
                 margin-bottom: 8px;
+                border-radius: 12px;
+            }
+            
+            .btn-premium, .btn-secondary-premium {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            
+            .modal-content-premium {
+                margin: 0.5rem;
+                max-height: 95vh;
+                border-radius: 1.5rem;
+            }
+            
+            .nav-glass h1 {
+                font-size: 1.5rem;
+            }
+            
+            .nav-glass p {
+                font-size: 0.75rem;
+            }
+            
+            .nav-glass .w-12 {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            
+            .nav-glass button {
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .glass-premium {
+                padding: 1rem;
+                border-radius: 1rem;
+            }
+            
+            .voice-card-premium {
+                padding: 12px;
+                margin-bottom: 6px;
+                border-radius: 10px;
+            }
+            
+            .modal-content-premium {
+                margin: 0.25rem;
+                max-height: 98vh;
+                border-radius: 1rem;
+            }
+            
+            .stats-premium {
+                padding: 1rem;
+            }
+            
+            .category-premium {
+                padding: 0.75rem;
+                margin: 0.5rem;
+            }
+            
+            .nav-glass {
+                padding: 0.5rem 0;
+            }
+            
+            .nav-glass .flex {
+                gap: 0.5rem;
+            }
+            
+            .nav-glass h1 {
+                font-size: 1.25rem;
+            }
+            
+            .nav-glass p {
+                font-size: 0.7rem;
+            }
+            
+            .container {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            .grid {
+                gap: 1rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .text-xl {
+                font-size: 1.125rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glass-premium {
+                padding: 0.875rem;
+                border-radius: 0.875rem;
+            }
+            
+            .voice-card-premium {
+                padding: 10px;
+                margin-bottom: 4px;
+            }
+            
+            .btn-premium, .btn-secondary-premium {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+            
+            .nav-glass .w-12, .nav-glass .w-10 {
+                width: 2rem;
+                height: 2rem;
+            }
+            
+            .nav-glass h1 {
+                font-size: 1.125rem;
+            }
+            
+            .nav-glass p {
+                display: none;
+            }
+            
+            .container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
             }
         }
 
         /* Premium Animations */
         .fade-in-premium {
             animation: fadeInPremium 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scale-95 {
+            transform: scale(0.95);
+        }
+        
+        .scale-100 {
+            transform: scale(1);
         }
 
         @keyframes fadeInPremium {
@@ -439,26 +618,26 @@
     <nav class="nav-glass sticky top-0 z-40">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg">
-                        <i class="fas fa-microphone-alt text-white text-xl"></i>
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-microphone-alt text-white text-lg sm:text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-2xl sm:text-3xl font-bold text-premium-gradient">
+                        <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-premium-gradient">
                             AI TTS Pro
                         </h1>
-                        <p class="text-sm text-emerald-700 font-semibold">Premium Glassmorphism Experience</p>
+                        <p class="text-xs sm:text-sm text-emerald-700 font-semibold hidden sm:block">Premium Glassmorphism Experience</p>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3">
-                    <button id="statsBtn" class="p-3 rounded-xl glass-secondary hover:glass-premium text-blue-600 transition-all duration-300">
-                        <i class="fas fa-chart-bar text-lg"></i>
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <button id="statsBtn" class="p-2 sm:p-3 rounded-lg sm:rounded-xl glass-secondary hover:glass-premium text-blue-600 transition-all duration-300">
+                        <i class="fas fa-chart-bar text-sm sm:text-lg"></i>
                     </button>
-                    <button id="themeToggle" class="p-3 rounded-xl glass-secondary hover:glass-premium text-green-600 transition-all duration-300">
-                        <i class="fas fa-sun text-lg"></i>
+                    <button id="themeToggle" class="p-2 sm:p-3 rounded-lg sm:rounded-xl glass-secondary hover:glass-premium text-green-600 transition-all duration-300">
+                        <i class="fas fa-sun text-sm sm:text-lg"></i>
                     </button>
-                    <button id="helpBtn" class="p-3 rounded-xl glass-secondary hover:glass-premium text-teal-600 transition-all duration-300">
-                        <i class="fas fa-question-circle text-lg"></i>
+                    <button id="helpBtn" class="p-2 sm:p-3 rounded-lg sm:rounded-xl glass-secondary hover:glass-premium text-teal-600 transition-all duration-300">
+                        <i class="fas fa-question-circle text-sm sm:text-lg"></i>
                     </button>
                 </div>
             </div>
@@ -761,15 +940,15 @@
     </div>
 
     <!-- Premium Notifications -->
-    <div id="notification" class="notification-premium fixed top-6 right-6 z-50 max-w-sm rounded-2xl">
-        <div class="p-6">
+    <div id="notification" class="notification-premium rounded-xl sm:rounded-2xl">
+        <div class="p-4 sm:p-6">
             <div class="flex items-start">
-                <i id="notificationIcon" class="text-2xl mr-4 mt-1"></i>
-                <div class="flex-1">
-                    <h4 id="notificationTitle" class="text-slate-800 font-bold text-sm"></h4>
-                    <p id="notificationMessage" class="text-slate-600 text-xs mt-1"></p>
+                <i id="notificationIcon" class="text-xl sm:text-2xl mr-3 sm:mr-4 mt-1 flex-shrink-0"></i>
+                <div class="flex-1 min-w-0">
+                    <h4 id="notificationTitle" class="text-slate-800 font-bold text-sm sm:text-base"></h4>
+                    <p id="notificationMessage" class="text-slate-600 text-xs sm:text-sm mt-1"></p>
                 </div>
-                <button id="notificationClose" class="text-slate-400 hover:text-slate-600 ml-4">
+                <button id="notificationClose" class="text-slate-400 hover:text-slate-600 ml-3 sm:ml-4 flex-shrink-0">
                     <i class="fas fa-times text-sm"></i>
                 </button>
             </div>
@@ -777,26 +956,24 @@
     </div>
 
     <!-- Premium Help Modal -->
-    <div id="helpModal" class="modal-premium fixed inset-0 z-50 hidden" style="display: none;">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="modal-content-premium rounded-3xl w-full max-w-5xl max-h-[90vh] overflow-hidden">
-                <div class="glass-premium border-b border-green-200/30 p-6 sticky top-0 z-10">
-                    <div class="flex justify-between items-center">
-                        <h2 class="text-2xl font-bold text-slate-800">Help & Guide</h2>
-                        <button id="closeHelp" class="text-slate-400 hover:text-slate-600 text-2xl p-2 hover:bg-slate-100/20 rounded-xl transition-all duration-300">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
+    <div id="helpModal" class="modal-premium fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="modal-content-premium rounded-2xl sm:rounded-3xl w-full max-w-5xl max-h-[95vh] overflow-hidden transform scale-95 transition-transform duration-300">
+                <div class="glass-premium border-b border-green-200/30 p-4 sm:p-6 sticky top-0 z-10 flex justify-between items-center">
+                    <h2 class="text-lg sm:text-2xl font-bold text-slate-800">Help & Guide</h2>
+                    <button id="closeHelp" class="text-slate-400 hover:text-slate-600 text-xl sm:text-2xl p-2 hover:bg-slate-100/20 rounded-xl transition-all duration-300 flex-shrink-0">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
                 
                 <div class="overflow-y-auto max-h-[70vh] premium-scroll">
-                    <div class="p-8 space-y-6">
+                    <div class="p-4 sm:p-8 space-y-4 sm:space-y-6">
                         
-                        <section class="category-premium rounded-2xl p-6">
-                            <h3 class="text-lg font-bold mb-4 text-green-800 flex items-center">
+                        <section class="category-premium rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                            <h3 class="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-green-800 flex items-center">
                                 <i class="fas fa-play-circle mr-2"></i>Quick Start Guide
                             </h3>
-                            <div class="space-y-3 text-sm text-green-700">
+                            <div class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-green-700">
                                 <p><strong>1.</strong> Select your preferred language and voice engine</p>
                                 <p><strong>2.</strong> Enter your text (maximum 5,000 characters)</p>
                                 <p><strong>3.</strong> Choose from 30+ premium voices</p>
@@ -805,36 +982,36 @@
                             </div>
                         </section>
                         
-                        <section class="glass-secondary rounded-2xl p-6 border border-blue-200/30">
-                            <h3 class="text-lg font-bold mb-4 text-blue-800 flex items-center">
+                        <section class="glass-secondary rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-blue-200/30">
+                            <h3 class="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-blue-800 flex items-center">
                                 <i class="fas fa-microphone mr-2"></i>Voice Engines
                             </h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                                <div class="glass-tertiary p-4 rounded-xl border border-blue-100/50">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
+                                <div class="glass-tertiary p-3 sm:p-4 rounded-lg sm:rounded-xl border border-blue-100/50">
                                     <p class="font-semibold text-blue-800">🤖 Gemini AI</p>
                                     <p class="text-blue-600">30+ premium voices with natural expressiveness</p>
                                 </div>
-                                <div class="glass-tertiary p-4 rounded-xl border border-blue-100/50">
+                                <div class="glass-tertiary p-3 sm:p-4 rounded-lg sm:rounded-xl border border-blue-100/50">
                                     <p class="font-semibold text-blue-800">🌐 Edge TTS</p>
                                     <p class="text-blue-600">Fast, reliable, multilingual support</p>
                                 </div>
                             </div>
                         </section>
                         
-                        <section class="glass-secondary rounded-2xl p-6 border border-purple-200/30">
-                            <h3 class="text-lg font-bold mb-4 text-purple-800 flex items-center">
+                        <section class="glass-secondary rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-purple-200/30">
+                            <h3 class="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-purple-800 flex items-center">
                                 <i class="fas fa-language mr-2"></i>Supported Languages
                             </h3>
-                            <div class="text-sm text-purple-700">
+                            <div class="text-xs sm:text-sm text-purple-700">
                                 <p><strong>15 Languages:</strong> 🇱🇰 Sinhala, 🇺🇸 English, 🇮🇳 Tamil/Hindi, 🇯🇵 Japanese, 🇰🇷 Korean, 🇫🇷 French, 🇩🇪 German, 🇪🇸 Spanish, 🇮🇹 Italian, 🇧🇷 Portuguese, 🇹🇭 Thai, 🇻🇳 Vietnamese, and more</p>
                             </div>
                         </section>
                         
-                        <section class="glass-secondary rounded-2xl p-6 border border-teal-200/30">
-                            <h3 class="text-lg font-bold mb-4 text-teal-800 flex items-center">
+                        <section class="glass-secondary rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-teal-200/30">
+                            <h3 class="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-teal-800 flex items-center">
                                 <i class="fas fa-sliders-h mr-2"></i>Advanced Features
                             </h3>
-                            <div class="grid grid-cols-2 gap-4 text-sm text-teal-700">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm text-teal-700">
                                 <div>
                                     <p><strong>Speech Rate:</strong> Control speed (-50% to +50%)</p>
                                     <p><strong>Pitch Control:</strong> Adjust voice tone (±20Hz)</p>
@@ -846,14 +1023,14 @@
                             </div>
                         </section>
                         
-                        <section class="glass-secondary rounded-2xl p-6 border border-orange-200/30">
-                            <h3 class="text-lg font-bold mb-4 text-orange-800 flex items-center">
+                        <section class="glass-secondary rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-orange-200/30">
+                            <h3 class="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-orange-800 flex items-center">
                                 <i class="fas fa-keyboard mr-2"></i>Keyboard Shortcuts
                             </h3>
-                            <div class="text-sm text-orange-700 space-y-2">
-                                <p><kbd class="glass-tertiary px-3 py-1 rounded text-xs font-mono">Ctrl + Enter</kbd> Generate speech</p>
-                                <p><kbd class="glass-tertiary px-3 py-1 rounded text-xs font-mono">Escape</kbd> Close help modal</p>
-                                <p><kbd class="glass-tertiary px-3 py-1 rounded text-xs font-mono">Ctrl + ?</kbd> Open help</p>
+                            <div class="text-xs sm:text-sm text-orange-700 space-y-1 sm:space-y-2">
+                                <p><kbd class="glass-tertiary px-2 sm:px-3 py-1 rounded text-xs font-mono">Ctrl + Enter</kbd> Generate speech</p>
+                                <p><kbd class="glass-tertiary px-2 sm:px-3 py-1 rounded text-xs font-mono">Escape</kbd> Close help modal</p>
+                                <p><kbd class="glass-tertiary px-2 sm:px-3 py-1 rounded text-xs font-mono">Ctrl + ?</kbd> Open help</p>
                             </div>
                         </section>
                         
@@ -982,10 +1159,16 @@
                 updateRangeValues();
                 loadRecentGenerations();
                 
-                // Ensure modal is properly hidden
-                if (elements.helpModal) {
-                    elements.helpModal.style.display = 'none';
-                    elements.helpModal.classList.add('hidden');
+                // Ensure modal is properly hidden on load
+                const modal = elements.helpModal;
+                if (modal) {
+                    modal.style.display = 'none';
+                    modal.classList.add('hidden', 'opacity-0');
+                    const modalContent = modal.querySelector('.modal-content-premium');
+                    if (modalContent) {
+                        modalContent.classList.add('scale-95');
+                        modalContent.classList.remove('scale-100');
+                    }
                 }
                 
                 updateVoiceOptions();
@@ -1023,11 +1206,20 @@
             elements.batchBtn.addEventListener('click', showBatchModal);
             document.getElementById('statsBtn').addEventListener('click', fetchStatistics);
 
-            // Modal events with improved UX
-            document.getElementById('helpBtn').addEventListener('click', showHelpModal);
-            document.getElementById('closeHelp').addEventListener('click', hideHelpModal);
+            // Enhanced modal events
+            document.getElementById('helpBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                showHelpModal();
+            });
             
-            // Enhanced modal interaction
+            document.getElementById('closeHelp').addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                hideHelpModal();
+            });
+            
+            // Click outside modal to close (improved)
             elements.helpModal.addEventListener('click', function(e) {
                 if (e.target === elements.helpModal) {
                     hideHelpModal();
@@ -1035,22 +1227,42 @@
             });
 
             // Prevent modal content clicks from closing modal
-            elements.helpModal.querySelector('.modal-content-premium').addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
+            const modalContent = elements.helpModal.querySelector('.modal-content-premium');
+            if (modalContent) {
+                modalContent.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
 
             // Enhanced keyboard shortcuts
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && !elements.helpModal.classList.contains('hidden')) {
-                    hideHelpModal();
+                // Handle Escape key
+                if (e.key === 'Escape') {
+                    if (!elements.helpModal.classList.contains('hidden')) {
+                        e.preventDefault();
+                        hideHelpModal();
+                        return;
+                    }
                 }
-                if ((e.ctrlKey || e.metaKey) && e.key === '?') {
-                    e.preventDefault();
-                    showHelpModal();
+                
+                // Don't trigger other shortcuts when modal is open
+                if (!elements.helpModal.classList.contains('hidden')) {
+                    return;
                 }
-                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && !appState.isGenerating) {
-                    e.preventDefault();
-                    generateSpeech();
+                
+                if (e.ctrlKey || e.metaKey) {
+                    switch(e.key) {
+                        case 'Enter':
+                            if (!appState.isGenerating) {
+                                e.preventDefault();
+                                generateSpeech();
+                            }
+                            break;
+                        case '?':
+                            e.preventDefault();
+                            showHelpModal();
+                            break;
+                    }
                 }
             });
 
@@ -1363,23 +1575,37 @@
         }
 
         function showHelpModal() {
-            elements.helpModal.style.display = 'flex';
-            elements.helpModal.classList.remove('hidden');
+            console.log('Opening help modal');
+            const modal = elements.helpModal;
+            
+            // Show the modal
+            modal.style.display = 'flex';
+            modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
-            setTimeout(() => {
-                elements.helpModal.classList.add('show');
-            }, 10);
+            // Trigger animation after a frame
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('.modal-content-premium').classList.remove('scale-95');
+                modal.querySelector('.modal-content-premium').classList.add('scale-100');
+            });
         }
 
         function hideHelpModal() {
-            elements.helpModal.classList.remove('show');
+            console.log('Closing help modal');
+            const modal = elements.helpModal;
             
+            // Start close animation
+            modal.classList.add('opacity-0');
+            modal.querySelector('.modal-content-premium').classList.remove('scale-100');
+            modal.querySelector('.modal-content-premium').classList.add('scale-95');
+            
+            // Hide after animation completes
             setTimeout(() => {
-                elements.helpModal.style.display = 'none';
-                elements.helpModal.classList.add('hidden');
+                modal.style.display = 'none';
+                modal.classList.add('hidden');
                 document.body.style.overflow = 'auto';
-            }, 200);
+            }, 300);
         }
 
         function showNotification(type, title, message) {
