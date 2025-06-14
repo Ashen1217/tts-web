@@ -13,8 +13,8 @@
             overflow: hidden;
         }
         
-        /* FLOATING CIRCLES BACKGROUND ANIMATION */
-        .floating-circles {
+        /* PROFESSIONAL WAVE BACKGROUND ANIMATION */
+        .wave-background {
             position: fixed;
             top: 0;
             left: 0;
@@ -25,119 +25,56 @@
             overflow: hidden;
         }
         
-        .floating-circle {
+        .professional-wave {
             position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
-            animation: float 20s infinite linear;
-            backdrop-filter: blur(1px);
-            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.1);
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(34, 197, 94, 0.03), 
+                rgba(16, 185, 129, 0.05), 
+                rgba(6, 182, 212, 0.03),
+                rgba(34, 197, 94, 0.02));
+            animation: professional-wave-flow 25s ease-in-out infinite;
+            transform-origin: center;
         }
         
-        .floating-circle:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            left: 10%;
-            animation-duration: 25s;
+        .professional-wave:nth-child(1) {
             animation-delay: 0s;
+            animation-duration: 20s;
+            opacity: 0.4;
         }
         
-        .floating-circle:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            left: 20%;
+        .professional-wave:nth-child(2) {
+            animation-delay: -7s;
+            animation-duration: 25s;
+            opacity: 0.3;
+            transform: rotate(45deg);
+        }
+        
+        .professional-wave:nth-child(3) {
+            animation-delay: -14s;
             animation-duration: 30s;
-            animation-delay: 5s;
-            background: linear-gradient(45deg, rgba(16, 185, 129, 0.08), rgba(34, 197, 94, 0.12), rgba(6, 182, 212, 0.1));
+            opacity: 0.2;
+            transform: rotate(-30deg);
         }
         
-        .floating-circle:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            left: 35%;
-            animation-duration: 22s;
-            animation-delay: 10s;
-        }
-        
-        .floating-circle:nth-child(4) {
-            width: 100px;
-            height: 100px;
-            left: 50%;
-            animation-duration: 28s;
-            animation-delay: 3s;
-            background: linear-gradient(45deg, rgba(6, 182, 212, 0.1), rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.1));
-        }
-        
-        .floating-circle:nth-child(5) {
-            width: 90px;
-            height: 90px;
-            left: 65%;
-            animation-duration: 26s;
-            animation-delay: 8s;
-        }
-        
-        .floating-circle:nth-child(6) {
-            width: 70px;
-            height: 70px;
-            left: 75%;
-            animation-duration: 24s;
-            animation-delay: 12s;
-            background: linear-gradient(45deg, rgba(34, 197, 94, 0.12), rgba(13, 148, 136, 0.1), rgba(16, 185, 129, 0.15));
-        }
-        
-        .floating-circle:nth-child(7) {
-            width: 110px;
-            height: 110px;
-            left: 85%;
-            animation-duration: 32s;
-            animation-delay: 6s;
-        }
-        
-        .floating-circle:nth-child(8) {
-            width: 85px;
-            height: 85px;
-            left: 5%;
-            animation-duration: 29s;
-            animation-delay: 15s;
-            background: linear-gradient(45deg, rgba(13, 148, 136, 0.1), rgba(34, 197, 94, 0.12), rgba(6, 182, 212, 0.08));
-        }
-        
-        .floating-circle:nth-child(9) {
-            width: 95px;
-            height: 95px;
-            left: 40%;
-            animation-duration: 27s;
-            animation-delay: 18s;
-        }
-        
-        .floating-circle:nth-child(10) {
-            width: 75px;
-            height: 75px;
-            left: 60%;
-            animation-duration: 23s;
-            animation-delay: 9s;
-            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(34, 197, 94, 0.15), rgba(13, 148, 136, 0.1));
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
+        @keyframes professional-wave-flow {
+            0%, 100% {
+                transform: translateX(-25%) translateY(-25%) rotate(0deg) scale(1);
             }
-            10% {
-                opacity: 1;
+            25% {
+                transform: translateX(-20%) translateY(-30%) rotate(1deg) scale(1.02);
             }
-            90% {
-                opacity: 1;
+            50% {
+                transform: translateX(-30%) translateY(-20%) rotate(-1deg) scale(0.98);
             }
-            100% {
-                transform: translateY(-120px) rotate(360deg);
-                opacity: 0;
+            75% {
+                transform: translateX(-15%) translateY(-35%) rotate(0.5deg) scale(1.01);
             }
         }
         
-        /* ADDITIONAL FLOATING ELEMENTS */
-        .floating-particles {
+        /* SUBTLE AMBIENT PARTICLES */
+        .ambient-particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -147,80 +84,26 @@
             z-index: 0;
         }
         
-        .particle {
+        .ambient-dot {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(34, 197, 94, 0.3);
+            width: 2px;
+            height: 2px;
+            background: rgba(34, 197, 94, 0.4);
             border-radius: 50%;
-            animation: particle-float 15s infinite linear;
+            animation: ambient-float 20s linear infinite;
         }
         
-        @keyframes particle-float {
+        @keyframes ambient-float {
             0% {
                 transform: translateY(100vh) translateX(0px);
                 opacity: 0;
             }
-            10% {
-                opacity: 1;
-            }
-            90% {
+            10%, 90% {
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100px) translateX(100px);
+                transform: translateY(-50px) translateX(30px);
                 opacity: 0;
-            }
-        }
-        
-        /* FLOATING WAVE EFFECT */
-        .wave-bg {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(180deg, transparent 0%, rgba(34, 197, 94, 0.03) 100%);
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 100px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(34, 197, 94, 0.05) 25%, 
-                rgba(16, 185, 129, 0.08) 50%, 
-                rgba(34, 197, 94, 0.05) 75%, 
-                transparent 100%);
-            border-radius: 50% 50% 0 0;
-            animation: wave-move 20s ease-in-out infinite;
-        }
-        
-        .wave:nth-child(2) {
-            animation-delay: -5s;
-            animation-duration: 25s;
-            opacity: 0.5;
-            height: 80px;
-        }
-        
-        .wave:nth-child(3) {
-            animation-delay: -10s;
-            animation-duration: 30s;
-            opacity: 0.3;
-            height: 60px;
-        }
-        
-        @keyframes wave-move {
-            0%, 100% {
-                transform: translateX(-50%) translateY(0px);
-            }
-            50% {
-                transform: translateX(-50%) translateY(-20px);
             }
         }
         
@@ -264,14 +147,68 @@
             pointer-events: none;
         }
         
-        @keyframes sparkle {
+        /* VOICE INPUT STYLES */
+        .voice-input-btn {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        
+        .voice-input-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+        }
+        
+        .voice-input-btn.recording {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            animation: pulse-recording 1.5s ease-in-out infinite;
+        }
+        
+        .voice-input-btn.processing {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            animation: spin 2s linear infinite;
+        }
+        
+        @keyframes pulse-recording {
             0%, 100% {
-                opacity: 0;
-                transform: scale(0);
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
             }
             50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+            }
+        }
+        
+        .voice-status-indicator {
+            background: rgba(239, 68, 68, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .language-detected {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            animation: fadeInBounce 0.5s ease;
+        }
+        
+        @keyframes fadeInBounce {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(10px);
+            }
+            60% {
                 opacity: 1;
-                transform: scale(1);
+                transform: scale(1.1) translateY(-2px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
             }
         }
         
@@ -281,42 +218,163 @@
             z-index: 10;
         }
         
+        /* PROFESSIONAL GLASSMORPHISM THEME */
         .glass-effect {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(34, 197, 94, 0.15);
-            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.12);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.15),
+                0 4px 16px rgba(34, 197, 94, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 
+                0 4px 20px rgba(31, 38, 135, 0.1),
+                0 2px 8px rgba(34, 197, 94, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .glass-primary {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 
+                0 12px 40px rgba(31, 38, 135, 0.2),
+                0 6px 20px rgba(34, 197, 94, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+        
+        .glass-secondary {
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            box-shadow: 
+                0 6px 24px rgba(31, 38, 135, 0.12),
+                0 3px 12px rgba(34, 197, 94, 0.09),
+                inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+        
+        .glass-tertiary {
+            background: rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(34, 197, 94, 0.1);
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.08);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 
+                0 4px 16px rgba(31, 38, 135, 0.08),
+                0 2px 8px rgba(34, 197, 94, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+        
+        /* GLASSMORPHISM INPUT ELEMENTS */
+        input, select, textarea {
+            background: rgba(255, 255, 255, 0.5) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4) !important;
+            box-shadow: 
+                0 2px 8px rgba(31, 38, 135, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.6) !important;
+            border: 1px solid rgba(34, 197, 94, 0.5) !important;
+            box-shadow: 
+                0 0 0 3px rgba(34, 197, 94, 0.1),
+                0 4px 12px rgba(31, 38, 135, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+        }
+        
+        /* GLASSMORPHISM BUTTONS */
+        button {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-primary {
+            background: rgba(22, 163, 74, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 25px rgba(22, 163, 74, 0.25),
+                0 4px 12px rgba(31, 38, 135, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            background: rgba(22, 163, 74, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 30px rgba(22, 163, 74, 0.35),
+                0 6px 16px rgba(31, 38, 135, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(13, 148, 136, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 25px rgba(13, 148, 136, 0.25),
+                0 4px 12px rgba(31, 38, 135, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(13, 148, 136, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 30px rgba(13, 148, 136, 0.35),
+                0 6px 16px rgba(31, 38, 135, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
         
         .voice-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(34, 197, 94, 0.1);
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 12px;
             padding: 12px;
             margin-bottom: 8px;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            box-shadow: 
+                0 4px 16px rgba(31, 38, 135, 0.08),
+                0 2px 8px rgba(34, 197, 94, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
         
         .voice-card:hover {
-            background: rgba(34, 197, 94, 0.05);
-            border-color: rgba(34, 197, 94, 0.2);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.1);
+            background: rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 25px rgba(34, 197, 94, 0.15),
+                0 4px 12px rgba(31, 38, 135, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
         }
         
         .voice-card.selected {
-            background: rgba(34, 197, 94, 0.1);
-            border-color: rgba(34, 197, 94, 0.3);
-            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 
+                0 0 0 2px rgba(34, 197, 94, 0.3),
+                0 8px 25px rgba(34, 197, 94, 0.2),
+                0 4px 12px rgba(31, 38, 135, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
         }
         
         .voice-info {
@@ -431,15 +489,114 @@
         }
         
         .green-accent {
-            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            background: rgba(220, 252, 231, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(34, 197, 94, 0.2);
         }
         
         .teal-accent {
-            background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+            background: rgba(240, 253, 250, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(20, 184, 166, 0.2);
         }
         
         .emerald-accent {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            background: rgba(236, 253, 245, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        /* GLASSMORPHISM NOTIFICATION */
+        .notification {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10000;
+            max-width: 350px;
+            width: 100%;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 
+                0 12px 40px rgba(31, 38, 135, 0.2),
+                0 6px 20px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        /* GLASSMORPHISM MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modal-overlay.show {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        .modal-content {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.25),
+                0 12px 40px rgba(31, 38, 135, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            max-width: 95vw;
+            max-height: 90vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .footer-gradient {
@@ -741,7 +898,7 @@
             outline-offset: 2px;
         }
         
-        /* REDUCED MOTION */
+        /* REDUCED MOTION FOR ACCESSIBILITY */
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -750,31 +907,61 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
+            
+            .wave-background,
+            .ambient-particles {
+                display: none;
+            }
+        }
+        
+        /* MOBILE OPTIMIZATION FOR ANIMATIONS */
+        @media (max-width: 768px) {
+            .professional-wave:nth-child(3) {
+                display: none; /* Hide third wave on mobile */
+            }
+            
+            .ambient-dot:nth-child(n+5) {
+                display: none; /* Reduce particles on mobile */
+            }
+            
+            .professional-wave {
+                animation-duration: 35s; /* Slower animations on mobile */
+            }
+            
+            .voice-input-btn {
+                width: 44px;
+                height: 44px;
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            #voiceStatus {
+                right: 1rem;
+                bottom: 3rem;
+            }
+        }
+        
+        /* HIGH PERFORMANCE MODE FOR LOWER-END DEVICES */
+        @media (max-width: 480px) {
+            .professional-wave:nth-child(n+2) {
+                display: none; /* Only one wave on very small screens */
+            }
+            
+            .ambient-particles {
+                display: none; /* No particles on very small screens */
+            }
         }
     </style>
 </head>
 <body class="min-h-screen gradient-bg">
-    <!-- FLOATING BACKGROUND ANIMATIONS -->
-    <div class="floating-circles">
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
+    <!-- PROFESSIONAL WAVE BACKGROUND ANIMATIONS -->
+    <div class="wave-background">
+        <div class="professional-wave"></div>
+        <div class="professional-wave"></div>
+        <div class="professional-wave"></div>
     </div>
     
-    <div class="floating-particles" id="particles"></div>
-    
-    <div class="wave-bg">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
+    <div class="ambient-particles" id="ambientParticles"></div>
     <!-- Enhanced Navigation -->
     <nav class="glass-effect sticky top-0 z-40 border-b border-green-200">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -810,7 +997,7 @@
             <!-- Text Input Panel -->
             <div class="xl:col-span-3 space-y-4 sm:space-y-5">
                 <!-- Text Input Section -->
-                <div class="glass-effect rounded-2xl p-4 sm:p-6 lg:p-8 card-shadow">
+                <div class="glass-primary rounded-2xl p-4 sm:p-6 lg:p-8 card-shadow">
                     <div class="flex items-center mb-4 sm:mb-6">
                         <div class="w-8 h-8 green-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-edit text-green-600"></i>
@@ -856,10 +1043,24 @@
                         <div class="relative">
                             <textarea 
                                 id="textInput" 
-                                placeholder="ඔබේ පෙළ මෙහි ලියන්න... / Enter your text here..."
+                                placeholder="ඔබේ පෙළ මෙහි ලියන්න... / Enter your text here... / Start speaking by clicking the microphone..."
                                 maxlength="5000"
-                                class="w-full h-32 sm:h-40 p-4 rounded-xl bg-white border border-green-200 text-slate-700 placeholder-slate-400 resize-none focus:border-green-500 focus:ring-4 focus:ring-green-50 transition-all duration-200"
+                                class="w-full h-32 sm:h-40 p-4 pr-16 rounded-xl bg-white border border-green-200 text-slate-700 placeholder-slate-400 resize-none focus:border-green-500 focus:ring-4 focus:ring-green-50 transition-all duration-200"
                             ></textarea>
+                            
+                            <!-- Voice Input Button -->
+                            <button id="voiceInputBtn" type="button" class="absolute right-3 top-3 p-2 rounded-lg bg-green-50 hover:bg-green-100 text-green-600 transition-all duration-200 voice-input-btn">
+                                <i id="voiceInputIcon" class="fas fa-microphone text-lg"></i>
+                            </button>
+                            
+                            <!-- Voice Recording Status -->
+                            <div id="voiceStatus" class="absolute right-3 bottom-12 hidden">
+                                <div class="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center">
+                                    <div class="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></div>
+                                    <span id="voiceStatusText">Listening...</span>
+                                </div>
+                            </div>
+                            
                             <div class="absolute bottom-3 right-3 text-xs text-slate-400">
                                 <span id="charCount">0 characters</span> • <span id="wordCount">0 words</span>
                             </div>
@@ -887,7 +1088,7 @@
                 </div>
 
                 <!-- Advanced Options -->
-                <div class="glass-effect rounded-2xl p-4 sm:p-6 lg:p-8 card-shadow">
+                <div class="glass-primary rounded-2xl p-4 sm:p-6 lg:p-8 card-shadow">
                     <div class="flex items-center mb-4 sm:mb-6">
                         <div class="w-8 h-8 teal-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-cog text-teal-600"></i>
@@ -941,7 +1142,7 @@
             <!-- Control Panel -->
             <div class="xl:col-span-1 space-y-4 sm:space-y-5">
                 <!-- Enhanced Voice Selection -->
-                <div class="glass-effect rounded-2xl p-4 sm:p-5 card-shadow">
+                <div class="glass-secondary rounded-2xl p-4 sm:p-5 card-shadow">
                     <div class="flex items-center mb-4 sm:mb-5">
                         <div class="w-8 h-8 emerald-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-user-friends text-emerald-600"></i>
@@ -951,7 +1152,7 @@
                     </div>
                     
                     <!-- Voice Search -->
-                    <div class="mb-4 p-3 glass-card rounded-lg">
+                    <div class="mb-4 p-3 glass-tertiary rounded-lg">
                         <input type="text" id="voiceSearch" placeholder="Search voices..." 
                                class="w-full p-2 text-sm rounded-lg bg-white/70 border border-green-200 text-slate-700 focus:border-green-500 focus:ring-2 focus:ring-green-50 transition-all duration-200">
                     </div>
@@ -962,7 +1163,7 @@
                 </div>
 
                 <!-- Generation Controls -->
-                <div class="glass-effect rounded-2xl p-4 sm:p-5 card-shadow">
+                <div class="glass-secondary rounded-2xl p-4 sm:p-5 card-shadow">
                     <div class="flex items-center mb-4 sm:mb-5">
                         <div class="w-8 h-8 green-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-play text-green-600"></i>
@@ -991,7 +1192,7 @@
                 </div>
 
                 <!-- Enhanced Audio Player -->
-                <div id="audioPlayerContainer" class="glass-effect rounded-2xl p-4 sm:p-5 card-shadow hidden">
+                <div id="audioPlayerContainer" class="glass-secondary rounded-2xl p-4 sm:p-5 card-shadow hidden">
                     <div class="flex items-center mb-4 sm:mb-5">
                         <div class="w-8 h-8 teal-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-volume-up text-teal-600"></i>
@@ -1012,13 +1213,13 @@
                         </button>
                     </div>
                     
-                    <div id="audioInfo" class="p-3 glass-card rounded-lg text-slate-600 text-sm">
+                    <div id="audioInfo" class="p-3 glass-tertiary rounded-lg text-slate-600 text-sm">
                         <!-- Audio information will be displayed here -->
                     </div>
                 </div>
 
                 <!-- Recent Generations -->
-                <div class="glass-effect rounded-2xl p-4 sm:p-5 card-shadow">
+                <div class="glass-secondary rounded-2xl p-4 sm:p-5 card-shadow">
                     <div class="flex items-center mb-4 sm:mb-5">
                         <div class="w-8 h-8 emerald-accent rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-history text-emerald-600"></i>
@@ -1037,23 +1238,23 @@
         <div class="mt-6 sm:mt-8">
             <div class="section-divider h-px mb-6 sm:mb-8"></div>
             <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
-                <div class="stats-card glass-effect rounded-xl p-3 sm:p-5 text-center">
+                <div class="stats-card glass-secondary rounded-xl p-3 sm:p-5 text-center">
                     <div class="text-xl sm:text-2xl md:text-3xl font-bold text-green-600 mb-1 sm:mb-2" id="totalGenerations">0</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Generations</div>
                 </div>
-                <div class="stats-card glass-effect rounded-xl p-3 sm:p-5 text-center">
+                <div class="stats-card glass-secondary rounded-xl p-3 sm:p-5 text-center">
                     <div class="text-xl sm:text-2xl md:text-3xl font-bold text-emerald-600 mb-1 sm:mb-2" id="totalDuration">0s</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Duration</div>
                 </div>
-                <div class="stats-card glass-effect rounded-xl p-3 sm:p-5 text-center">
+                <div class="stats-card glass-secondary rounded-xl p-3 sm:p-5 text-center">
                     <div class="text-xl sm:text-2xl md:text-3xl font-bold text-teal-600 mb-1 sm:mb-2" id="favoriteVoice">-</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Top Voice</div>
                 </div>
-                <div class="stats-card glass-effect rounded-xl p-3 sm:p-5 text-center">
+                <div class="stats-card glass-secondary rounded-xl p-3 sm:p-5 text-center">
                     <div class="text-xl sm:text-2xl md:text-3xl font-bold text-lime-600 mb-1 sm:mb-2" id="successRate">100%</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Success Rate</div>
                 </div>
-                <div class="stats-card glass-effect rounded-xl p-3 sm:p-5 text-center">
+                <div class="stats-card glass-secondary rounded-xl p-3 sm:p-5 text-center">
                     <div class="text-xl sm:text-2xl md:text-3xl font-bold text-cyan-600 mb-1 sm:mb-2" id="errorCount">0</div>
                     <div class="text-slate-600 text-xs sm:text-sm font-medium">Errors</div>
                 </div>
@@ -1078,7 +1279,7 @@
 
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 hidden flex items-center justify-center">
-        <div class="glass-effect rounded-2xl p-6 sm:p-8 max-w-sm mx-4 card-shadow">
+        <div class="glass-primary rounded-2xl p-6 sm:p-8 max-w-sm mx-4 card-shadow">
             <div class="text-center">
                 <div class="loading-spinner w-12 h-12 border-4 border-green-200 border-t-green-500 rounded-full mx-auto mb-4"></div>
                 <h3 class="text-slate-800 text-lg font-semibold mb-2">Generating Speech</h3>
@@ -1095,7 +1296,7 @@
     </div>
 
     <!-- Enhanced Responsive Notifications -->
-    <div id="notification" class="notification glass-effect card-shadow">
+    <div id="notification" class="notification card-shadow">
         <div class="p-4">
             <div class="flex items-start">
                 <i id="notificationIcon" class="text-2xl mr-3 mt-1 flex-shrink-0"></i>
@@ -1151,12 +1352,26 @@
                         </div>
                     </section>
                     
+                    <section class="help-section bg-orange-50 border border-orange-200 rounded-xl">
+                        <h3 class="text-base sm:text-lg font-semibold mb-3 text-orange-800 flex items-center">
+                            <i class="fas fa-microphone mr-2"></i>Voice Input
+                        </h3>
+                        <div class="text-sm text-orange-700 space-y-2">
+                            <p><strong>🎙️ Click microphone button</strong> to start voice typing</p>
+                            <p><strong>🌍 Auto language detection</strong> - speaks in any supported language</p>
+                            <p><strong>📝 Continuous input</strong> - adds to existing text</p>
+                            <p><strong>🔴 Red button</strong> means recording, click to stop</p>
+                            <p><strong>⚙️ Processing</strong> - converting speech to text</p>
+                        </div>
+                    </section>
+                    
                     <section class="help-section bg-purple-50 border border-purple-200 rounded-xl">
                         <h3 class="text-base sm:text-lg font-semibold mb-3 text-purple-800 flex items-center">
                             <i class="fas fa-language mr-2"></i>Languages
                         </h3>
                         <div class="text-sm text-purple-700">
                             <p><strong>Supported:</strong> 🇱🇰 Sinhala, 🇺🇸 English, 🇮🇳 Tamil/Hindi, 🇯🇵 Japanese, 🇰🇷 Korean, 🇫🇷 French, 🇩🇪 German, 🇪🇸 Spanish + 8 more</p>
+                            <p><strong>Voice Input:</strong> Automatically detects and switches language based on your speech!</p>
                         </div>
                     </section>
                     
@@ -1176,12 +1391,13 @@
                         </div>
                     </section>
                     
-                    <section class="help-section bg-orange-50 border border-orange-200 rounded-xl">
-                        <h3 class="text-base sm:text-lg font-semibold mb-3 text-orange-800 flex items-center">
+                    <section class="help-section bg-indigo-50 border border-indigo-200 rounded-xl">
+                        <h3 class="text-base sm:text-lg font-semibold mb-3 text-indigo-800 flex items-center">
                             <i class="fas fa-keyboard mr-2"></i>Shortcuts
                         </h3>
-                        <div class="text-sm text-orange-700 space-y-1">
+                        <div class="text-sm text-indigo-700 space-y-1">
                             <p><kbd class="bg-white px-2 py-1 rounded text-xs">Ctrl + Enter</kbd> Generate speech</p>
+                            <p><kbd class="bg-white px-2 py-1 rounded text-xs">Space</kbd> Start/Stop voice input</p>
                             <p><kbd class="bg-white px-2 py-1 rounded text-xs">Escape</kbd> Close help</p>
                             <p><kbd class="bg-white px-2 py-1 rounded text-xs">Ctrl + ?</kbd> Open help</p>
                         </div>
@@ -1208,7 +1424,47 @@
             filters: {
                 search: '',
                 engine: 'gemini'
+            },
+            voiceInput: {
+                isRecording: false,
+                isProcessing: false,
+                recognition: null,
+                isSupported: false
             }
+        };
+
+        // Language mapping for speech recognition
+        const speechLanguageMap = {
+            'si-LK': 'si-LK',
+            'en-US': 'en-US', 
+            'en-GB': 'en-GB',
+            'en-AU': 'en-AU',
+            'ta-IN': 'ta-IN',
+            'hi-IN': 'hi-IN',
+            'th-TH': 'th-TH',
+            'vi-VN': 'vi-VN',
+            'ko-KR': 'ko-KR',
+            'ja-JP': 'ja-JP',
+            'fr-FR': 'fr-FR',
+            'de-DE': 'de-DE',
+            'es-ES': 'es-ES',
+            'it-IT': 'it-IT',
+            'pt-BR': 'pt-BR'
+        };
+
+        // Language detection patterns
+        const languagePatterns = {
+            'si-LK': /[\u0D80-\u0DFF]/,
+            'ta-IN': /[\u0B80-\u0BFF]/,
+            'hi-IN': /[\u0900-\u097F]/,
+            'th-TH': /[\u0E00-\u0E7F]/,
+            'ko-KR': /[\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]/,
+            'ja-JP': /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/,
+            'fr-FR': /\b(le|la|les|un|une|des|et|ou|est|sont|avec|dans|pour|sur|par|de|du|des)\b/i,
+            'de-DE': /\b(der|die|das|und|oder|ist|sind|mit|in|für|auf|von|zu|bei)\b/i,
+            'es-ES': /\b(el|la|los|las|un|una|y|o|es|son|con|en|para|por|de|del)\b/i,
+            'it-IT': /\b(il|la|lo|gli|le|un|una|e|o|è|sono|con|in|per|su|di|del)\b/i,
+            'pt-BR': /\b(o|a|os|as|um|uma|e|ou|é|são|com|em|para|por|de|do|da)\b/i
         };
 
         // Enhanced Voice Configurations with ALL VOICES
@@ -1291,7 +1547,11 @@
             helpModal: document.getElementById('helpModal'),
             recentList: document.getElementById('recentList'),
             textLimitIndicator: document.getElementById('textLimitIndicator'),
-            voiceCount: document.getElementById('voiceCount')
+            voiceCount: document.getElementById('voiceCount'),
+            voiceInputBtn: document.getElementById('voiceInputBtn'),
+            voiceInputIcon: document.getElementById('voiceInputIcon'),
+            voiceStatus: document.getElementById('voiceStatus'),
+            voiceStatusText: document.getElementById('voiceStatusText')
         };
 
         // Initialize Application
@@ -1302,126 +1562,66 @@
             loadUserPreferences();
             updateStatistics();
             initializeBackgroundAnimations();
+            initializeVoiceInput();
         });
 
-        // BACKGROUND ANIMATIONS INITIALIZATION
+        // PROFESSIONAL BACKGROUND ANIMATIONS
         function initializeBackgroundAnimations() {
-            createFloatingParticles();
-            addRandomizedCircleAnimations();
-            createInteractiveFloatingElements();
-            initializeAdvancedAnimations();
+            createAmbientParticles();
+            initializeProfessionalAnimations();
         }
 
-        // Create floating particles dynamically
-        function createFloatingParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 15;
+        // Create subtle ambient particles
+        function createAmbientParticles() {
+            const particlesContainer = document.getElementById('ambientParticles');
+            const particleCount = 8; // Reduced for better performance
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
-                particle.className = 'particle';
+                particle.className = 'ambient-dot';
                 
                 // Random positioning and timing
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (12 + Math.random() * 8) + 's';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
                 
-                // Random particle size and opacity
-                const size = 2 + Math.random() * 4;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.opacity = 0.2 + Math.random() * 0.3;
+                // Random opacity for depth
+                particle.style.opacity = 0.3 + Math.random() * 0.4;
                 
                 particlesContainer.appendChild(particle);
             }
         }
 
-        // Add randomized properties to circles
-        function addRandomizedCircleAnimations() {
-            const circles = document.querySelectorAll('.floating-circle');
-            
-            circles.forEach((circle, index) => {
-                // Random horizontal drift
-                const drift = (Math.random() - 0.5) * 200;
-                circle.style.setProperty('--drift', drift + 'px');
-                
-                // Random size variation
-                const sizeVariation = 0.8 + Math.random() * 0.4;
-                circle.style.transform = `scale(${sizeVariation})`;
-                
-                // Random opacity
-                circle.style.opacity = 0.6 + Math.random() * 0.4;
-                
-                // Add pulsing effect to some circles
-                if (Math.random() > 0.5) {
-                    circle.style.animation += `, pulse 4s ease-in-out infinite`;
-                    circle.style.animationDelay = Math.random() * 4 + 's';
-                }
-            });
-        }
-
-        // Create interactive floating elements that respond to scroll
-        function createInteractiveFloatingElements() {
-            const floatingElements = [];
-            
-            // Create some larger floating shapes
-            for (let i = 0; i < 5; i++) {
-                const element = document.createElement('div');
-                element.className = 'interactive-float';
-                element.style.cssText = `
-                    position: fixed;
-                    width: ${40 + Math.random() * 60}px;
-                    height: ${40 + Math.random() * 60}px;
-                    background: linear-gradient(45deg, 
-                        rgba(34, 197, 94, 0.05), 
-                        rgba(16, 185, 129, 0.08), 
-                        rgba(6, 182, 212, 0.06));
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 1;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    backdrop-filter: blur(2px);
-                    transition: transform 0.3s ease;
-                `;
-                
-                document.body.appendChild(element);
-                floatingElements.push({
-                    element: element,
-                    baseX: Math.random() * window.innerWidth,
-                    baseY: Math.random() * window.innerHeight,
-                    speedX: (Math.random() - 0.5) * 2,
-                    speedY: (Math.random() - 0.5) * 2
-                });
+        // Initialize professional wave animations
+        function initializeProfessionalAnimations() {
+            // Check for reduced motion preference
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
             }
             
-            // Animate interactive elements
-            function animateInteractiveElements() {
-                floatingElements.forEach(item => {
-                    item.baseX += item.speedX;
-                    item.baseY += item.speedY;
-                    
-                    // Bounce off edges
-                    if (item.baseX <= 0 || item.baseX >= window.innerWidth) {
-                        item.speedX *= -1;
-                    }
-                    if (item.baseY <= 0 || item.baseY >= window.innerHeight) {
-                        item.speedY *= -1;
-                    }
-                    
-                    item.element.style.left = item.baseX + 'px';
-                    item.element.style.top = item.baseY + 'px';
-                });
-                
-                requestAnimationFrame(animateInteractiveElements);
-            }
+            // Initialize breathing effect
+            addBreathingEffect();
             
-            animateInteractiveElements();
+            // Add subtle mouse interaction for professional feel
+            if (window.innerWidth > 768) {
+                document.addEventListener('mousemove', throttle((e) => {
+                    const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+                    const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+                    
+                    document.querySelectorAll('.professional-wave').forEach((wave, index) => {
+                        const intensity = (index + 1) * 0.3; // Reduced intensity
+                        const offsetX = mouseX * intensity;
+                        const offsetY = mouseY * intensity;
+                        
+                        wave.style.transform += ` translate(${offsetX}px, ${offsetY}px)`;
+                    });
+                }, 32)); // Throttle to ~30fps for smooth performance
+            }
         }
 
-        // Add sparkle effects when generating speech
+        // Add professional sparkle effects when generating speech
         function addSparkleEffect() {
-            const sparkleCount = 20;
+            const sparkleCount = 12; // Reduced for better performance
             const container = document.body;
             
             for (let i = 0; i < sparkleCount; i++) {
@@ -1432,49 +1632,93 @@
                     sparkle.style.top = Math.random() * 100 + '%';
                     sparkle.style.animationDelay = Math.random() * 1 + 's';
                     
+                    // Professional sparkle styling
+                    sparkle.style.background = 'radial-gradient(circle, rgba(34, 197, 94, 0.8) 0%, transparent 70%)';
+                    sparkle.style.width = '4px';
+                    sparkle.style.height = '4px';
+                    sparkle.style.borderRadius = '50%';
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '50';
+                    
                     container.appendChild(sparkle);
                     
                     // Remove sparkle after animation
                     setTimeout(() => {
                         sparkle.remove();
-                    }, 3000);
-                }, i * 100);
+                    }, 2000);
+                }, i * 80);
             }
         }
 
-        // Add breathing effect to background
+        // Professional breathing effect for ambient elements
         function addBreathingEffect() {
-            const circles = document.querySelectorAll('.floating-circle');
+            const waves = document.querySelectorAll('.professional-wave');
             let breathPhase = 0;
             
-            setInterval(() => {
-                breathPhase += 0.02;
-                const breathScale = 1 + Math.sin(breathPhase) * 0.1;
+            function breathe() {
+                breathPhase += 0.01;
                 
-                circles.forEach((circle, index) => {
-                    const phaseOffset = index * 0.5;
-                    const scale = 1 + Math.sin(breathPhase + phaseOffset) * 0.05;
-                    circle.style.transform = `scale(${scale})`;
+                waves.forEach((wave, index) => {
+                    const phaseOffset = index * 0.8;
+                    const scale = 1 + Math.sin(breathPhase + phaseOffset) * 0.02;
+                    const opacity = 0.3 + Math.sin(breathPhase + phaseOffset) * 0.1;
+                    
+                    wave.style.transform = `scale(${scale})`;
+                    wave.style.opacity = opacity;
                 });
-            }, 50);
+                
+                requestAnimationFrame(breathe);
+            }
+            
+            // Only run on desktop for performance
+            if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                breathe();
+            }
         }
 
         // Initialize advanced animations
         function initializeAdvancedAnimations() {
-            addBreathingEffect();
+            // Check for reduced motion preference
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return; // Skip animations if user prefers reduced motion
+            }
             
-            // Add mouse interaction effect
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
+            // Performance check
+            const isLowEndDevice = navigator.hardwareConcurrency < 4 || window.innerWidth < 768;
+            
+            if (!isLowEndDevice) {
+                addBreathingEffect();
                 
-                document.querySelectorAll('.floating-circle').forEach((circle, index) => {
-                    const offsetX = (mouseX - 0.5) * 20 * (index % 3 + 1);
-                    const offsetY = (mouseY - 0.5) * 20 * (index % 3 + 1);
-                    
-                    circle.style.transform += ` translate(${offsetX}px, ${offsetY}px)`;
-                });
-            });
+                // Add mouse interaction effect only on desktop
+                if (window.innerWidth > 768) {
+                    document.addEventListener('mousemove', throttle((e) => {
+                        const mouseX = e.clientX / window.innerWidth;
+                        const mouseY = e.clientY / window.innerHeight;
+                        
+                        document.querySelectorAll('.floating-circle').forEach((circle, index) => {
+                            const offsetX = (mouseX - 0.5) * 15 * (index % 3 + 1);
+                            const offsetY = (mouseY - 0.5) * 15 * (index % 3 + 1);
+                            
+                            circle.style.transform += ` translate(${offsetX}px, ${offsetY}px)`;
+                        });
+                    }, 16)); // Throttle to ~60fps
+                }
+            }
+        }
+
+        // Throttle function for performance
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
         }
 
         // Enhanced initialization
@@ -1555,6 +1799,9 @@
 
             // Download button
             elements.downloadBtn.addEventListener('click', downloadAudio);
+
+            // Voice Input
+            elements.voiceInputBtn.addEventListener('click', toggleVoiceInput);
         }
 
         function updateTextStats() {
@@ -1824,6 +2071,7 @@
                     });
                     
                     showNotification('success', 'Success!', 'Speech generated successfully.');
+                    addSparkleEffect(); // Add sparkle animation on success
                 } else {
                     throw new Error(result.error || 'Generation failed');
                 }
@@ -2040,6 +2288,11 @@
                 return;
             }
             
+            // Don't trigger shortcuts when typing in input fields
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return;
+            }
+            
             if (e.ctrlKey || e.metaKey) {
                 switch(e.key) {
                     case 'Enter':
@@ -2053,11 +2306,265 @@
                         showHelpModal();
                         break;
                 }
+            } else if (e.key === ' ' && appState.voiceInput.isSupported) {
+                // Space key for voice input (only when not in input fields)
+                e.preventDefault();
+                toggleVoiceInput();
             }
         });
 
         // Initialize first load
         updateVoiceOptions();
+
+        // VOICE INPUT FUNCTIONALITY
+        function initializeVoiceInput() {
+            // Check for speech recognition support
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                appState.voiceInput.isSupported = true;
+                
+                // Setup speech recognition
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                appState.voiceInput.recognition = new SpeechRecognition();
+                
+                setupSpeechRecognition();
+                showNotification('info', 'Voice Input Ready', 'Click the microphone to start voice typing!');
+            } else {
+                // Hide voice input button if not supported
+                elements.voiceInputBtn.style.display = 'none';
+                console.warn('Speech recognition not supported in this browser');
+            }
+        }
+
+        function setupSpeechRecognition() {
+            const recognition = appState.voiceInput.recognition;
+            
+            // Configure recognition
+            recognition.continuous = false;
+            recognition.interimResults = true;
+            recognition.maxAlternatives = 1;
+            
+            // Set initial language
+            recognition.lang = elements.languageSelect.value || 'en-US';
+            
+            // Event handlers
+            recognition.onstart = function() {
+                console.log('Voice recognition started');
+                appState.voiceInput.isRecording = true;
+                updateVoiceInputUI('recording');
+                elements.voiceStatus.classList.remove('hidden');
+                elements.voiceStatusText.textContent = 'Listening...';
+            };
+
+            recognition.onresult = function(event) {
+                let finalTranscript = '';
+                let interimTranscript = '';
+                
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const transcript = event.results[i][0].transcript;
+                    
+                    if (event.results[i].isFinal) {
+                        finalTranscript += transcript;
+                    } else {
+                        interimTranscript += transcript;
+                    }
+                }
+                
+                if (finalTranscript) {
+                    processVoiceInput(finalTranscript);
+                } else if (interimTranscript) {
+                    // Show interim results
+                    elements.voiceStatusText.textContent = `"${interimTranscript}"`;
+                }
+            };
+
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error:', event.error);
+                appState.voiceInput.isRecording = false;
+                appState.voiceInput.isProcessing = false;
+                updateVoiceInputUI('idle');
+                elements.voiceStatus.classList.add('hidden');
+                
+                let errorMessage = 'Voice input failed. ';
+                switch(event.error) {
+                    case 'no-speech':
+                        errorMessage += 'No speech detected. Please try again.';
+                        break;
+                    case 'network':
+                        errorMessage += 'Network error. Check your connection.';
+                        break;
+                    case 'not-allowed':
+                        errorMessage += 'Microphone access denied. Please allow microphone access.';
+                        break;
+                    default:
+                        errorMessage += 'Please try again.';
+                }
+                
+                showNotification('error', 'Voice Input Error', errorMessage);
+            };
+
+            recognition.onend = function() {
+                console.log('Voice recognition ended');
+                appState.voiceInput.isRecording = false;
+                
+                if (!appState.voiceInput.isProcessing) {
+                    updateVoiceInputUI('idle');
+                    elements.voiceStatus.classList.add('hidden');
+                }
+            };
+        }
+
+        function toggleVoiceInput() {
+            if (!appState.voiceInput.isSupported) {
+                showNotification('error', 'Not Supported', 'Voice input is not supported in this browser.');
+                return;
+            }
+
+            if (appState.voiceInput.isRecording) {
+                stopVoiceInput();
+            } else {
+                startVoiceInput();
+            }
+        }
+
+        function startVoiceInput() {
+            try {
+                // Update recognition language to match selected language
+                const selectedLang = elements.languageSelect.value;
+                if (speechLanguageMap[selectedLang]) {
+                    appState.voiceInput.recognition.lang = speechLanguageMap[selectedLang];
+                }
+                
+                appState.voiceInput.recognition.start();
+            } catch (error) {
+                console.error('Failed to start voice recognition:', error);
+                showNotification('error', 'Voice Input Error', 'Failed to start voice recognition. Please try again.');
+            }
+        }
+
+        function stopVoiceInput() {
+            if (appState.voiceInput.recognition) {
+                appState.voiceInput.recognition.stop();
+            }
+        }
+
+        function processVoiceInput(transcript) {
+            appState.voiceInput.isProcessing = true;
+            updateVoiceInputUI('processing');
+            elements.voiceStatusText.textContent = 'Processing...';
+            
+            setTimeout(() => {
+                // Detect language
+                const detectedLanguage = detectLanguage(transcript);
+                
+                // Add text to input (append to existing text)
+                const currentText = elements.textInput.value;
+                const newText = currentText ? currentText + ' ' + transcript : transcript;
+                elements.textInput.value = newText;
+                
+                // Update text stats
+                updateTextStats();
+                
+                // Auto-switch language if detected
+                if (detectedLanguage && detectedLanguage !== elements.languageSelect.value) {
+                    elements.languageSelect.value = detectedLanguage;
+                    updateVoiceOptions(); // Update voices for new language
+                    savePreferences(); // Save the language preference
+                    
+                    // Show language detection notification
+                    showLanguageDetectedNotification(detectedLanguage);
+                }
+                
+                // Reset states
+                appState.voiceInput.isProcessing = false;
+                updateVoiceInputUI('idle');
+                elements.voiceStatus.classList.add('hidden');
+                
+                showNotification('success', 'Voice Input Complete', `Added: "${transcript.substring(0, 50)}${transcript.length > 50 ? '...' : ''}"`);
+                
+                // Add sparkle effect for successful voice input
+                addSparkleEffect();
+            }, 500);
+        }
+
+        function detectLanguage(text) {
+            // Check for specific script patterns first
+            for (const [langCode, pattern] of Object.entries(languagePatterns)) {
+                if (pattern.test(text)) {
+                    return langCode;
+                }
+            }
+            
+            // Default fallback based on current selection or English
+            return null;
+        }
+
+        function updateVoiceInputUI(state) {
+            const btn = elements.voiceInputBtn;
+            const icon = elements.voiceInputIcon;
+            
+            // Remove all state classes
+            btn.classList.remove('recording', 'processing');
+            
+            switch(state) {
+                case 'recording':
+                    btn.classList.add('recording');
+                    icon.className = 'fas fa-stop text-lg';
+                    btn.title = 'Stop recording';
+                    break;
+                    
+                case 'processing':
+                    btn.classList.add('processing');
+                    icon.className = 'fas fa-cog text-lg';
+                    btn.title = 'Processing...';
+                    break;
+                    
+                case 'idle':
+                default:
+                    icon.className = 'fas fa-microphone text-lg';
+                    btn.title = 'Start voice input';
+                    break;
+            }
+        }
+
+        function showLanguageDetectedNotification(languageCode) {
+            const languageNames = {
+                'si-LK': 'Sinhala',
+                'en-US': 'English (US)',
+                'en-GB': 'English (UK)', 
+                'en-AU': 'English (AU)',
+                'ta-IN': 'Tamil',
+                'hi-IN': 'Hindi',
+                'th-TH': 'Thai',
+                'vi-VN': 'Vietnamese',
+                'ko-KR': 'Korean',
+                'ja-JP': 'Japanese',
+                'fr-FR': 'French',
+                'de-DE': 'German',
+                'es-ES': 'Spanish',
+                'it-IT': 'Italian',
+                'pt-BR': 'Portuguese'
+            };
+            
+            const languageName = languageNames[languageCode] || languageCode;
+            
+            showNotification('info', 'Language Detected', `Switched to ${languageName} based on your speech.`);
+            
+            // Add temporary visual indicator
+            const indicator = document.createElement('div');
+            indicator.className = 'language-detected';
+            indicator.textContent = `🎯 ${languageName}`;
+            indicator.style.position = 'absolute';
+            indicator.style.top = '-30px';
+            indicator.style.right = '60px';
+            indicator.style.zIndex = '100';
+            
+            elements.languageSelect.parentElement.style.position = 'relative';
+            elements.languageSelect.parentElement.appendChild(indicator);
+            
+            setTimeout(() => {
+                indicator.remove();
+            }, 3000);
+        }
     </script>
 </body>
 </html>
