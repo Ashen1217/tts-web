@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional AI TTS Pro - Enhanced with 30+ Voices</title>
+    <title>Professional AI TTS Pro</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -13,7 +13,7 @@
             overflow: hidden;
         }
         
-        /* PROFESSIONAL WAVE BACKGROUND ANIMATION */
+        /* OPTIMIZED PROFESSIONAL WAVE BACKGROUND ANIMATION */
         .wave-background {
             position: fixed;
             top: 0;
@@ -23,57 +23,49 @@
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
+            will-change: transform;
         }
         
         .professional-wave {
             position: absolute;
-            width: 200%;
+            width: 120%;
             height: 100%;
             background: linear-gradient(45deg, 
-                rgba(34, 197, 94, 0.03), 
-                rgba(16, 185, 129, 0.05), 
-                rgba(6, 182, 212, 0.03),
-                rgba(34, 197, 94, 0.02));
-            animation: professional-wave-flow 25s ease-in-out infinite;
+                rgba(34, 197, 94, 0.015), 
+                rgba(16, 185, 129, 0.02), 
+                rgba(6, 182, 212, 0.015));
+            animation: optimized-wave-flow 30s ease-in-out infinite;
             transform-origin: center;
+            will-change: transform;
         }
         
         .professional-wave:nth-child(1) {
             animation-delay: 0s;
-            animation-duration: 20s;
-            opacity: 0.4;
+            animation-duration: 25s;
+            opacity: 0.3;
         }
         
         .professional-wave:nth-child(2) {
-            animation-delay: -7s;
-            animation-duration: 25s;
-            opacity: 0.3;
+            animation-delay: -8s;
+            animation-duration: 35s;
+            opacity: 0.2;
             transform: rotate(45deg);
         }
         
         .professional-wave:nth-child(3) {
-            animation-delay: -14s;
-            animation-duration: 30s;
-            opacity: 0.2;
-            transform: rotate(-30deg);
+            display: none; /* Disable third wave for better performance */
         }
         
-        @keyframes professional-wave-flow {
+        @keyframes optimized-wave-flow {
             0%, 100% {
-                transform: translateX(-25%) translateY(-25%) rotate(0deg) scale(1);
-            }
-            25% {
-                transform: translateX(-20%) translateY(-30%) rotate(1deg) scale(1.02);
+                transform: translateX(-10%) translateY(-10%) rotate(0deg);
             }
             50% {
-                transform: translateX(-30%) translateY(-20%) rotate(-1deg) scale(0.98);
-            }
-            75% {
-                transform: translateX(-15%) translateY(-35%) rotate(0.5deg) scale(1.01);
+                transform: translateX(-15%) translateY(-15%) rotate(1deg);
             }
         }
         
-        /* SUBTLE AMBIENT PARTICLES */
+        /* MINIMAL AMBIENT PARTICLES */
         .ambient-particles {
             position: fixed;
             top: 0;
@@ -82,27 +74,29 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
+            will-change: transform;
         }
         
         .ambient-dot {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(34, 197, 94, 0.4);
+            width: 1px;
+            height: 1px;
+            background: rgba(34, 197, 94, 0.3);
             border-radius: 50%;
-            animation: ambient-float 20s linear infinite;
+            animation: minimal-float 25s linear infinite;
+            will-change: transform;
         }
         
-        @keyframes ambient-float {
+        @keyframes minimal-float {
             0% {
-                transform: translateY(100vh) translateX(0px);
+                transform: translateY(100vh);
                 opacity: 0;
             }
             10%, 90% {
-                opacity: 1;
+                opacity: 0.5;
             }
             100% {
-                transform: translateY(-50px) translateX(30px);
+                transform: translateY(-50px);
                 opacity: 0;
             }
         }
@@ -218,127 +212,102 @@
             z-index: 10;
         }
         
-        /* PROFESSIONAL GLASSMORPHISM THEME */
+        /* OPTIMIZED GLASSMORPHISM THEME */
         .glass-effect {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                0 8px 32px rgba(31, 38, 135, 0.15),
-                0 4px 16px rgba(34, 197, 94, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 16px rgba(31, 38, 135, 0.1);
+            will-change: transform;
         }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 
-                0 4px 20px rgba(31, 38, 135, 0.1),
-                0 2px 8px rgba(34, 197, 94, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(31, 38, 135, 0.08);
+            will-change: transform;
         }
         
         .glass-primary {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 
-                0 12px 40px rgba(31, 38, 135, 0.2),
-                0 6px 20px rgba(34, 197, 94, 0.12),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            box-shadow: 0 6px 20px rgba(31, 38, 135, 0.12);
+            will-change: transform;
         }
         
         .glass-secondary {
-            background: rgba(255, 255, 255, 0.22);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            background: rgba(255, 255, 255, 0.38);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.28);
-            box-shadow: 
-                0 6px 24px rgba(31, 38, 135, 0.12),
-                0 3px 12px rgba(34, 197, 94, 0.09),
-                inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            box-shadow: 0 4px 12px rgba(31, 38, 135, 0.1);
+            will-change: transform;
         }
         
         .glass-tertiary {
-            background: rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.32);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border: 1px solid rgba(255, 255, 255, 0.22);
-            box-shadow: 
-                0 4px 16px rgba(31, 38, 135, 0.08),
-                0 2px 8px rgba(34, 197, 94, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            box-shadow: 0 2px 8px rgba(31, 38, 135, 0.06);
+            will-change: transform;
         }
         
-        /* GLASSMORPHISM INPUT ELEMENTS */
+        /* OPTIMIZED INPUT ELEMENTS */
         input, select, textarea {
-            background: rgba(255, 255, 255, 0.5) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.6) !important;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.4) !important;
-            box-shadow: 
-                0 2px 8px rgba(31, 38, 135, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 6px rgba(31, 38, 135, 0.05);
+            will-change: transform;
         }
         
         input:focus, select:focus, textarea:focus {
-            background: rgba(255, 255, 255, 0.6) !important;
+            background: rgba(255, 255, 255, 0.7) !important;
             border: 1px solid rgba(34, 197, 94, 0.5) !important;
-            box-shadow: 
-                0 0 0 3px rgba(34, 197, 94, 0.1),
-                0 4px 12px rgba(31, 38, 135, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.1) !important;
         }
         
-        /* GLASSMORPHISM BUTTONS */
+        /* OPTIMIZED BUTTONS */
         button {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: all 0.2s ease;
+            will-change: transform;
         }
         
         .btn-primary {
-            background: rgba(22, 163, 74, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(22, 163, 74, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                0 8px 25px rgba(22, 163, 74, 0.25),
-                0 4px 12px rgba(31, 38, 135, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
         }
         
         .btn-primary:hover:not(:disabled) {
-            background: rgba(22, 163, 74, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 12px 30px rgba(22, 163, 74, 0.35),
-                0 6px 16px rgba(31, 38, 135, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            background: rgba(22, 163, 74, 0.95);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(22, 163, 74, 0.25);
         }
         
         .btn-secondary {
-            background: rgba(13, 148, 136, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(13, 148, 136, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                0 8px 25px rgba(13, 148, 136, 0.25),
-                0 4px 12px rgba(31, 38, 135, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
         }
         
         .btn-secondary:hover {
-            background: rgba(13, 148, 136, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 12px 30px rgba(13, 148, 136, 0.35),
-                0 6px 16px rgba(31, 38, 135, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            background: rgba(13, 148, 136, 0.95);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(13, 148, 136, 0.25);
         }
         
         .voice-card {
@@ -1271,7 +1240,6 @@
                     <span class="font-semibold text-white">Ashen</span>
                 </p>
                 <p class="text-green-200 text-xs">
-                    Enhanced with 30+ Premium Gemini Voices • Advanced AI Technology
                 </p>
             </div>
         </div>
