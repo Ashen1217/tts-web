@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional AI TTS Pro</title>
+    <title>Professional AI TTS Pro - Enhanced with 30+ Voices</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -13,8 +13,8 @@
             overflow: hidden;
         }
         
-        /* OPTIMIZED PROFESSIONAL WAVE BACKGROUND ANIMATION */
-        .wave-background {
+        /* SIMPLE LIGHTWEIGHT BACKGROUND ANIMATION */
+        .simple-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -22,82 +22,79 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            overflow: hidden;
-            will-change: transform;
-        }
-        
-        .professional-wave {
-            position: absolute;
-            width: 120%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                rgba(34, 197, 94, 0.015), 
-                rgba(16, 185, 129, 0.02), 
-                rgba(6, 182, 212, 0.015));
-            animation: optimized-wave-flow 30s ease-in-out infinite;
-            transform-origin: center;
-            will-change: transform;
-        }
-        
-        .professional-wave:nth-child(1) {
-            animation-delay: 0s;
-            animation-duration: 25s;
             opacity: 0.3;
         }
         
-        .professional-wave:nth-child(2) {
-            animation-delay: -8s;
-            animation-duration: 35s;
-            opacity: 0.2;
-            transform: rotate(45deg);
+        .floating-shape {
+            position: absolute;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 50%;
+            animation: simple-float 15s linear infinite;
         }
         
-        .professional-wave:nth-child(3) {
-            display: none; /* Disable third wave for better performance */
+        .floating-shape:nth-child(1) {
+            width: 20px;
+            height: 20px;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 20s;
         }
         
-        @keyframes optimized-wave-flow {
-            0%, 100% {
-                transform: translateX(-10%) translateY(-10%) rotate(0deg);
+        .floating-shape:nth-child(2) {
+            width: 15px;
+            height: 15px;
+            left: 70%;
+            animation-delay: 5s;
+            animation-duration: 25s;
+        }
+        
+        .floating-shape:nth-child(3) {
+            width: 25px;
+            height: 25px;
+            left: 40%;
+            animation-delay: 10s;
+            animation-duration: 18s;
+        }
+        
+        @keyframes simple-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
             }
-            50% {
-                transform: translateX(-15%) translateY(-15%) rotate(1deg);
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
             }
         }
         
-        /* MINIMAL AMBIENT PARTICLES */
-        .ambient-particles {
+        /* SUBTLE GRADIENT SHIFT */
+        .gradient-shift {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;
-            will-change: transform;
+            z-index: -1;
+            background: linear-gradient(45deg, 
+                rgba(34, 197, 94, 0.02), 
+                rgba(16, 185, 129, 0.03), 
+                rgba(6, 182, 212, 0.02));
+            animation: gradient-move 20s ease-in-out infinite;
         }
         
-        .ambient-dot {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            background: rgba(34, 197, 94, 0.3);
-            border-radius: 50%;
-            animation: minimal-float 25s linear infinite;
-            will-change: transform;
-        }
-        
-        @keyframes minimal-float {
-            0% {
-                transform: translateY(100vh);
-                opacity: 0;
+        @keyframes gradient-move {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
             }
-            10%, 90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-50px);
-                opacity: 0;
+            50% {
+                transform: scale(1.05) rotate(1deg);
             }
         }
         
@@ -458,27 +455,27 @@
         }
         
         .green-accent {
-            background: rgba(220, 252, 231, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(220, 252, 231, 0.7);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
             border: 1px solid rgba(34, 197, 94, 0.2);
         }
         
         .teal-accent {
-            background: rgba(240, 253, 250, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(240, 253, 250, 0.7);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
             border: 1px solid rgba(20, 184, 166, 0.2);
         }
         
         .emerald-accent {
-            background: rgba(236, 253, 245, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(236, 253, 245, 0.7);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
         
-        /* GLASSMORPHISM NOTIFICATION */
+        /* OPTIMIZED NOTIFICATION */
         .notification {
             position: fixed;
             top: 1rem;
@@ -487,24 +484,22 @@
             max-width: 350px;
             width: 100%;
             transform: translateX(100%);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.2s ease;
             border-radius: 16px;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 
-                0 12px 40px rgba(31, 38, 135, 0.2),
-                0 6px 20px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 24px rgba(31, 38, 135, 0.15);
+            will-change: transform;
         }
         
         .notification.show {
             transform: translateX(0);
         }
         
-        /* GLASSMORPHISM MODAL */
+        /* OPTIMIZED MODAL */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -512,8 +507,8 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             z-index: 9999;
             display: flex !important;
             align-items: center;
@@ -522,7 +517,8 @@
             overflow-y: auto;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
+            will-change: opacity, visibility;
         }
         
         .modal-overlay.show {
@@ -531,15 +527,12 @@
         }
         
         .modal-content {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.25),
-                0 12px 40px rgba(31, 38, 135, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             max-width: 95vw;
             max-height: 90vh;
             width: 100%;
@@ -547,7 +540,8 @@
             display: flex;
             flex-direction: column;
             transform: scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.2s ease;
+            will-change: transform;
         }
         
         .modal-overlay.show .modal-content {
@@ -557,9 +551,9 @@
         .modal-header {
             padding: 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             position: sticky;
             top: 0;
             z-index: 10;
@@ -883,18 +877,65 @@
             }
         }
         
-        /* MOBILE OPTIMIZATION FOR ANIMATIONS */
+        @keyframes simple-sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+        
+        /* PERFORMANCE OPTIMIZATIONS FOR SCROLLING */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        
+        /* REDUCE REPAINTS AND REFLOWS */
+        .glass-effect,
+        .glass-card,
+        .glass-primary,
+        .glass-secondary,
+        .glass-tertiary {
+            contain: layout style;
+        }
+        
+        /* MOBILE-SPECIFIC OPTIMIZATIONS */
         @media (max-width: 768px) {
-            .professional-wave:nth-child(3) {
-                display: none; /* Hide third wave on mobile */
+            .floating-shape {
+                display: none; /* No floating shapes on mobile */
             }
             
-            .ambient-dot:nth-child(n+5) {
-                display: none; /* Reduce particles on mobile */
+            .gradient-shift {
+                animation: none; /* Static gradient on mobile */
             }
             
-            .professional-wave {
-                animation-duration: 35s; /* Slower animations on mobile */
+            /* Disable heavy backdrop-filter on mobile for better performance */
+            .glass-effect,
+            .glass-card,
+            .glass-primary,
+            .glass-secondary,
+            .glass-tertiary,
+            .voice-card,
+            .stats-card,
+            .modal-content,
+            .modal-header,
+            .notification {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background: rgba(255, 255, 255, 0.85) !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
             }
             
             .voice-input-btn {
@@ -902,35 +943,66 @@
                 height: 44px;
                 min-height: 44px;
                 min-width: 44px;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
             }
             
             #voiceStatus {
                 right: 1rem;
                 bottom: 3rem;
             }
+            
+            /* Simplified animations on mobile */
+            .voice-card:hover,
+            .stats-card:hover,
+            .btn-primary:hover,
+            .btn-secondary:hover {
+                transform: none !important;
+            }
         }
         
-        /* HIGH PERFORMANCE MODE FOR LOWER-END DEVICES */
+        /* ULTRA HIGH PERFORMANCE MODE FOR VERY LOW-END DEVICES */
         @media (max-width: 480px) {
-            .professional-wave:nth-child(n+2) {
-                display: none; /* Only one wave on very small screens */
+            .simple-bg,
+            .gradient-shift {
+                display: none !important; /* No animations on very small screens */
             }
             
-            .ambient-particles {
-                display: none; /* No particles on very small screens */
+            /* Simplified styling for very low-end devices */
+            .glass-effect,
+            .glass-card,
+            .glass-primary,
+            .glass-secondary,
+            .glass-tertiary,
+            .voice-card,
+            .stats-card,
+            .modal-content,
+            .notification,
+            .voice-input-btn {
+                background: rgba(255, 255, 255, 0.9) !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+                border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            }
+            
+            /* Disable all hover animations on very small screens */
+            * {
+                transition: none !important;
+                animation: none !important;
             }
         }
     </style>
 </head>
 <body class="min-h-screen gradient-bg">
-    <!-- PROFESSIONAL WAVE BACKGROUND ANIMATIONS -->
-    <div class="wave-background">
-        <div class="professional-wave"></div>
-        <div class="professional-wave"></div>
-        <div class="professional-wave"></div>
+    <!-- SIMPLE LIGHTWEIGHT BACKGROUND ANIMATIONS -->
+    <div class="simple-bg">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
     </div>
     
-    <div class="ambient-particles" id="ambientParticles"></div>
+    <div class="gradient-shift"></div>
     <!-- Enhanced Navigation -->
     <nav class="glass-effect sticky top-0 z-40 border-b border-green-200">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -1240,6 +1312,7 @@
                     <span class="font-semibold text-white">Ashen</span>
                 </p>
                 <p class="text-green-200 text-xs">
+                    Enhanced with 30+ Premium Gemini Voices • Advanced AI Technology
                 </p>
             </div>
         </div>
@@ -1533,59 +1606,68 @@
             initializeVoiceInput();
         });
 
-        // PROFESSIONAL BACKGROUND ANIMATIONS
+        // SIMPLE LIGHTWEIGHT BACKGROUND ANIMATIONS
         function initializeBackgroundAnimations() {
-            createAmbientParticles();
-            initializeProfessionalAnimations();
-        }
-
-        // Create subtle ambient particles
-        function createAmbientParticles() {
-            const particlesContainer = document.getElementById('ambientParticles');
-            const particleCount = 8; // Reduced for better performance
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'ambient-dot';
-                
-                // Random positioning and timing
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                
-                // Random opacity for depth
-                particle.style.opacity = 0.3 + Math.random() * 0.4;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Initialize professional wave animations
-        function initializeProfessionalAnimations() {
-            // Check for reduced motion preference
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // Check if animations should be disabled
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || 
+                window.innerWidth < 480) {
+                disableAnimations();
                 return;
             }
             
-            // Initialize breathing effect
-            addBreathingEffect();
+            console.log('Simple lightweight animations enabled');
+            // No complex initialization needed - CSS handles everything
+        }
+
+        // Disable animations for performance or accessibility
+        function disableAnimations() {
+            const simpleBg = document.querySelector('.simple-bg');
+            const gradientShift = document.querySelector('.gradient-shift');
             
-            // Add subtle mouse interaction for professional feel
-            if (window.innerWidth > 768) {
-                document.addEventListener('mousemove', throttle((e) => {
-                    const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-                    const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            if (simpleBg) simpleBg.style.display = 'none';
+            if (gradientShift) gradientShift.style.display = 'none';
+        }
+
+        // Simple sparkle effect - much lighter
+        function addSparkleEffect() {
+            // Only 3 sparkles for minimal impact
+            const sparkleCount = 3;
+            const container = document.body;
+            
+            for (let i = 0; i < sparkleCount; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.style.cssText = `
+                        position: fixed;
+                        width: 4px;
+                        height: 4px;
+                        background: #22c55e;
+                        border-radius: 50%;
+                        left: ${Math.random() * 100}%;
+                        top: ${Math.random() * 100}%;
+                        pointer-events: none;
+                        z-index: 50;
+                        opacity: 0;
+                        animation: simple-sparkle 1s ease-out forwards;
+                    `;
                     
-                    document.querySelectorAll('.professional-wave').forEach((wave, index) => {
-                        const intensity = (index + 1) * 0.3; // Reduced intensity
-                        const offsetX = mouseX * intensity;
-                        const offsetY = mouseY * intensity;
-                        
-                        wave.style.transform += ` translate(${offsetX}px, ${offsetY}px)`;
-                    });
-                }, 32)); // Throttle to ~30fps for smooth performance
+                    container.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 1000);
+                }, i * 200);
             }
         }
+
+        // Add simple sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes simple-sparkle {
+                0% { opacity: 0; transform: scale(0); }
+                50% { opacity: 1; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0); }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Add professional sparkle effects when generating speech
         function addSparkleEffect() {
