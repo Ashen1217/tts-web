@@ -9,6 +9,276 @@
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 25%, #bbf7d0 50%, #86efac 75%, #4ade80 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* FLOATING CIRCLES BACKGROUND ANIMATION */
+        .floating-circles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
+            animation: float 20s infinite linear;
+            backdrop-filter: blur(1px);
+            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.1);
+        }
+        
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            left: 10%;
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+        
+        .floating-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            left: 20%;
+            animation-duration: 30s;
+            animation-delay: 5s;
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.08), rgba(34, 197, 94, 0.12), rgba(6, 182, 212, 0.1));
+        }
+        
+        .floating-circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            left: 35%;
+            animation-duration: 22s;
+            animation-delay: 10s;
+        }
+        
+        .floating-circle:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            left: 50%;
+            animation-duration: 28s;
+            animation-delay: 3s;
+            background: linear-gradient(45deg, rgba(6, 182, 212, 0.1), rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.1));
+        }
+        
+        .floating-circle:nth-child(5) {
+            width: 90px;
+            height: 90px;
+            left: 65%;
+            animation-duration: 26s;
+            animation-delay: 8s;
+        }
+        
+        .floating-circle:nth-child(6) {
+            width: 70px;
+            height: 70px;
+            left: 75%;
+            animation-duration: 24s;
+            animation-delay: 12s;
+            background: linear-gradient(45deg, rgba(34, 197, 94, 0.12), rgba(13, 148, 136, 0.1), rgba(16, 185, 129, 0.15));
+        }
+        
+        .floating-circle:nth-child(7) {
+            width: 110px;
+            height: 110px;
+            left: 85%;
+            animation-duration: 32s;
+            animation-delay: 6s;
+        }
+        
+        .floating-circle:nth-child(8) {
+            width: 85px;
+            height: 85px;
+            left: 5%;
+            animation-duration: 29s;
+            animation-delay: 15s;
+            background: linear-gradient(45deg, rgba(13, 148, 136, 0.1), rgba(34, 197, 94, 0.12), rgba(6, 182, 212, 0.08));
+        }
+        
+        .floating-circle:nth-child(9) {
+            width: 95px;
+            height: 95px;
+            left: 40%;
+            animation-duration: 27s;
+            animation-delay: 18s;
+        }
+        
+        .floating-circle:nth-child(10) {
+            width: 75px;
+            height: 75px;
+            left: 60%;
+            animation-duration: 23s;
+            animation-delay: 9s;
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(34, 197, 94, 0.15), rgba(13, 148, 136, 0.1));
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* ADDITIONAL FLOATING ELEMENTS */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(34, 197, 94, 0.3);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+        }
+        
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) translateX(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        /* FLOATING WAVE EFFECT */
+        .wave-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(180deg, transparent 0%, rgba(34, 197, 94, 0.03) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(34, 197, 94, 0.05) 25%, 
+                rgba(16, 185, 129, 0.08) 50%, 
+                rgba(34, 197, 94, 0.05) 75%, 
+                transparent 100%);
+            border-radius: 50% 50% 0 0;
+            animation: wave-move 20s ease-in-out infinite;
+        }
+        
+        .wave:nth-child(2) {
+            animation-delay: -5s;
+            animation-duration: 25s;
+            opacity: 0.5;
+            height: 80px;
+        }
+        
+        .wave:nth-child(3) {
+            animation-delay: -10s;
+            animation-duration: 30s;
+            opacity: 0.3;
+            height: 60px;
+        }
+        
+        @keyframes wave-move {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0px);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+        }
+        
+        /* PULSE ANIMATION FOR CIRCLES */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.9;
+            }
+        }
+        
+        /* FLOATING GLOW EFFECT */
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 8px 32px rgba(34, 197, 94, 0.1);
+            }
+            50% {
+                box-shadow: 0 8px 32px rgba(34, 197, 94, 0.3);
+            }
+        }
+        
+        /* ENHANCED FLOATING CIRCLES WITH DRIFT */
+        .floating-circle:hover {
+            animation-play-state: paused;
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+        }
+        
+        /* SPARKLE EFFECTS */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: sparkle 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* ENSURE CONTENT STAYS ABOVE ANIMATIONS */
+        nav, .container, footer {
+            position: relative;
+            z-index: 10;
         }
         
         .glass-effect {
@@ -484,6 +754,27 @@
     </style>
 </head>
 <body class="min-h-screen gradient-bg">
+    <!-- FLOATING BACKGROUND ANIMATIONS -->
+    <div class="floating-circles">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+    
+    <div class="floating-particles" id="particles"></div>
+    
+    <div class="wave-bg">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
     <!-- Enhanced Navigation -->
     <nav class="glass-effect sticky top-0 z-40 border-b border-green-200">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -1010,7 +1301,181 @@
             updateVoiceOptions();
             loadUserPreferences();
             updateStatistics();
+            initializeBackgroundAnimations();
         });
+
+        // BACKGROUND ANIMATIONS INITIALIZATION
+        function initializeBackgroundAnimations() {
+            createFloatingParticles();
+            addRandomizedCircleAnimations();
+            createInteractiveFloatingElements();
+            initializeAdvancedAnimations();
+        }
+
+        // Create floating particles dynamically
+        function createFloatingParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 15;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random positioning and timing
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (12 + Math.random() * 8) + 's';
+                
+                // Random particle size and opacity
+                const size = 2 + Math.random() * 4;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.opacity = 0.2 + Math.random() * 0.3;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Add randomized properties to circles
+        function addRandomizedCircleAnimations() {
+            const circles = document.querySelectorAll('.floating-circle');
+            
+            circles.forEach((circle, index) => {
+                // Random horizontal drift
+                const drift = (Math.random() - 0.5) * 200;
+                circle.style.setProperty('--drift', drift + 'px');
+                
+                // Random size variation
+                const sizeVariation = 0.8 + Math.random() * 0.4;
+                circle.style.transform = `scale(${sizeVariation})`;
+                
+                // Random opacity
+                circle.style.opacity = 0.6 + Math.random() * 0.4;
+                
+                // Add pulsing effect to some circles
+                if (Math.random() > 0.5) {
+                    circle.style.animation += `, pulse 4s ease-in-out infinite`;
+                    circle.style.animationDelay = Math.random() * 4 + 's';
+                }
+            });
+        }
+
+        // Create interactive floating elements that respond to scroll
+        function createInteractiveFloatingElements() {
+            const floatingElements = [];
+            
+            // Create some larger floating shapes
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.className = 'interactive-float';
+                element.style.cssText = `
+                    position: fixed;
+                    width: ${40 + Math.random() * 60}px;
+                    height: ${40 + Math.random() * 60}px;
+                    background: linear-gradient(45deg, 
+                        rgba(34, 197, 94, 0.05), 
+                        rgba(16, 185, 129, 0.08), 
+                        rgba(6, 182, 212, 0.06));
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    backdrop-filter: blur(2px);
+                    transition: transform 0.3s ease;
+                `;
+                
+                document.body.appendChild(element);
+                floatingElements.push({
+                    element: element,
+                    baseX: Math.random() * window.innerWidth,
+                    baseY: Math.random() * window.innerHeight,
+                    speedX: (Math.random() - 0.5) * 2,
+                    speedY: (Math.random() - 0.5) * 2
+                });
+            }
+            
+            // Animate interactive elements
+            function animateInteractiveElements() {
+                floatingElements.forEach(item => {
+                    item.baseX += item.speedX;
+                    item.baseY += item.speedY;
+                    
+                    // Bounce off edges
+                    if (item.baseX <= 0 || item.baseX >= window.innerWidth) {
+                        item.speedX *= -1;
+                    }
+                    if (item.baseY <= 0 || item.baseY >= window.innerHeight) {
+                        item.speedY *= -1;
+                    }
+                    
+                    item.element.style.left = item.baseX + 'px';
+                    item.element.style.top = item.baseY + 'px';
+                });
+                
+                requestAnimationFrame(animateInteractiveElements);
+            }
+            
+            animateInteractiveElements();
+        }
+
+        // Add sparkle effects when generating speech
+        function addSparkleEffect() {
+            const sparkleCount = 20;
+            const container = document.body;
+            
+            for (let i = 0; i < sparkleCount; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.top = Math.random() * 100 + '%';
+                    sparkle.style.animationDelay = Math.random() * 1 + 's';
+                    
+                    container.appendChild(sparkle);
+                    
+                    // Remove sparkle after animation
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+
+        // Add breathing effect to background
+        function addBreathingEffect() {
+            const circles = document.querySelectorAll('.floating-circle');
+            let breathPhase = 0;
+            
+            setInterval(() => {
+                breathPhase += 0.02;
+                const breathScale = 1 + Math.sin(breathPhase) * 0.1;
+                
+                circles.forEach((circle, index) => {
+                    const phaseOffset = index * 0.5;
+                    const scale = 1 + Math.sin(breathPhase + phaseOffset) * 0.05;
+                    circle.style.transform = `scale(${scale})`;
+                });
+            }, 50);
+        }
+
+        // Initialize advanced animations
+        function initializeAdvancedAnimations() {
+            addBreathingEffect();
+            
+            // Add mouse interaction effect
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+                
+                document.querySelectorAll('.floating-circle').forEach((circle, index) => {
+                    const offsetX = (mouseX - 0.5) * 20 * (index % 3 + 1);
+                    const offsetY = (mouseY - 0.5) * 20 * (index % 3 + 1);
+                    
+                    circle.style.transform += ` translate(${offsetX}px, ${offsetY}px)`;
+                });
+            });
+        }
 
         // Enhanced initialization
         function initializeApp() {
